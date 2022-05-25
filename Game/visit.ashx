@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-<!-- saved from url=(0080)https://web.archive.org/web/20150503202846/http://www.roblox.com/Game/visit.ashx -->
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Wayback Machine</title>
 <script src="./Wayback Machine_files/analytics.js.download" type="text/javascript"></script>
@@ -21,9 +19,8 @@ body {
 </style>
 <script>__wm.rw(0);</script>
 <div id="wm-ipp-base" lang="en" style="display: block; direction: ltr;">
-</div><div id="wm-ipp-print">The Wayback Machine - https://web.archive.org/web/20150503202846/http://www.roblox.com:80/Game/visit.ashx</div>
 <script type="text/javascript">//<![CDATA[
-__wm.bt(675,27,25,2,"web","http://www.roblox.com/Game/visit.ashx","20150503202846",1996,"/_static/",["/_static/css/banner-styles.css?v=fantwOh2","/_static/css/iconochive.css?v=qtvMKcIJ"], false);
+__wm.bt(675,27,25,2,"web","http://www.rclient.cf/Game/visit.ashx","20150503202846",1996,"/_static/",["/_static/css/banner-styles.css?v=fantwOh2","/_static/css/iconochive.css?v=qtvMKcIJ"], false);
   __wm.rw(1);
 //]]></script>
 <!-- END WAYBACK TOOLBAR INSERT --></div>
