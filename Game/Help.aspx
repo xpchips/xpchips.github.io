@@ -6,7 +6,7 @@
 <script type="text/javascript" src="./ROBLOX Help_files/wombat.js.download" charset="utf-8"></script>
 <script type="text/javascript">
   __wm.init("https://web.archive.org/web");
-  __wm.wombat("http://www.roblox.com:80/Game/Help.aspx","20090204142427","https://web.archive.org/","web","/_static/",
+  __wm.wombat("http://www.rcilent.cf/Game/Help.aspx","20090204142427","https://web.archive.org/","web","/_static/",
 	      "1233757467");
 </script>
 <link rel="stylesheet" type="text/css" href="./ROBLOX Help_files/banner-styles.css">
