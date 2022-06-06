@@ -47,8 +47,8 @@
     			{
                     $.post("/api/ide/toolbox", {category:type, page:page, keyword:keyword}, function(data) 
                     {
-                        $("#ToolBoxPage").html("");
-                        $("#ToolBoxPage").html(data);
+                        $("#ToolBoxPage").aspx("");
+                        $("#ToolBoxPage").aspx(data);
                     });
     			}
 
@@ -96,11 +96,11 @@
         <div id="pNavigation" style="display:table">
       <div class="Navigation">
         <div id="Previous">
-          <a href="https://http://rclient.cf/IDE/ClientToolbox.aspx#" onclick="getToolbox(&#39;FreeModels&#39;, &#39;&#39;, 0)" id="PreviousPage" style="visibility:hidden"><span class="NavigationIndicators">&lt;&lt;</span>
+          <a href="https://http://rclient.cf/IDE/ClientToolbox.aspx" id="PreviousPage" style="visibility:hidden"><span class="NavigationIndicators">&lt;&lt;</span>
           Prev</a>
         </div>
         <div id="Next">
-          <a href="http://rclient.cf/IDE/ClientToolbox.aspx#" onclick="getToolbox(&#39;FreeModels&#39;, &#39;&#39;, 2)" id="NextPage">Next <span class="NavigationIndicators">&gt;&gt;</span></a>
+          <a href="http://rclient.cf/IDE/ClientToolbox2.aspx" " id="NextPage">Next <span class="NavigationIndicators">&gt;&gt;</span></a>
         </div>
         <div id="Location">
           <span id="PagerLocation">1-20 of 40</span>
