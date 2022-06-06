@@ -45,7 +45,7 @@
 
     			function getToolbox(type, keyword, page) 
     			{
-                    $.post("/api/ide/toolbox", {category:type, page:page, keyword:keyword}, function(data) 
+                    $.post("http://polygon.pizzaboxer.xyz//api/ide/toolbox", {category:type, page:page, keyword:keyword}, function(data) 
                     {
                         $("#ToolBoxPage").html("");
                         $("#ToolBoxPage").html(data);
