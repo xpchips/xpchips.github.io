@@ -1,0 +1,883 @@
+<roblox xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.roblox.com/roblox.xsd" version="4">
+	<External>null</External>
+	<External>nil</External>
+	<Item class="Model" referent="RBX0">
+		<Properties>
+			<CoordinateFrame name="ModelInPrimary">
+				<X>0</X>
+				<Y>0</Y>
+				<Z>0</Z>
+				<R00>1</R00>
+				<R01>0</R01>
+				<R02>0</R02>
+				<R10>0</R10>
+				<R11>1</R11>
+				<R12>0</R12>
+				<R20>0</R20>
+				<R21>0</R21>
+				<R22>1</R22>
+			</CoordinateFrame>
+			<string name="Name">Superball</string>
+			<Ref name="PrimaryPart">null</Ref>
+			<bool name="archivable">true</bool>
+		</Properties>
+		<Item class="IntValue" referent="RBX1">
+			<Properties>
+				<string name="Name">ToolIconSilhouetteId</string>
+				<int name="Value">97830748</int>
+				<bool name="archivable">true</bool>
+			</Properties>
+		</Item>
+		<Item class="Tool" referent="RBX2">
+			<Properties>
+				<bool name="Enabled">true</bool>
+				<CoordinateFrame name="Grip">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+					<R00>1</R00>
+					<R01>0</R01>
+					<R02>0</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>0</R12>
+					<R20>0</R20>
+					<R21>0</R21>
+					<R22>1</R22>
+				</CoordinateFrame>
+				<string name="Name">Superball</string>
+				<Content name="TextureId"><url>http://polygon.pizzaboxer.xyz/asset/?id=96508620</url></Content>
+				<bool name="archivable">true</bool>
+			</Properties>
+			<Item class="LocalScript" referent="RBX3">
+				<Properties>
+					<bool name="Disabled">false</bool>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">Local Gui</string>
+					<ProtectedString name="Source">local Tool = script.Parent;
+
+enabled = true
+function onButton1Down(mouse)
+	if not enabled then
+		return
+	end
+
+	enabled = false
+	mouse.Icon = &quot;rbxasset://textures\\GunWaitCursor.png&quot;
+
+	wait(2)
+	mouse.Icon = &quot;rbxasset://textures\\GunCursor.png&quot;
+	enabled = true
+
+end
+
+function onEquippedLocal(mouse)
+
+
+	if mouse == nil then
+		print(&quot;Mouse not found&quot;)
+		return 
+	end
+
+	mouse.Icon = &quot;rbxasset://textures\\GunCursor.png&quot;
+	mouse.Button1Down:connect(function() onButton1Down(mouse) end)
+end
+
+
+
+Tool.Equipped:connect(onEquippedLocal)
+</ProtectedString>
+					<bool name="archivable">true</bool>
+				</Properties>
+			</Item>
+			<Item class="Part" referent="RBX4">
+				<Properties>
+					<bool name="Anchored">false</bool>
+					<float name="BackParamA">-0.5</float>
+					<float name="BackParamB">0.5</float>
+					<token name="BackSurface">0</token>
+					<token name="BackSurfaceInput">0</token>
+					<float name="BottomParamA">-0.5</float>
+					<float name="BottomParamB">0.5</float>
+					<token name="BottomSurface">0</token>
+					<token name="BottomSurfaceInput">0</token>
+					<int name="BrickColor">208</int>
+					<CoordinateFrame name="CFrame">
+						<X>463.900024</X>
+						<Y>53.5000038</Y>
+						<Z>-90.1000061</Z>
+						<R00>3.42285489e-008</R00>
+						<R01>1</R01>
+						<R02>0</R02>
+						<R10>0</R10>
+						<R11>0</R11>
+						<R12>1</R12>
+						<R20>1</R20>
+						<R21>-3.42285489e-008</R21>
+						<R22>0</R22>
+					</CoordinateFrame>
+					<bool name="CanCollide">true</bool>
+					<bool name="DraggingV1">false</bool>
+					<float name="Elasticity">1</float>
+					<token name="FormFactor">0</token>
+					<float name="Friction">0</float>
+					<float name="FrontParamA">-0.5</float>
+					<float name="FrontParamB">0.5</float>
+					<token name="FrontSurface">0</token>
+					<token name="FrontSurfaceInput">0</token>
+					<float name="LeftParamA">-0.5</float>
+					<float name="LeftParamB">0.5</float>
+					<token name="LeftSurface">0</token>
+					<token name="LeftSurfaceInput">0</token>
+					<bool name="Locked">false</bool>
+					<token name="Material">256</token>
+					<string name="Name">Handle</string>
+					<float name="Reflectance">0.200000003</float>
+					<float name="RightParamA">-0.5</float>
+					<float name="RightParamB">0.5</float>
+					<token name="RightSurface">0</token>
+					<token name="RightSurfaceInput">0</token>
+					<Vector3 name="RotVelocity">
+						<X>0</X>
+						<Y>0</Y>
+						<Z>0</Z>
+					</Vector3>
+					<float name="TopParamA">-0.5</float>
+					<float name="TopParamB">0.5</float>
+					<token name="TopSurface">0</token>
+					<token name="TopSurfaceInput">0</token>
+					<float name="Transparency">0</float>
+					<Vector3 name="Velocity">
+						<X>0</X>
+						<Y>0</Y>
+						<Z>0</Z>
+					</Vector3>
+					<bool name="archivable">true</bool>
+					<token name="shape">0</token>
+					<Vector3 name="size">
+						<X>2</X>
+						<Y>2</Y>
+						<Z>2</Z>
+					</Vector3>
+				</Properties>
+				<Item class="Sound" referent="RBX5">
+					<Properties>
+						<bool name="Looped">false</bool>
+						<string name="Name">Boing</string>
+						<float name="Pitch">1.10000002</float>
+						<int name="PlayCount">-1</int>
+						<bool name="PlayOnRemove">false</bool>
+						<Content name="SoundId"><url>http://polygon.pizzaboxer.xyz/asset?ID=96543718</url></Content>
+						<float name="Volume">0.5</float>
+						<bool name="archivable">true</bool>
+					</Properties>
+				</Item>
+				<Item class="SpecialMesh" referent="RBX6">
+					<Properties>
+						<token name="LODX">2</token>
+						<token name="LODY">2</token>
+						<Content name="MeshId"><url>http://polygon.pizzaboxer.xyz/asset/?id=96501868</url></Content>
+						<token name="MeshType">5</token>
+						<string name="Name">Mesh</string>
+						<Vector3 name="Offset">
+							<X>0</X>
+							<Y>0</Y>
+							<Z>0</Z>
+						</Vector3>
+						<Vector3 name="Scale">
+							<X>2</X>
+							<Y>2</Y>
+							<Z>2</Z>
+						</Vector3>
+						<Content name="TextureId"><url>http://polygon.pizzaboxer.xyz/asset/?id=96502130</url></Content>
+						<Vector3 name="VertexColor">
+							<X>1</X>
+							<Y>1</Y>
+							<Z>1</Z>
+						</Vector3>
+						<bool name="archivable">true</bool>
+					</Properties>
+				</Item>
+				<Item class="Sound" referent="RBX7">
+					<Properties>
+						<bool name="Looped">false</bool>
+						<string name="Name">Equip</string>
+						<float name="Pitch">1</float>
+						<int name="PlayCount">-1</int>
+						<bool name="PlayOnRemove">false</bool>
+						<Content name="SoundId"><url>http://polygon.pizzaboxer.xyz/asset?ID=97095034</url></Content>
+						<float name="Volume">0.800000012</float>
+						<bool name="archivable">true</bool>
+					</Properties>
+				</Item>
+				<Item class="Sound" referent="RBX8">
+					<Properties>
+						<bool name="Looped">false</bool>
+						<string name="Name">Throw</string>
+						<float name="Pitch">1</float>
+						<int name="PlayCount">-1</int>
+						<bool name="PlayOnRemove">false</bool>
+						<Content name="SoundId"><url>http://polygon.pizzaboxer.xyz/asset?ID=97095069</url></Content>
+						<float name="Volume">0.5</float>
+						<bool name="archivable">true</bool>
+					</Properties>
+				</Item>
+			</Item>
+			<Item class="LocalScript" referent="RBX9">
+				<Properties>
+					<bool name="Disabled">false</bool>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">AnimationScript</string>
+					<ProtectedString name="Source">-- Waits for the child of the specified parent
+local function WaitForChild(parent, childName)
+	while not parent:FindFirstChild(childName) do parent.ChildAdded:wait() end
+	return parent[childName]
+end
+
+local Tool = script.Parent
+
+local MyHumanoid
+local MyCharacter
+
+local EquipAnim
+local IdleEquipAnim
+local ThrowAnim
+local UnEquipAnim
+
+
+function OnEquipped(mouse)
+	MyCharacter = Tool.Parent
+	MyHumanoid = MyCharacter:FindFirstChild(&apos;Humanoid&apos;)
+	if MyHumanoid then
+		EquipAnim = MyHumanoid:LoadAnimation(WaitForChild(Tool, &apos;EquipAnim2&apos;))
+		IdleEquipAnim = MyHumanoid:LoadAnimation(WaitForChild(Tool, &apos;IdleEquipAnim2&apos;))
+		ThrowAnim = MyHumanoid:LoadAnimation(WaitForChild(Tool, &apos;ThrowAnim2&apos;))
+		UnEquipAnim = MyHumanoid:LoadAnimation(WaitForChild(Tool, &apos;UnEquipAnim2&apos;))
+	end
+	if EquipAnim then
+		EquipAnim:Play()
+	end
+	if IdleEquipAnim then
+		IdleEquipAnim:Play()
+	end
+end
+
+function OnUnequipped()
+	if EquipAnim then
+		EquipAnim:Stop()
+	end
+	if ThrowAnim then
+		ThrowAnim:Stop()
+	end
+	if IdleEquipAnim then
+		IdleEquipAnim:Stop()
+	end
+	if UnEquipAnim then
+		--UnEquipAnim:Play()
+	end
+
+end
+
+Tool.Equipped:connect(OnEquipped)
+Tool.Unequipped:connect(OnUnequipped)
+
+WaitForChild(Tool, &apos;PlayThrow&apos;).Changed:connect(
+	function (value)
+		if ThrowAnim then
+			ThrowAnim:Play()
+		end
+	end)
+
+</ProtectedString>
+					<bool name="archivable">true</bool>
+				</Properties>
+			</Item>
+			<Item class="Animation" referent="RBX10">
+				<Properties>
+					<Content name="AnimationId"><url>http://polygon.pizzaboxer.xyz/asset?ID=94156486</url></Content>
+					<string name="Name">IdleEquipAnim2</string>
+					<bool name="archivable">true</bool>
+				</Properties>
+			</Item>
+			<Item class="Animation" referent="RBX11">
+				<Properties>
+					<Content name="AnimationId"><url>http://polygon.pizzaboxer.xyz/asset?ID=94156535</url></Content>
+					<string name="Name">EquipAnim2</string>
+					<bool name="archivable">true</bool>
+				</Properties>
+			</Item>
+			<Item class="Animation" referent="RBX12">
+				<Properties>
+					<Content name="AnimationId"><url>http://polygon.pizzaboxer.xyz/asset?ID=94156580</url></Content>
+					<string name="Name">UnEquipAnim2</string>
+					<bool name="archivable">true</bool>
+				</Properties>
+			</Item>
+			<Item class="Animation" referent="RBX13">
+				<Properties>
+					<Content name="AnimationId"><url>http://polygon.pizzaboxer.xyz/asset?ID=94157627</url></Content>
+					<string name="Name">ThrowAnim2</string>
+					<bool name="archivable">true</bool>
+				</Properties>
+			</Item>
+			<Item class="LocalScript" referent="RBX14">
+				<Properties>
+					<bool name="Disabled">false</bool>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">ModifierScript</string>
+					<ProtectedString name="Source">--this script modifies this weapon depending on if you have the according gamepass
+
+local function WaitForChild(parent, childName)
+	assert(parent, &quot;ERROR: WaitForChild: parent is nil&quot;)
+	while not parent:FindFirstChild(childName) do wait() end
+	return parent[childName]
+end
+
+local Tool=script.Parent
+local Player=Tool.Parent.Parent
+local Handle=WaitForChild(Tool,&apos;Handle&apos;)
+local Mesh= WaitForChild(Handle,&apos;Mesh&apos;)
+local BoingSound=WaitForChild(Handle,&apos;Boing&apos;)
+
+local MoneyBallModifierName = &apos;MoneySuperBall&apos;
+
+local IsMoneyBall=WaitForChild(WaitForChild(Tool,&apos;CannonBall&apos;),&apos;IsMoneyBall&apos;)
+
+local NormalTexture = &apos;http://polygon.pizzaboxer.xyz/asset/?id=96502130&apos;
+local MoneyBallTexture = &apos;http://polygon.pizzaboxer.xyz/asset/?id=97907437&apos;
+local NormalIcon = &apos;http://polygon.pizzaboxer.xyz/asset/?id=96508620&apos;
+local MoneyBallIcon = &apos;http://polygon.pizzaboxer.xyz/asset/?id=97817523&apos;
+
+
+function OnModifierAdded(nmodifier)
+	print(&apos;modifier added&apos;)
+	if nmodifier.Name == MoneyBallModifierName then
+		IsMoneyBall.Value=true
+		Mesh.TextureId=MoneyBallTexture
+		Tool.TextureId= MoneyBallIcon
+		Tool.ToolTip= &apos;Moneyball&apos;
+	end
+end
+
+function OnModifierRemoved(nmodifier)
+	if nmodifier.Name == MoneyBallModifierName then
+		IsMoneyBall.Value=false
+		Mesh.TextureId= NormalTexture
+		Tool.TextureId= NormalIcon
+		Tool.ToolTip= &apos;SuperBall&apos;
+	end
+end
+
+function OnPlayerChildAdded(nchild)
+	if nchild.Name==&apos;PlayerModifiers&apos; then
+		nchild.ChildAdded:connect(OnModifierAdded)
+		for _,i in pairs(nchild:GetChildren()) do
+			OnModifierAdded(i)
+		end
+		nchild.ChildRemoved:connect(OnModifierRemoved)
+	end
+end
+
+Player.ChildAdded:connect(OnPlayerChildAdded)
+if Player:FindFirstChild(&apos;PlayerModifiers&apos;) then
+	OnPlayerChildAdded(Player[&apos;PlayerModifiers&apos;])
+end
+</ProtectedString>
+					<bool name="archivable">true</bool>
+				</Properties>
+			</Item>
+			<Item class="BoolValue" referent="RBX15">
+				<Properties>
+					<string name="Name">PlayThrow</string>
+					<bool name="Value">false</bool>
+					<bool name="archivable">true</bool>
+				</Properties>
+			</Item>
+			<Item class="LocalScript" referent="RBX16">
+				<Properties>
+					<bool name="Disabled">false</bool>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">CannonScript</string>
+					<ProtectedString name="Source">-- Waits for the child of the specified parent
+local function WaitForChild(parent, childName)
+	while not parent:FindFirstChild(childName) do parent.ChildAdded:wait() end
+	return parent[childName]
+end
+
+local LAUNCH_VELOCITY = 170
+
+local MissileMesh = Instance.new(&apos;SpecialMesh&apos;)
+MissileMesh.Name = &quot;MissileMesh&quot;
+MissileMesh.MeshType = Enum.MeshType.Sphere
+MissileMesh.Parent = DecalHolder
+
+local Tool = script.Parent
+local Handle = WaitForChild(Tool, &apos;Handle&apos;)
+local HandleMesh = WaitForChild(Handle, &apos;Mesh&apos;)
+
+
+local FloatForce = Instance.new(&apos;BodyForce&apos;)
+FloatForce.force = Vector3.new(0, Handle:GetMass() * 192.6 * 0.5, 0)
+FloatForce.Name = &quot;FloatingForce&quot;
+
+local PlayersService = Game:GetService(&apos;Players&apos;)
+
+local PlayThrow
+local EquipSound
+local ThrowSound
+
+local MoneyBallColors = 
+{
+	Vector3.new(.9,.8,0),
+	Vector3.new(1,1,1), 
+	--Vector3.new(159/255,101/255,1/255),
+}
+
+local CannonBallScript = WaitForChild(Tool,&apos;CannonBall&apos;)
+local IsMoneyBall= WaitForChild(CannonBallScript,&apos;IsMoneyBall&apos;)
+
+
+function RayCast(startPos, vec, rayLength, ignoreModel)
+	vec = vec.unit
+	local hitObject, hitPos = game.Workspace:FindPartOnRay(Ray.new(startPos + (vec * .01), vec * rayLength), Handle)
+	if hitObject and hitPos then
+		local distance = rayLength - (hitPos - startPos).magnitude
+		if (not hitObject:IsDescendantOf(ignoreModel)) and distance &gt; 0 then
+			return RayCast(hitPos, vec, distance)
+		end
+	end
+	return hitObject, hitPos
+end
+
+-- This will return nil if there is nothing in the way, otherwise it will return the closest position it can start the ball at.
+function FindClosestOpenPosition(cframe, radius, direction, character)
+	if not (cframe and radius and direction and character) then
+		print(&quot;FindClosestOpenPosition: Bad Args&quot;);
+		return
+	end
+	
+	local rightArm = character:FindFirstChild(&apos;Right Arm&apos;)
+	--print(&quot;Right Arm:&quot; , rightArm)
+	local maxHitPos = nil
+	do
+		local hitObj, hitPos = RayCast(cframe.p + direction.unit * 3, -direction, 3, character)
+		if hitObj and hitPos and hitObj ~= rightArm then
+			--print(hitObj.Name, (hitObj == rightArm))
+			maxHitPos = hitPos + direction.unit * (radius + 0.05)
+		end
+	end
+	
+	for r = 0, 2 do
+		local objectYOffset =  CFrame.Angles(0, 0, r * math.pi/4) * cframe:vectorToWorldSpace(Vector3.new(0, radius + 0.1, 0))
+		local objectXOffset = CFrame.Angles(0, 0, r * math.pi/4) * cframe:vectorToWorldSpace(Vector3.new(radius + 0.1, 0, 0))
+		for x = -1, 1, 2 do
+			for y = -1, 1, 2 do
+				local hitObj, hitPos = RayCast(cframe.p + objectYOffset + objectXOffset + direction.unit * 3, -direction, 3, character)
+				if hitObj ~= rightArm and hitObj and hitPos and
+						(not maxHitPos or (cframe.p - hitPos).magnitude &gt; (cframe.p - maxHitPos).magnitude) then
+					--print(hitObj.Name, (hitObj == rightArm))
+					--print(&quot;Side vectors hit&quot;)
+					maxHitPos = hitPos
+				end
+			end
+		end
+	end
+	local openPos
+	if maxHitPos then
+ 		openPos = maxHitPos + direction.unit * (radius + 0.05)
+	else
+		--openPos = cframe + direction.unit * (radius + 0.05) 
+	end
+	--print(&quot;Missile pos&quot; , cframe.p , &quot;  new pos:&quot; , openPos)
+	return openPos
+end
+
+
+function Fire(v)
+	if ThrowSound then
+		ThrowSound:Play()
+	end
+
+	local vCharacter = Tool.Parent
+	local vPlayer = PlayersService:GetPlayerFromCharacter(vCharacter)
+
+	local missile = Instance.new(&quot;Part&quot;)
+	local spawnPos = Handle.Position --vCharacter.PrimaryPart.Position
+	missile.Size = Handle.Size
+	missile.Velocity = v * LAUNCH_VELOCITY
+	spawnPos = FindClosestOpenPosition(CFrame.new(Handle.CFrame.p, Handle.CFrame.p + v), missile.Size.Z / 2, v, vCharacter)
+	--spawnPos + Handle.CFrame:vectorToWorldSpace(Vector3.new(0, 0, -(missile.Size.Z))) -- + (v * 5)
+	if spawnPos then
+		missile.CFrame = CFrame.new(spawnPos, spawnPos + v)
+	else
+		--print(&quot;No Spawn Pos&quot;);
+		missile.CFrame = Handle.CFrame + Handle.CFrame:vectorToWorldSpace(Vector3.new(0, 0, -2.1))
+	end
+	missile.BrickColor = BrickColor.new(HandleMesh.VertexColor.X, HandleMesh.VertexColor.Y, HandleMesh.VertexColor.Z)
+	missile.FormFactor = Enum.FormFactor.Custom
+	missile.Shape = Enum.PartType.Ball
+	missile.BottomSurface = 0
+	missile.TopSurface = 0
+	missile.Name = &quot;Cannon Shot&quot;
+	missile.Elasticity = 1
+	missile.Reflectance = .2
+	missile.Friction = 0.1
+	FloatForce:Clone().Parent = missile	
+	if Handle:FindFirstChild(&apos;Mesh&apos;) then
+		local missileMesh = Handle.Mesh:Clone()
+		missileMesh.Name =&apos;MissileMesh&apos;
+		missileMesh.Parent = missile
+	end
+	Tool.Handle.Boing:clone().Parent = missile
+
+	local new_script = script.Parent.CannonBall:clone()
+	new_script.Disabled = false
+	new_script.Parent = missile
+
+	local creator_tag = Instance.new(&quot;ObjectValue&quot;)
+	creator_tag.Value = vPlayer
+	creator_tag.Name = &quot;creator&quot;
+	local weaponName_tag = Instance.new(&apos;StringValue&apos;, creator_tag)
+	weaponName_tag.Name = &apos;weaponName&apos;
+	weaponName_tag.Value = Tool.Name
+	local weaponIcon_tag = Instance.new(&apos;StringValue&apos;, creator_tag)
+	weaponIcon_tag.Name = &apos;weaponIcon&apos;
+	weaponIcon_tag.Value = Tool.TextureId
+	creator_tag.Parent = missile
+
+	missile.Parent = game.Workspace
+end
+
+Tool.Enabled = true
+function OnActivated(targetOverride)
+	wait(0) --TODO: Remove when Mouse.Hit and Humanoid.TargetPoint update properly on iPad
+	if not Tool.Enabled then
+		return
+	end
+	if PlayThrow then
+		PlayThrow.Value = not PlayThrow.Value
+	end
+	wait(0.03)
+	Tool.Enabled = false
+	wait(0.1)
+	local character = Tool.Parent
+	local humanoid = character:FindFirstChild(&apos;Humanoid&apos;)
+	if humanoid then
+		
+		if character:FindFirstChild(&apos;Right Arm&apos;) then
+			local targetPos = targetOverride or humanoid.TargetPoint
+			local lookAt = (targetPos - Handle.Position).unit
+			Handle.Transparency = 1
+			Fire(lookAt)
+		else
+			print(&quot;Can&apos;t find right arm&quot;)
+		end
+	else
+		print(&quot;Humanoid not found&quot;)
+	end
+
+	if IsMoneyBall.Value then
+		nextColor=MoneyBallColors[math.random(#MoneyBallColors)]
+		HandleMesh.VertexColor=Vector3.new((math.random()*.1)-.05,(math.random()*.1)-.05,(math.random()*.1)-.05)+ nextColor
+	end
+
+	wait(1.5)
+	Handle.Transparency = 0
+	Tool.Enabled = true
+end
+
+-- Also activate when the Action Button is pressed
+local function OnChildAdded(child)
+	if child.Name == &apos;ActionButtonData&apos; then
+		child.Changed:connect(function(newValue)
+			local bindable = child:FindFirstChild(&apos;GetTargetPosition&apos;)
+			if bindable and string.sub(newValue, 1, 1) == &apos;v&apos; then
+				local matches = {}
+				for match in string.gmatch(newValue, &apos;%d+%.?%d*&apos;) do
+					table.insert(matches, match)
+				end
+				if #matches == 4 then
+					local screenPosition = Vector2.new(matches[1], matches[2])
+					local screenSize = Vector2.new(matches[3], matches[4])
+					local targetPosition = bindable:Invoke(screenPosition, screenSize, {Tool.Parent})
+					OnActivated(targetPosition)
+				end
+			end
+		end)
+	end
+end
+
+local function OnEquipped()
+	EquipSound = WaitForChild(Handle, &apos;Equip&apos;)
+	ThrowSound = WaitForChild(Handle, &apos;Throw&apos;)
+	PlayThrow = WaitForChild(Tool, &apos;PlayThrow&apos;)
+	wait(0.2)
+	EquipSound:Play()
+end
+
+Tool.Equipped:connect(OnEquipped)
+Tool.Activated:connect(OnActivated)
+
+-- Listen for Action Button Data Object
+for _, child in pairs(Tool:GetChildren()) do
+	OnChildAdded(child)
+end
+Tool.ChildAdded:connect(OnChildAdded)
+
+local MAX_STEPS = 20
+
+function LerpColor(startColor, endColor, duration)
+	local startTime = time()
+	while time() - startTime &lt; duration do
+		wait(1 / MAX_STEPS)
+		local lerpedVec = startColor:Lerp(endColor, (time() - startTime) / duration)
+		HandleMesh.VertexColor = lerpedVec
+	end
+end
+
+-- For luminance calculation formula look at: http://en.wikipedia.org/wiki/Grayscale
+local function IsDark(color)
+	local cieLuminance = 0.2126 * color.r + 0.7152 * color.g + 0.0722 * color.b
+	return cieLuminance &lt; 0.4
+end
+
+while true do
+	local nextColor
+	if not IsMoneyBall.Value then
+		repeat
+				nextColor = BrickColor.random()
+		until not IsDark(nextColor.Color)
+		LerpColor(HandleMesh.VertexColor, Vector3.new(nextColor.r, nextColor.g, nextColor.b), 2)
+		Handle.BrickColor = nextColor
+	end
+	
+	
+	wait(0.1)
+end
+</ProtectedString>
+					<bool name="archivable">true</bool>
+				</Properties>
+			</Item>
+			<Item class="Script" referent="RBX17">
+				<Properties>
+					<bool name="Disabled">true</bool>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">CannonBall</string>
+					<ProtectedString name="Source">print(&quot;Running cannon ball script&quot;)
+local ball = script.Parent
+
+local function WaitForChild(parent, childName)
+	while not parent:FindFirstChild(childName) do parent.ChildAdded:wait() end
+	return parent[childName]
+end
+
+--local KILL_FEED_ICON_URL = &apos;rbxasset://Textures/Superball.png&apos;
+local START_DAMAGE = 42
+local MIN_DAMAGE = 10
+local DECAY_RATIO = 1 / 1.65
+local VELOCITY_DAMPING = 0.9
+local BOING_VOLUME = 0.666
+local damage = START_DAMAGE
+
+local DebrisService = Game:GetService(&apos;Debris&apos;)
+
+local BounceScript = WaitForChild(script, &apos;BounceEffect&apos;)
+
+local IsMoneyBall= WaitForChild(script,&apos;IsMoneyBall&apos;)
+
+local MyHumanoid
+
+local r = game:service(&quot;RunService&quot;)
+
+local last_sound_time = r.Stepped:wait() - 0.2
+
+local LastHitCharacter
+local LastDamageHumanoid = nil
+
+
+local DecalHolder = Instance.new(&quot;Part&quot;)
+DecalHolder.Size = Vector3.new(2, 2, 2)
+DecalHolder.Anchored = true
+DecalHolder.CanCollide = false
+DecalHolder.Transparency = 0.5
+DecalHolder.Reflectance = 0
+DecalHolder.FormFactor = Enum.FormFactor.Custom
+DecalHolder.Shape = Enum.PartType.Block
+DecalHolder.Size = Vector3.new(0.1, 0.1, 0.1)
+DecalHolder.BottomSurface = 0
+DecalHolder.TopSurface = 0
+DecalHolder.Name = &quot;Bounce Spot&quot;
+local DecalMesh = Instance.new(&apos;SpecialMesh&apos;)
+DecalMesh.Name = &quot;BounceMesh&quot;
+DecalMesh.MeshType = Enum.MeshType.Sphere
+DecalMesh.Scale = Vector3.new(1,1,1)
+DecalMesh.Parent = DecalHolder
+local MoneySound = Instance.new(&apos;Sound&apos;)
+MoneySound.Name = &apos;MoneySound&apos;
+MoneySound.SoundId = &apos;http://polygon.pizzaboxer.xyz/asset?ID=97688233&apos;
+MoneySound.Volume = 1
+MoneySound.Parent=DecalHolder
+
+function FindHumanoidRecursive(p)
+	if (p.className == Workspace) then return nil end
+	local h = p:FindFirstChild(&quot;Humanoid&quot;)
+	if (h ~= nil) then return h end
+	if (p.Parent ~= nil) then return FindHumanoidRecursive(p.Parent) end
+	return nil
+end
+
+
+local function CheckAwardSuperballRicochet(humanoid, damage)
+	local creatorTag = ball:FindFirstChild(&apos;creator&apos;) 
+	local myHumanoid = creatorTag and
+		creatorTag.Value and
+		creatorTag.Value.Character and
+		creatorTag.Value.Character:FindFirstChild(&apos;Humanoid&apos;)
+	--print(&quot;Checking rico myHumanoid is&quot; , myHumanoid , &quot;other humanoid is:&quot; , humanoid)
+	if myHumanoid and humanoid ~= myHumanoid and humanoid.Health &lt;= damage and
+		LastDamageHumanoid and LastDamageHumanoid ~= humanoid then
+		--print(&quot;awarding ricochet&quot;)
+		_G.AwardBadge(creatorTag.Value, 3)
+	end
+end
+
+
+function CreateBounceEffect(position)
+	local DecalCopy = DecalHolder:Clone()
+	DecalCopy.Size = ball.Size
+	DecalCopy.BrickColor = ball.BrickColor
+	DecalCopy.CFrame = CFrame.new(position)
+	DebrisService:AddItem(DecalCopy, 2)
+	DecalCopy.Parent = Workspace
+	local bounceCopy = BounceScript:Clone()
+	bounceCopy.Parent = DecalCopy
+	bounceCopy.Disabled = false
+	Spawn(function()
+		wait(0)
+		if IsMoneyBall.Value and DecalCopy then
+			DecalCopy.MoneySound:Play()
+		end
+	end)
+end
+
+function onTouched(hit)
+	local myHumanoid
+	local creatorTag = ball:FindFirstChild(&apos;creator&apos;) 
+	if creatorTag and creatorTag.Value and creatorTag.Value.Character then
+		myHumanoid = creatorTag.Value.Character:FindFirstChild(&apos;Humanoid&apos;)
+	end
+	local humanoid = FindHumanoidRecursive(hit)
+	if humanoid~=nil then -- make sure not to damage yourself unless it has bounced already
+		if myHumanoid and (humanoid ~= myHumanoid or damage &lt; START_DAMAGE) and
+							(not LastHitCharacter or humanoid.Parent ~= LastHitCharacter) then
+			LastHitCharacter = humanoid.Parent
+			--TagHumanoid(humanoid, ball.creator.Value)
+			--humanoid:TakeDamage(damage)
+			local hitBindable = humanoid:FindFirstChild(&apos;Hit&apos;)
+			if hitBindable then
+				local wasAlive = humanoid.Health &gt; 0
+				LastDamageHumanoid = humanoid
+				hitBindable:Invoke(damage, ball:FindFirstChild(&apos;creator&apos;))
+				if wasAlive and humanoid.Health &lt;= 0 then
+					CheckAwardSuperballRicochet(humanoid, damage)
+				end
+			else
+				print(&quot;Could not find BindableFunction &apos;Hit&apos;&quot;)
+			end
+		end
+	else
+		local now = r.Stepped:wait()
+		if (now - last_sound_time &gt; 0.32) then
+			ball.Boing.Volume = math.max(0.17, math.min(BOING_VOLUME, BOING_VOLUME * ball.Velocity.magnitude / 130))
+			--print(ball.Boing.Volume)
+			ball.Boing:play()
+			last_sound_time = now
+			damage = math.max(MIN_DAMAGE, damage * DECAY_RATIO)
+			--ball.Velocity = ball.Velocity * VELOCITY_DAMPING
+			CreateBounceEffect(ball.Position)
+		end
+		if now - last_sound_time &gt; 0.3 then
+			print(&quot;Resetting last hit character&quot;)
+			LastHitCharacter = nil
+		end
+	end
+end
+--[[
+function TagHumanoid(humanoid, player)
+	print(&quot;Tagging player as creator:&quot; , player.Name , &quot;as damaging&quot; , humanoid.Name , tick())
+	-- Add more tags here to customize what tags are available.
+	while humanoid:FindFirstChild(&apos;creator&apos;) do
+		humanoid:FindFirstChild(&apos;creator&apos;):Destroy()
+	end 
+	local creatorTag = Instance.new(&quot;ObjectValue&quot;)
+	creatorTag.Value = player
+	creatorTag.Name = &quot;creator&quot;
+	creatorTag.Parent = humanoid
+	DebrisService:AddItem(creatorTag, 2)
+
+	local weaponIconTag = Instance.new(&quot;StringValue&quot;)
+	weaponIconTag.Value = KILL_FEED_ICON_URL
+	weaponIconTag.Name = &quot;icon&quot;
+	weaponIconTag.Parent = creatorTag
+end
+--]]
+connection = ball.Touched:connect(onTouched)
+
+DebrisService:AddItem(ball, 5)
+</ProtectedString>
+					<bool name="archivable">true</bool>
+				</Properties>
+				<Item class="Script" referent="RBX18">
+					<Properties>
+						<bool name="Disabled">true</bool>
+						<Content name="LinkedSource"><null></null></Content>
+						<string name="Name">BounceEffect</string>
+						<ProtectedString name="Source">local function WaitForChild(parent, childName)
+	while not parent:FindFirstChild(childName) do parent.ChildAdded:wait() end
+	return parent[childName]
+end
+
+local DecalCopy = script.Parent
+local BallSize = Vector3.new(2,2,2)
+local BallScale = BallSize * 0.6
+local BounceMesh = WaitForChild(DecalCopy, &apos;BounceMesh&apos;)
+
+
+BounceMesh.Scale = Vector3.new()
+for i = 1, 7 do
+	if DecalCopy then
+		BounceMesh.Scale = BallSize * BallScale * i * 0.07
+		DecalCopy.Transparency = DecalCopy.Transparency + 1 / 28
+		wait(0.03)
+	end
+end
+for i = 7, 1, -1 do
+	if DecalCopy then
+		BounceMesh.Scale = BallSize * BallScale * i * 0.07
+		DecalCopy.Transparency = DecalCopy.Transparency + 1 / 28
+		wait(0.03)
+	end
+end
+DecalCopy:Destroy()
+</ProtectedString>
+						<bool name="archivable">true</bool>
+					</Properties>
+				</Item>
+				<Item class="BoolValue" referent="RBX19">
+					<Properties>
+						<string name="Name">IsMoneyBall</string>
+						<bool name="Value">false</bool>
+						<bool name="archivable">true</bool>
+					</Properties>
+				</Item>
+				<Item class="BoolValue" referent="RBX20">
+					<Properties>
+						<string name="Name">PlayThrow</string>
+						<bool name="Value">false</bool>
+						<bool name="archivable">true</bool>
+					</Properties>
+				</Item>
+			</Item>
+		</Item>
+	</Item>
+</roblox>
