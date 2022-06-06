@@ -9,7 +9,7 @@
     			{
     				try
                 	{
-                    	window.external.Insert("http://polygon.pizzaboxer.xyz/Asset/?id=" + id);
+                    	window.external.Insert("http://rclient.cf/Asset/" + id);
                     }
 	                catch(x)
 	                {
