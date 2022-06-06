@@ -24,7 +24,7 @@
     				}
 	                catch(x)
 	                {
-	                    alert("Sorry Could not drag the requested item. Please drag it in instead of clicking");
+	                    alert("Sorry Could not drag the requested item");
 	                }
     			}
     			function clickButton(e, buttonid)
@@ -45,7 +45,7 @@
 
     			function getToolbox(type, keyword, page) 
     			{
-                    $.post("http://polygon.pizzaboxer.xyz//api/ide/toolbox", {category:type, page:page, keyword:keyword}, function(data) 
+                    $.post("/api/ide/toolbox", {category:type, page:page, keyword:keyword}, function(data) 
                     {
                         $("#ToolBoxPage").html("");
                         $("#ToolBoxPage").html(data);
@@ -96,28 +96,28 @@
         <div id="pNavigation" style="display:table">
       <div class="Navigation">
         <div id="Previous">
-          <a href="https://polygon.pizzaboxer.xyz/IDE/ClientToolbox.aspx#" onclick="getToolbox(&#39;FreeModels&#39;, &#39;&#39;, 0)" id="PreviousPage" style="visibility:hidden"><span class="NavigationIndicators">&lt;&lt;</span>
+          <a href="https://http://rclient.cf/IDE/ClientToolbox.aspx#" onclick="getToolbox(&#39;FreeModels&#39;, &#39;&#39;, 0)" id="PreviousPage" style="visibility:hidden"><span class="NavigationIndicators">&lt;&lt;</span>
           Prev</a>
         </div>
         <div id="Next">
-          <a href="https://polygon.pizzaboxer.xyz/IDE/ClientToolbox.aspx#" onclick="getToolbox(&#39;FreeModels&#39;, &#39;&#39;, 2)" id="NextPage">Next <span class="NavigationIndicators">&gt;&gt;</span></a>
+          <a href="http://rclient.cf/IDE/ClientToolbox.aspx#" onclick="getToolbox(&#39;FreeModels&#39;, &#39;&#39;, 2)" id="NextPage">Next <span class="NavigationIndicators">&gt;&gt;</span></a>
         </div>
         <div id="Location">
-          <span id="PagerLocation">1-20 of 218</span>
+          <span id="PagerLocation">1-20 of 40</span>
         </div>
       </div>
     </div>
         <div id="ToolboxItems">
-            <a class="ToolboxItem" title="★★  SAMMY&#39;S BOUNCY HOUSE  ★★" href="javascript:insertContent(11137)" ondragstart="dragRBX(11137)" onmouseover="this.style.borderStyle=&#39;outset&#39;" onmouseout="this.style.borderStyle=&#39;solid&#39;" style="border-style: solid; display: inline-block; height: 60px; width: 60px; cursor: pointer;">
+            <a class="ToolboxItem" title="★★  SAMMY&#39;S BOUNCY HOUSE  ★★" href="javascript:insertContent(11137)" ondragstart="dragRBX(11137)" onmouseover="this.style.borderStyle=&#39;outset&#39;" onmouseout="this.style.borderStyle=&#39;solid&#39;" style="border-style: solid;display:inline-block;height:60px;width:60px;cursor:pointer;">
       <img width="60" src="./Toolbox_files/323d041e9f509970c90bd7bcaf6c25029cb004ff.png" border="0" id="img" alt="★★  SAMMY&#39;S BOUNCY HOUSE  ★★">
       </a>
-            <a class="ToolboxItem" title="3954 stone grey bricks" href="javascript:insertContent(11010)" ondragstart="dragRBX(11010)" onmouseover="this.style.borderStyle=&#39;outset&#39;" onmouseout="this.style.borderStyle=&#39;solid&#39;" style="border-style: solid; display: inline-block; height: 60px; width: 60px; cursor: pointer;">
+            <a class="ToolboxItem" title="3954 stone grey bricks" href="javascript:insertContent(11010)" ondragstart="dragRBX(11010)" onmouseover="this.style.borderStyle=&#39;outset&#39;" onmouseout="this.style.borderStyle=&#39;solid&#39;" style="border-style: solid;display:inline-block;height:60px;width:60px;cursor:pointer;">
       <img width="60" src="./Toolbox_files/22e7ab1d6fe88314090051b581987dc68aae5ed5.png" border="0" id="img" alt="3954 stone grey bricks">
       </a>
             <a class="ToolboxItem" title="BGR" href="javascript:insertContent(10564)" ondragstart="dragRBX(10564)" onmouseover="this.style.borderStyle=&#39;outset&#39;" onmouseout="this.style.borderStyle=&#39;solid&#39;" style="border-style: solid;display:inline-block;height:60px;width:60px;cursor:pointer;">
       <img width="60" src="./Toolbox_files/0690385fd6022839ca50ec66857b2ce55712f937.png" border="0" id="img" alt="BGR">
       </a>
-            <a class="ToolboxItem" title="VR headset" href="javascript:insertContent(10877)" ondragstart="dragRBX(10877)" onmouseover="this.style.borderStyle=&#39;outset&#39;" onmouseout="this.style.borderStyle=&#39;solid&#39;" style="border-style: solid; display: inline-block; height: 60px; width: 60px; cursor: pointer;">
+            <a class="ToolboxItem" title="VR headset" href="javascript:insertContent(10877)" ondragstart="dragRBX(10877)" onmouseover="this.style.borderStyle=&#39;outset&#39;" onmouseout="this.style.borderStyle=&#39;solid&#39;" style="border-style: solid;display:inline-block;height:60px;width:60px;cursor:pointer;">
       <img width="60" src="./Toolbox_files/c23157bdb291e23502f5f874a83f81bb63778d81.png" border="0" id="img" alt="VR headset">
       </a>
             <a class="ToolboxItem" title="noob" href="javascript:insertContent(10876)" ondragstart="dragRBX(10876)" onmouseover="this.style.borderStyle=&#39;outset&#39;" onmouseout="this.style.borderStyle=&#39;solid&#39;" style="border-style: solid;display:inline-block;height:60px;width:60px;cursor:pointer;">
@@ -135,19 +135,19 @@
             <a class="ToolboxItem" title="sedan" href="javascript:insertContent(10534)" ondragstart="dragRBX(10534)" onmouseover="this.style.borderStyle=&#39;outset&#39;" onmouseout="this.style.borderStyle=&#39;solid&#39;" style="border-style: solid;display:inline-block;height:60px;width:60px;cursor:pointer;">
       <img width="60" src="./Toolbox_files/0732c6bf8e27e4f851950a64c85726db1a984aaa.png" border="0" id="img" alt="sedan">
       </a>
-            <a class="ToolboxItem" title="japaneese car" href="javascript:insertContent(10533)" ondragstart="dragRBX(10533)" onmouseover="this.style.borderStyle=&#39;outset&#39;" onmouseout="this.style.borderStyle=&#39;solid&#39;" style="border-style: solid; display: inline-block; height: 60px; width: 60px; cursor: pointer;">
+            <a class="ToolboxItem" title="japaneese car" href="javascript:insertContent(10533)" ondragstart="dragRBX(10533)" onmouseover="this.style.borderStyle=&#39;outset&#39;" onmouseout="this.style.borderStyle=&#39;solid&#39;" style="border-style: solid;display:inline-block;height:60px;width:60px;cursor:pointer;">
       <img width="60" src="./Toolbox_files/ee10b889db79a6fb5743ba5929d2476393aeca3e.png" border="0" id="img" alt="japaneese car">
       </a>
             <a class="ToolboxItem" title="car" href="javascript:insertContent(10531)" ondragstart="dragRBX(10531)" onmouseover="this.style.borderStyle=&#39;outset&#39;" onmouseout="this.style.borderStyle=&#39;solid&#39;" style="border-style: solid;display:inline-block;height:60px;width:60px;cursor:pointer;">
       <img width="60" src="./Toolbox_files/824c6681bfc8cf503f57cfef87ee639bd3f02dd1.png" border="0" id="img" alt="car">
       </a>
-            <a class="ToolboxItem" title="Mjolnir" href="javascript:insertContent(10501)" ondragstart="dragRBX(10501)" onmouseover="this.style.borderStyle=&#39;outset&#39;" onmouseout="this.style.borderStyle=&#39;solid&#39;" style="border-style: solid; display: inline-block; height: 60px; width: 60px; cursor: pointer;">
+            <a class="ToolboxItem" title="Mjolnir" href="javascript:insertContent(10501)" ondragstart="dragRBX(10501)" onmouseover="this.style.borderStyle=&#39;outset&#39;" onmouseout="this.style.borderStyle=&#39;solid&#39;" style="border-style: solid;display:inline-block;height:60px;width:60px;cursor:pointer;">
       <img width="60" src="./Toolbox_files/1b13a7e22a5438491391a7d7ff764e3555ac9e96.png" border="0" id="img" alt="Mjolnir">
       </a>
-            <a class="ToolboxItem" title="skkatepark" href="javascript:insertContent(10482)" ondragstart="dragRBX(10482)" onmouseover="this.style.borderStyle=&#39;outset&#39;" onmouseout="this.style.borderStyle=&#39;solid&#39;" style="border-style: solid; display: inline-block; height: 60px; width: 60px; cursor: pointer;">
+            <a class="ToolboxItem" title="skkatepark" href="javascript:insertContent(10482)" ondragstart="dragRBX(10482)" onmouseover="this.style.borderStyle=&#39;outset&#39;" onmouseout="this.style.borderStyle=&#39;solid&#39;" style="border-style: solid;display:inline-block;height:60px;width:60px;cursor:pointer;">
       <img width="60" src="./Toolbox_files/6f21c0024884a79e7dea6cb41f5559aa6bb6c1a0.png" border="0" id="img" alt="skkatepark">
       </a>
-            <a class="ToolboxItem" title="cool hoverboard" href="javascript:insertContent(10480)" ondragstart="dragRBX(10480)" onmouseover="this.style.borderStyle=&#39;outset&#39;" onmouseout="this.style.borderStyle=&#39;solid&#39;" style="border-style: solid; display: inline-block; height: 60px; width: 60px; cursor: pointer;">
+            <a class="ToolboxItem" title="cool hoverboard" href="javascript:insertContent(10480)" ondragstart="dragRBX(10480)" onmouseover="this.style.borderStyle=&#39;outset&#39;" onmouseout="this.style.borderStyle=&#39;solid&#39;" style="border-style: solid;display:inline-block;height:60px;width:60px;cursor:pointer;">
       <img width="60" src="./Toolbox_files/8947a46c7c7542824eb73cdb0c73dc9b0833f30d.png" border="0" id="img" alt="cool hoverboard">
       </a>
             <a class="ToolboxItem" title="water park" href="javascript:insertContent(10486)" ondragstart="dragRBX(10486)" onmouseover="this.style.borderStyle=&#39;outset&#39;" onmouseout="this.style.borderStyle=&#39;solid&#39;" style="border-style: solid;display:inline-block;height:60px;width:60px;cursor:pointer;">
@@ -172,11 +172,11 @@
         <div id="pNavigation" style="display:table">
       <div class="Navigation">
         <div id="Previous">
-          <a href="https://polygon.pizzaboxer.xyz/IDE/ClientToolbox.aspx#" onclick="getToolbox(&#39;FreeModels&#39;, &#39;&#39;, 0)" id="PreviousPage" style="visibility:hidden"><span class="NavigationIndicators">&lt;&lt;</span>
+          <a href="http://rclient.cf/IDE/ClientToolbox.aspx#" onclick="getToolbox(&#39;FreeModels&#39;, &#39;&#39;, 0)" id="PreviousPage" style="visibility:hidden"><span class="NavigationIndicators">&lt;&lt;</span>
           Prev</a>
         </div>
         <div id="Next">
-          <a href="https://polygon.pizzaboxer.xyz/IDE/ClientToolbox.aspx#" onclick="getToolbox(&#39;FreeModels&#39;, &#39;&#39;, 2)" id="NextPage">Next <span class="NavigationIndicators">&gt;&gt;</span></a>
+          <a href="http://rclient.cf/IDE/ClientToolbox.aspx#" onclick="getToolbox(&#39;FreeModels&#39;, &#39;&#39;, 2)" id="NextPage">Next <span class="NavigationIndicators">&gt;&gt;</span></a>
         </div>
         <div id="Location">
           <span id="PagerLocation">1-20 of 218</span>
