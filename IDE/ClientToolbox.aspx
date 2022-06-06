@@ -24,7 +24,7 @@
     				}
 	                catch(x)
 	                {
-	                    alert("Sorry Could not drag the requested item");
+	                    alert("Sorry Could not drag the requested item. Please drag it in instead of clicking");
 	                }
     			}
     			function clickButton(e, buttonid)
