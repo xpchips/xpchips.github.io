@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    	
+    	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
         <title>RClient - Toolbox</title>
         <script src="./Toolbox_files/jquery.js.download"></script>
         <link href="./Toolbox_files/Tooolbox.css" type="text/css" rel="stylesheet">
@@ -172,14 +172,14 @@
         <div id="pNavigation" style="display:table">
       <div class="Navigation">
         <div id="Previous">
-          <a href="http://rclient.cf/IDE/ClientToolbox.aspx#" onclick="getToolbox(&#39;FreeModels&#39;, &#39;&#39;, 0)" id="PreviousPage" style="visibility:hidden"><span class="NavigationIndicators">&lt;&lt;</span>
+          <a href="http://rclient.cf/IDE/ClientToolbox.aspx" onclick="getToolbox(&#39;FreeModels&#39;, &#39;&#39;, 0)" id="PreviousPage" style="visibility:hidden"><span class="NavigationIndicators">&lt;&lt;</span>
           Prev</a>
         </div>
         <div id="Next">
-          <a href="http://rclient.cf/IDE/ClientToolbox.aspx#" onclick="getToolbox(&#39;FreeModels&#39;, &#39;&#39;, 2)" id="NextPage">Next <span class="NavigationIndicators">&gt;&gt;</span></a>
+          <a href="http://rclient.cf/IDE/ClientToolbox2.aspx" onclick="getToolbox(&#39;FreeModels&#39;, &#39;&#39;, 2)" id="NextPage">Next <span class="NavigationIndicators">&gt;&gt;</span></a>
         </div>
         <div id="Location">
-          <span id="PagerLocation">1-20 of 218</span>
+          <span id="PagerLocation">1-20 of 40</span>
         </div>
       </div>
     </div>
