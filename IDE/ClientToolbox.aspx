@@ -120,7 +120,7 @@
             <a class="ToolboxItem" title="VR headset" href="javascript:insertContent(10877)" ondragstart="dragRBX(10877)" onmouseover="this.style.borderStyle=&#39;outset&#39;" onmouseout="this.style.borderStyle=&#39;solid&#39;" style="border-style: solid;display:inline-block;height:60px;width:60px;cursor:pointer;">
       <img width="60" src="./Toolbox_files/c23157bdb291e23502f5f874a83f81bb63778d81.png" border="0" id="img" alt="VR headset">
       </a>
-            <a class="ToolboxItem" title="noob" href="http://rclient.cf/Asset/javascript:insertContent(10876)" ondragstart="dragRBX(10876)" onmouseover="this.style.borderStyle=&#39;outset&#39;" onmouseout="this.style.borderStyle=&#39;solid&#39;" style="border-style: solid;display:inline-block;height:60px;width:60px;cursor:pointer;">
+            <a class="ToolboxItem" title="noob" href="javascript:insertContent(http://rclient.cf/Asset/10876)" ondragstart="dragRBX(10876)" onmouseover="this.style.borderStyle=&#39;outset&#39;" onmouseout="this.style.borderStyle=&#39;solid&#39;" style="border-style: solid;display:inline-block;height:60px;width:60px;cursor:pointer;">
       <img width="60" src="./Toolbox_files/54a8b825de6dbcd36b9e3949f6bab71113b88aae.png" border="0" id="img" alt="noob">
       </a>
             <a class="ToolboxItem" title="ROBLOX Battle: Superball" href="javascript:insertContent(10812)" ondragstart="dragRBX(10812)" onmouseover="this.style.borderStyle=&#39;outset&#39;" onmouseout="this.style.borderStyle=&#39;solid&#39;" style="border-style: solid;display:inline-block;height:60px;width:60px;cursor:pointer;">
