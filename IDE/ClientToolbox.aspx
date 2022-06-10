@@ -84,7 +84,7 @@
                     </select>
 					<script>
 					    function ddlToolboxesHandler(value) {
-						window.location.replace(`${value}.aspx`);
+						window.location.href=(`${value}.aspx`);
 						}
 					</script>
                 </div>
