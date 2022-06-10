@@ -1,7 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<!-- saved from url=(0014)about:internet -->
 <html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    	<link rel="shortcut icon" href="http://rclient.cf/favicon.ico" type="image/x-icon">
         <title>RClient - Toolbox</title>
         <script src="./Toolbox_files/jquery.js.download"></script>
         <link href="./Toolbox_files/Tooolbox.css" type="text/css" rel="stylesheet">
@@ -80,8 +79,8 @@
                         <option value="4">Roads</option>
                         <option value="5">Billboards</option>
                         <option value="6">Game Objects</option-->
-                                                <option value="ClientToolbox2">Free Decals</option>
-                                                <option value="ClientToolbox" selected="selected">Free Models</option>
+                        <option value="MyDecals">My Decals</option>                        <option value="Toolbox_decals/ClientToolbox2">Free Decals</option>
+                        <option value="MyModels">My Models</option>                        <option value="ClientToolbox" selected="selected">Free Models</option>
                     </select>
 					<script>
 					    function ddlToolboxesHandler(value) {
