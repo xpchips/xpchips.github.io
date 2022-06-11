@@ -177,11 +177,11 @@
         <div id="pNavigation" style="display:table">
       <div class="Navigation">
         <div id="Previous">
-          <a href="http://rclient.cf/IDE/ClientToolbox.aspx" onclick="getToolbox(&#39;FreeModels&#39;, &#39;&#39;, 1)" id="PreviousPage"><span class="NavigationIndicators">&lt;&lt;</span>
+          <a href="http://rclient.cf/IDE/ClientToolbox.aspx" id="PreviousPage"><span class="NavigationIndicators">&lt;&lt;</span>
           Prev</a>
         </div>
         <div id="Next">
-          <a href="http://rclient.cf/IDE/ClientToolbox.aspx" onclick="getToolbox(&#39;FreeModels&#39;, &#39;&#39;, 3)" id="NextPage">Next <span class="NavigationIndicators">&gt;&gt;</span></a>
+          <a href="http://rclient.cf/IDE/ClientToolbox2.aspx" id="NextPage">Next <span class="NavigationIndicators">&gt;&gt;</span></a>
         </div>
         <div id="Location">
           <span id="PagerLocation">21-40 of 40</span>

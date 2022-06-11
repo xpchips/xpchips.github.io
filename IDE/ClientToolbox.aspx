@@ -79,8 +79,8 @@
                         <option value="4">Roads</option>
                         <option value="5">Billboards</option>
                         <option value="6">Game Objects</option-->
-                        <option value="MyDecals">My Decals</option>                        <option value="Toolbox_decals/ClientToolbox">Free Decals</option>
-                        <option value="MyModels">My Models</option>                        <option value="ClientToolbox" selected="selected">Free Models</option>
+                        <option value="MyDecals">My Decals</option>                        <option value="FreeDecals">Free Decals</option>
+                        <option value="MyModels">My Models</option>                        <option value="FreeModels" selected="selected">Free Models</option>
                     </select>
 					<script>
 					    function ddlToolboxesHandler(value) {
@@ -105,7 +105,7 @@
           Prev</a>
         </div>
         <div id="Next">
-          <a href="http://rclient.cf/IDE/ClientToolbox2.aspx" " id="NextPage">Next <span class="NavigationIndicators">&gt;&gt;</span></a>
+          <a href="http://rclient.cf/IDE/ClientToolbox2.aspx" id="NextPage">Next <span class="NavigationIndicators">&gt;&gt;</span></a>
         </div>
         <div id="Location">
           <span id="PagerLocation">1-20 of 40</span>
@@ -177,11 +177,11 @@
         <div id="pNavigation" style="display:table">
       <div class="Navigation">
         <div id="Previous">
-          <a href="http://rclient.cf/IDE/ClientToolbox.aspx" onclick="getToolbox(&#39;FreeModels&#39;, &#39;&#39;, 0)" id="PreviousPage" style="visibility:hidden"><span class="NavigationIndicators">&lt;&lt;</span>
+          <a href="http://rclient.cf/IDE/ClientToolbox.aspx" id="PreviousPage" style="visibility:hidden"><span class="NavigationIndicators">&lt;&lt;</span>
           Prev</a>
         </div>
         <div id="Next">
-          <a href="http://rclient.cf/IDE/ClientToolbox2.aspx" onclick="getToolbox(&#39;FreeModels&#39;, &#39;&#39;, 2)" id="NextPage">Next <span class="NavigationIndicators">&gt;&gt;</span></a>
+          <a href="http://rclient.cf/IDE/ClientToolbox2.aspx" id="NextPage">Next <span class="NavigationIndicators">&gt;&gt;</span></a>
         </div>
         <div id="Location">
           <span id="PagerLocation">1-20 of 40</span>
