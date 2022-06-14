@@ -1,0 +1,1111 @@
+<roblox xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.roblox.com/roblox.xsd" version="4">
+	<External>null</External>
+	<External>nil</External>
+	<Item class="Tool" referent="RBX0">
+		<Properties>
+			<bool name="Archivable">true</bool>
+			<bool name="Enabled">true</bool>
+			<CoordinateFrame name="Grip">
+				<X>0</X>
+				<Y>0</Y>
+				<Z>0</Z>
+				<R00>1</R00>
+				<R01>0</R01>
+				<R02>0</R02>
+				<R10>0</R10>
+				<R11>1</R11>
+				<R12>0</R12>
+				<R20>0</R20>
+				<R21>0</R21>
+				<R22>1</R22>
+			</CoordinateFrame>
+			<string name="Name">ClassicTool</string>
+			<Content name="TextureId"><null></null></Content>
+		</Properties>
+		<Item class="LocalScript" referent="RBX1">
+			<Properties>
+				<bool name="Archivable">true</bool>
+				<bool name="Disabled">false</bool>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">ClassicToolController</string>
+				<ProtectedString name="Source">local Tool = script.Parent
+
+local gui = nil
+
+local connections = {}
+local buttons = {}
+
+
+function makeImageButton(buttonName, image, position, parent)
+&#9;local button = Instance.new(&quot;ImageButton&quot;)
+&#9;button.Name = buttonName
+&#9;button.Style = Enum.ButtonStyle.RobloxButton
+&#9;button.Size = UDim2.new(0,45,0,45)
+&#9;if position then button.Position = position end
+&#9;button.Parent = parent
+
+&#9;local buttonImage = Instance.new(&quot;ImageLabel&quot;)
+&#9;buttonImage.Name = &quot;ButtonImage&quot;
+&#9;buttonImage.BackgroundTransparency = 1
+&#9;buttonImage.Size = UDim2.new(1,12,1,12)
+&#9;buttonImage.Position = UDim2.new(0,-6,0,-6)
+&#9;buttonImage.Image = image
+&#9;buttonImage.Parent = button
+
+&#9;return button
+end
+
+function deactivateTool(script)
+&#9;local enable = script:FindFirstChild(&quot;Active&quot;)
+&#9;if enable and enable:IsA(&quot;BoolValue&quot;) then
+&#9;&#9;enable.Value = false
+&#9;end
+end
+
+function deactivateAllTools()
+&#9;local toolChildren = Tool:GetChildren()
+&#9;for i = 1, #toolChildren do
+&#9;&#9;if toolChildren[i]:IsA(&quot;BaseScript&quot;) and toolChildren[i] ~= script then
+&#9;&#9;&#9;deactivateTool(toolChildren[i])
+&#9;&#9;end
+&#9;end
+&#9;for i = 1, #buttons do
+&#9;&#9;buttons[i].Selected = false
+&#9;end
+end
+
+function goToTool(toolName, button)
+&#9;deactivateAllTools()
+&#9;button.Selected = true
+
+&#9;wait() -- give scripts a heartbeat to get set straight
+
+&#9;local toolScript = Tool:FindFirstChild(toolName)
+&#9;if toolScript and toolScript:IsA(&quot;BaseScript&quot;) then
+&#9;&#9;local enable = toolScript:FindFirstChild(&quot;Active&quot;)
+&#9;&#9;if enable and enable:IsA(&quot;BoolValue&quot;) then
+&#9;&#9;&#9;enable.Value = true
+&#9;&#9;end
+&#9;end
+end
+
+function makeClassicControlGui()
+&#9;clearAllConnections()
+
+&#9;local classicGui = Instance.new(&quot;ScreenGui&quot;)
+&#9;classicGui.Name = &quot;ClassicGui&quot;
+&#9;
+&#9;local classicFrame = Instance.new(&quot;Frame&quot;)
+&#9;classicFrame.Name = &quot;ClassicFrame&quot;
+&#9;classicFrame.Style = Enum.FrameStyle.RobloxRound
+&#9;classicFrame.Size = UDim2.new(0,246,0,45)
+&#9;classicFrame.Position = UDim2.new(0.5,-123,1,-135)
+&#9;classicFrame.Parent = classicGui
+
+&#9;local colorButton = makeImageButton(&quot;ColorButton&quot;,&quot;rbxasset://icons/color.png&quot;,UDim2.new(0,21,0.5,-23), classicFrame)
+&#9;local colorCon = colorButton.MouseButton1Click:connect(function() goToTool(&quot;Color&quot;, colorButton) end)
+&#9;table.insert(connections,colorCon)
+&#9;table.insert(buttons,colorButton)
+
+&#9;local SurfaceButton = makeImageButton(&quot;SurfaceButton&quot;,&quot;rbxasset://icons/surface.png&quot;,UDim2.new(0,66,0.5,-23), classicFrame)
+&#9;local surfaceCon = SurfaceButton.MouseButton1Click:connect(function() goToTool(&quot;Surface&quot;, SurfaceButton) end)
+&#9;table.insert(connections,surfaceCon)
+&#9;table.insert(buttons,SurfaceButton)
+
+&#9;local MaterialButton = makeImageButton(&quot;MaterialButton&quot;,&quot;rbxasset://icons/material.png&quot;,UDim2.new(0,111,0.5,-23), classicFrame)
+&#9;local materialCon = MaterialButton.MouseButton1Click:connect(function() goToTool(&quot;Material&quot;, MaterialButton) end)
+&#9;table.insert(connections,materialCon)
+&#9;table.insert(buttons,MaterialButton)
+
+&#9;local ResizeButton = makeImageButton(&quot;ResizeButton&quot;,&quot;rbxasset://icons/resize.png&quot;,UDim2.new(0,156,0.5,-23), classicFrame)
+&#9;local resizeCon = ResizeButton.MouseButton1Click:connect(function() goToTool(&quot;Resize&quot;, ResizeButton) end)
+&#9;table.insert(connections,resizeCon)
+&#9;table.insert(buttons,ResizeButton)
+
+&#9;return classicGui
+end
+
+function clearAllConnections()
+&#9;for i = 1, #connections do
+&#9;&#9;connections[i]:disconnect()
+&#9;end
+&#9;connections = {}
+end
+
+
+
+
+
+function onEquippedLocal(mouse)
+&#9;Tool.Mouse.Value = mouse
+&#9;if not gui then
+&#9;&#9;gui = makeClassicControlGui()
+&#9;end
+&#9;gui.Parent = game.Players.LocalPlayer.PlayerGui
+end
+
+function onUnequippedLocal()
+&#9;deactivateAllTools()
+&#9;gui.Parent = nil&#9;
+end
+
+Tool.Equipped:connect(onEquippedLocal)
+Tool.Unequipped:connect(onUnequippedLocal)
+</ProtectedString>
+			</Properties>
+		</Item>
+		<Item class="Part" referent="RBX2">
+			<Properties>
+				<bool name="Anchored">false</bool>
+				<bool name="Archivable">true</bool>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">0</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">0</token>
+				<token name="BottomSurfaceInput">0</token>
+				<int name="BrickColor">199</int>
+				<CoordinateFrame name="CFrame">
+					<X>0.999433637</X>
+					<Y>7.98012686</Y>
+					<Z>-12.5012054</Z>
+					<R00>-1.50203878e-005</R00>
+					<R01>1.50579854e-006</R01>
+					<R02>-1.00000012</R02>
+					<R10>9.8371238e-006</R10>
+					<R11>1</R11>
+					<R12>1.50565256e-006</R12>
+					<R20>1.00000012</R20>
+					<R21>-9.83710197e-006</R21>
+					<R22>-1.50204023e-005</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">true</bool>
+				<float name="Elasticity">0.5</float>
+				<token name="FormFactor">2</token>
+				<float name="Friction">0.300000012</float>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">0</token>
+				<token name="FrontSurfaceInput">0</token>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">0</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">true</bool>
+				<token name="Material">256</token>
+				<string name="Name">Handle</string>
+				<float name="Reflectance">0</float>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">0</token>
+				<token name="RightSurfaceInput">0</token>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">0</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">0</float>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<token name="shape">1</token>
+				<Vector3 name="size">
+					<X>1</X>
+					<Y>0.800000012</Y>
+					<Z>2</Z>
+				</Vector3>
+			</Properties>
+			<Item class="SpecialMesh" referent="RBX3">
+				<Properties>
+					<bool name="Archivable">true</bool>
+					<token name="LODX">2</token>
+					<token name="LODY">2</token>
+					<Content name="MeshId"><url>http://www.roblox.com/asset/?id=15952510</url></Content>
+					<token name="MeshType">5</token>
+					<string name="Name">Mesh</string>
+					<Vector3 name="Offset">
+						<X>0</X>
+						<Y>0</Y>
+						<Z>0</Z>
+					</Vector3>
+					<Vector3 name="Scale">
+						<X>0.400000006</X>
+						<Y>0.400000006</Y>
+						<Z>0.400000006</Z>
+					</Vector3>
+					<Content name="TextureId"><url>http://www.roblox.com/asset/?id=15952494</url></Content>
+					<Vector3 name="VertexColor">
+						<X>1</X>
+						<Y>1</Y>
+						<Z>1</Z>
+					</Vector3>
+				</Properties>
+			</Item>
+			<Item class="Sound" referent="RBX4">
+				<Properties>
+					<bool name="Archivable">true</bool>
+					<bool name="Looped">false</bool>
+					<string name="Name">Sound</string>
+					<float name="Pitch">1</float>
+					<bool name="PlayOnRemove">false</bool>
+					<Content name="SoundId"><url>rbxasset://sounds/swordslash.wav</url></Content>
+					<float name="Volume">1</float>
+				</Properties>
+			</Item>
+			<Item class="Sound" referent="RBX5">
+				<Properties>
+					<bool name="Archivable">true</bool>
+					<bool name="Looped">false</bool>
+					<string name="Name">Sound</string>
+					<float name="Pitch">1</float>
+					<bool name="PlayOnRemove">false</bool>
+					<Content name="SoundId"><url>rbxasset://sounds/unsheath.wav</url></Content>
+					<float name="Volume">1</float>
+				</Properties>
+			</Item>
+			<Item class="Sound" referent="RBX6">
+				<Properties>
+					<bool name="Archivable">true</bool>
+					<bool name="Looped">false</bool>
+					<string name="Name">Sound</string>
+					<float name="Pitch">1</float>
+					<bool name="PlayOnRemove">false</bool>
+					<Content name="SoundId"><url>rbxasset://sounds/swordslash.wav</url></Content>
+					<float name="Volume">1</float>
+				</Properties>
+			</Item>
+			<Item class="Sound" referent="RBX7">
+				<Properties>
+					<bool name="Archivable">true</bool>
+					<bool name="Looped">false</bool>
+					<string name="Name">Sound</string>
+					<float name="Pitch">1</float>
+					<bool name="PlayOnRemove">false</bool>
+					<Content name="SoundId"><url>rbxasset://sounds/unsheath.wav</url></Content>
+					<float name="Volume">1</float>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="LocalScript" referent="RBX8">
+			<Properties>
+				<bool name="Archivable">true</bool>
+				<bool name="Disabled">false</bool>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">Color</string>
+				<ProtectedString name="Source">local Tool = script.Parent
+
+enabled = true
+local menu
+local origTexture = &#9;Tool.TextureId
+local localAssetBase = &quot;rbxasset://textures/ui/&quot;
+local currentColorButton = nil
+game:GetService(&quot;ContentProvider&quot;):Preload(&quot;rbxasset://icons/color_sel.png&quot;)
+
+local buttonDownCon, mouseMoveCon
+local clickCons = {}
+
+function onButton1Down(mouse)
+&#9;if not enabled then
+&#9;&#9;return
+&#9;end
+
+&#9;enabled = false
+&#9;mouse.Icon = &quot;rbxasset://textures\\GunWaitCursor.png&quot;
+
+&#9;wait(.5)
+&#9;mouse.Icon = &quot;rbxasset://textures\\GunCursor.png&quot;
+&#9;enabled = true
+
+end
+
+
+local selectionBox
+local selectionLasso
+
+
+function setSelectionBox(part) 
+&#9;unsetSelectionBox()
+&#9;selectionBox.Adornee = part
+&#9;selectionLasso.Part = part
+end
+function unsetSelectionBox() 
+&#9;selectionBox.Adornee = nil
+&#9;selectionLasso.Part = nil
+end
+
+function canSelectObject(part)
+&#9;return part and not (part.Locked) and (part.Position - Tool.Parent.Head.Position).Magnitude &lt; 60
+end
+
+function on3dButton1Down(mouse) 
+&#9;local part = mouse.Target
+&#9;if canSelectObject(part) then
+&#9;&#9;if Instance.Lock(part) then
+&#9;&#9;&#9;color =  Tool.Color.CurrentColor.Value
+&#9;&#9;&#9;if color == nil then
+&#9;&#9;&#9;&#9;Instance.Unlock(part)
+&#9;&#9;&#9;&#9;return
+&#9;&#9;&#9;end
+&#9;&#9;&#9;part.BrickColor = color
+&#9;&#9;&#9;Instance.Unlock(part)
+&#9;&#9;end
+&#9;end
+end
+
+function on3dMouseMove(mouse) 
+&#9;mouse.Icon =&quot;rbxasset://textures\\FillCursor.png&quot;
+&#9;local part = mouse.Target
+&#9;if canSelectObject(part) then
+&#9;&#9;setSelectionBox(part)
+&#9;else
+&#9;&#9;unsetSelectionBox()
+&#9;end
+end
+
+function makeColorMenu()
+&#9;local paintGui = Instance.new(&quot;ScreenGui&quot;)
+&#9;paintGui.Name = &quot;PaintGui&quot;
+
+&#9;local paintMenu = Instance.new(&quot;ImageLabel&quot;)
+&#9;paintMenu.Name = &quot;PaintMenu&quot;
+&#9;paintMenu.Position = UDim2.new(0,0,1,-600)
+&#9;paintMenu.Size = UDim2.new(0,120,0,500)
+&#9;paintMenu.BackgroundTransparency = 1
+&#9;paintMenu.ZIndex = 2
+&#9;paintMenu.Image = localAssetBase .. &quot;PaintMenu.png&quot;
+&#9;paintMenu.Parent = paintGui
+
+&#9;local paintColorButton = Instance.new(&quot;ImageButton&quot;)
+&#9;paintColorButton.BorderSizePixel = 0
+&#9;paintColorButton.ZIndex = 3
+&#9;paintColorButton.Size = UDim2.new(0.200000003, 0,0.0500000007, 0)
+
+&#9;local selection = Instance.new(&quot;Frame&quot;)
+&#9;selection.Name = &quot;Selection&quot;
+&#9;selection.BorderSizePixel = 0
+&#9;selection.BackgroundColor3 = Color3.new(1,1,1)
+&#9;selection.BackgroundTransparency = 1
+&#9;selection.ZIndex = 2
+&#9;selection.Size = UDim2.new(1.1,0,1.1,0)
+&#9;selection.Position = UDim2.new(-0.05,0,-0.05,0)
+&#9;selection.Parent = paintColorButton
+
+&#9;local header  = 0.08
+&#9;local spacing = 18
+
+&#9;local count = 1
+
+&#9;local function findNextColor()
+&#9;&#9;colorName = tostring(BrickColor.new(count))
+&#9;&#9;while colorName == &quot;Medium stone grey&quot; do
+&#9;&#9;&#9;count = count + 1
+&#9;&#9;&#9;colorName = tostring(BrickColor.new(count))
+&#9;&#9;end
+&#9;&#9;return count
+&#9;end
+
+&#9;for i = 0,15 do
+&#9;&#9;for j = 1, 4 do
+&#9;&#9;&#9;newButton = paintColorButton:clone()
+&#9;&#9;&#9;newButton.BackgroundColor3 = BrickColor.new(findNextColor()).Color
+&#9;&#9;&#9;newButton.Name = tostring(BrickColor.new(count))
+&#9;&#9;&#9;count = count + 1
+&#9;&#9;&#9;if j == 1 then newButton.Position = UDim2.new(0.08,0,i/spacing + header,0)
+&#9;&#9;&#9;elseif j == 2 then newButton.Position = UDim2.new(0.29,0,i/spacing + header,0)
+&#9;&#9;&#9;elseif j == 3 then newButton.Position = UDim2.new(0.5,0,i/spacing + header,0)
+&#9;&#9;&#9;elseif j == 4 then newButton.Position = UDim2.new(0.71,0,i/spacing + header,0) end
+&#9;&#9;&#9;newButton.Parent = paintMenu
+&#9;&#9;end
+&#9;end
+
+&#9;local paintButtons = paintMenu:GetChildren()
+&#9;for i = 1, #paintButtons do
+&#9;&#9;local newCon = paintButtons[i].MouseButton1Click:connect(function()
+&#9;&#9;&#9;Tool.Color.CurrentColor.Value = BrickColor.new(paintButtons[i].Name)
+
+&#9;&#9;&#9;if currentColorButton then
+&#9;&#9;&#9;&#9;if currentColorButton:FindFirstChild(&quot;Selection&quot;) then
+&#9;&#9;&#9;&#9;&#9;currentColorButton.Selection.BackgroundTransparency = 1
+&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;end
+
+&#9;&#9;&#9;currentColorButton = paintButtons[i]
+&#9;&#9;&#9;paintButtons[i].Selection.BackgroundTransparency = 0
+&#9;&#9;end)
+&#9;&#9;local anotherCon = paintButtons[i].MouseEnter:connect(function()
+&#9;&#9;&#9;paintButtons[i].Selection.BackgroundTransparency = 0
+&#9;&#9;end)
+&#9;&#9;local oneMoreCon = paintButtons[i].MouseLeave:connect(function()
+&#9;&#9;&#9;if paintButtons[i] ~= currentColorButton then paintButtons[i].Selection.BackgroundTransparency = 1 end
+&#9;&#9;end)
+
+&#9;&#9;table.insert(clickCons,newCon)
+&#9;&#9;table.insert(clickCons,anotherCon)
+&#9;&#9;table.insert(clickCons,oneMoreCon)
+&#9;end
+
+&#9;return paintGui
+end
+
+function onEquippedLocal(mouse)
+&#9;Tool.TextureId = &quot;rbxasset://icons/color_sel.png&quot;
+
+&#9;local character = script.Parent.Parent
+&#9;local player = game.Players:GetPlayerFromCharacter(character)
+
+&#9;buttonDownCon = mouse.Button1Down:connect(function() on3dButton1Down(mouse) end)
+&#9;mouseMoveCon  = mouse.Move:connect(function() on3dMouseMove(mouse) end)
+&#9;mouse.Icon =&quot;rbxasset://textures\\FillCursor.png&quot;
+
+&#9;selectionBox = Instance.new(&quot;SelectionBox&quot;)
+&#9;selectionBox.Color = Tool.Color.CurrentColor.Value
+&#9;selectionBox.Adornee = nil
+&#9;selectionBox.Parent = player.PlayerGui
+
+&#9;selectionLasso = Instance.new(&quot;SelectionPartLasso&quot;)
+&#9;selectionLasso.Name = &quot;Model Delete Lasso&quot;
+&#9;selectionLasso.Humanoid = character.Humanoid
+&#9;selectionLasso.Part = nil
+&#9;selectionLasso.Visible = true
+&#9;selectionLasso.archivable = false
+&#9;selectionLasso.Color = Tool.Color.CurrentColor.Value
+&#9;selectionLasso.Parent = game.workspace
+
+&#9;menu = makeColorMenu()
+&#9;menu.Parent = game.Players.LocalPlayer.PlayerGui
+end
+
+function onUnequippedLocal()
+&#9;if menu then menu:remove() end
+&#9;Tool.TextureId = origTexture
+
+&#9;for i = 1, #clickCons do
+&#9;&#9;clickCons[i]:disconnect()
+&#9;end
+&#9;clickCons = {}
+
+&#9;if selectionBox then selectionBox:Remove() end
+&#9;if selectionLasso then selectionLasso:Remove() end
+&#9;if mouseMoveCon then mouseMoveCon:disconnect() end
+&#9;if buttonDownCon then buttonDownCon:disconnect() end
+end
+
+Tool.Color.CurrentColor.Changed:connect(function()
+&#9;if selectionBox then selectionBox.Color = Tool.Color.CurrentColor.Value end
+&#9;if selectionLasso then selectionLasso.Color = Tool.Color.CurrentColor.Value end
+end)
+
+script.Active.Changed:connect(function(prop)
+&#9;if script.Active.Value == true then
+&#9;&#9;onEquippedLocal(Tool.Mouse.Value)
+&#9;else
+&#9;&#9;onUnequippedLocal()
+&#9;end
+end)</ProtectedString>
+			</Properties>
+			<Item class="BoolValue" referent="RBX9">
+				<Properties>
+					<bool name="Archivable">true</bool>
+					<string name="Name">Active</string>
+					<bool name="Value">false</bool>
+				</Properties>
+			</Item>
+			<Item class="BrickColorValue" referent="RBX10">
+				<Properties>
+					<bool name="Archivable">true</bool>
+					<string name="Name">CurrentColor</string>
+					<int name="Value">194</int>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="LocalScript" referent="RBX11">
+			<Properties>
+				<bool name="Archivable">true</bool>
+				<bool name="Disabled">false</bool>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">Material</string>
+				<ProtectedString name="Source">local Tool = script.Parent
+
+
+enabled = true
+local origTexture = &#9;Tool.TextureId
+local localAssetBase = &quot;rbxasset://textures/ui/&quot;
+game:GetService(&quot;ContentProvider&quot;):Preload(&quot;rbxasset://icons/material_sel.png&quot;)
+
+local menu
+
+local selectionBox
+local selectionLasso
+
+local selectedButton
+
+local value = nil
+
+local downCons = {}
+
+local currentMaterialButton = nil
+
+function setSelectionBox(part) 
+&#9;unsetSelectionBox()
+&#9;selectionBox.Adornee = part
+&#9;selectionLasso.Part = part
+end
+function unsetSelectionBox() 
+&#9;selectionBox.Adornee = nil
+&#9;selectionLasso.Part = nil
+end
+
+local MaterialEnum = {}
+MaterialEnum[&quot;Plastic&quot;] = Enum.Material.Plastic
+MaterialEnum[&quot;Wood&quot;] = Enum.Material.Wood
+MaterialEnum[&quot;Slate&quot;] = Enum.Material.Slate
+MaterialEnum[&quot;CorrodedMetal&quot;] = Enum.Material.CorrodedMetal
+MaterialEnum[&quot;Ice&quot;] = Enum.Material.Ice
+MaterialEnum[&quot;Grass&quot;] = Enum.Material.Grass
+MaterialEnum[&quot;Foil&quot;] = Enum.Material.Foil
+MaterialEnum[&quot;DiamondPlate&quot;] = Enum.Material.DiamondPlate
+MaterialEnum[&quot;Concrete&quot;] = Enum.Material.Concrete
+
+function on3dButton1Down(mouse) 
+&#9;local part = mouse.Target
+&#9;if part and not (part.Locked) then
+&#9;&#9;if Instance.Lock(part) then
+&#9;&#9;&#9;part.Material = MaterialEnum[Tool.Material.CurrentMaterial.Value]
+&#9;&#9;&#9;Instance.Unlock(part)
+&#9;&#9;end
+&#9;end
+end
+
+function canSelectObject(part)
+&#9;return part and not (part.Locked) and (part.Position - Tool.Parent.Head.Position).Magnitude &lt; 60
+end
+
+
+function on3dMouseMove(mouse) 
+&#9;mouse.Icon =&quot;rbxasset://textures\\MaterialCursor.png&quot;
+&#9;local part = mouse.Target
+&#9;if canSelectObject(part) then
+&#9;&#9;setSelectionBox(part)
+&#9;else
+&#9;&#9;unsetSelectionBox()
+&#9;end
+end
+
+function createMaterialMenu()
+&#9;local materialGui = Instance.new(&quot;ScreenGui&quot;)
+&#9;materialGui.Name = &quot;MaterialGui&quot;
+
+&#9;local materialMenu = Instance.new(&quot;ImageLabel&quot;)
+&#9;materialMenu.Name = &quot;MaterialMenu&quot;
+&#9;materialMenu.Position = UDim2.new(0,0,1,-350)
+&#9;materialMenu.Size = UDim2.new(0,100,0,250)
+&#9;materialMenu.BackgroundTransparency = 1
+&#9;materialMenu.ZIndex = 2
+&#9;materialMenu.Image = localAssetBase .. &quot;MaterialMenu.png&quot;
+&#9;materialMenu.Parent = materialGui
+
+&#9;local textures = {&quot;Plastic&quot;,&quot;Wood&quot;,&quot;Slate&quot;,&quot;CorrodedMetal&quot;,&quot;Ice&quot;,&quot;Grass&quot;,&quot;Foil&quot;,&quot;DiamondPlate&quot;,&quot;Concrete&quot;}
+
+&#9;local materialButtons = {}
+
+&#9;local materialButton = Instance.new(&quot;ImageButton&quot;)
+&#9;materialButton.BackgroundTransparency = 1
+&#9;materialButton.Size = UDim2.new(0.400000003, 0,0.16, 0)
+&#9;materialButton.ZIndex = 4
+
+&#9;local selection = Instance.new(&quot;Frame&quot;)
+&#9;selection.Name = &quot;Selection&quot;
+&#9;selection.BorderSizePixel = 0
+&#9;selection.BackgroundColor3 = Color3.new(1,1,1)
+&#9;selection.BackgroundTransparency = 1
+&#9;selection.ZIndex = 3
+&#9;selection.Size = UDim2.new(1.1,0,1.1,0)
+&#9;selection.Position = UDim2.new(-0.05,0,-0.05,0)
+&#9;selection.Parent = materialButton
+
+&#9;local current = 1
+&#9;local function getTextureAndName(button)
+
+&#9;&#9;if current &gt; #textures then
+&#9;&#9;&#9;button:remove()
+&#9;&#9;&#9;return false
+&#9;&#9;end
+&#9;&#9;button.Image = localAssetBase .. textures[current] .. &quot;.png&quot;
+&#9;&#9;button.Name = textures[current]
+&#9;&#9;current = current + 1
+&#9;&#9;return true
+
+&#9;end
+
+&#9;local ySpacing = 0.10
+&#9;local xSpacing  = 0.07
+&#9;for i = 1,5 do
+&#9;&#9;for j = 1,2 do
+&#9;&#9;&#9;local button = materialButton:clone()
+&#9;&#9;&#9;button.Position = UDim2.new((j -1)/2.2 + xSpacing,0,ySpacing + (i - 1)/5.5,0)
+&#9;&#9;&#9;if getTextureAndName(button) then button.Parent = materialMenu else button:remove() end
+&#9;&#9;&#9;table.insert(materialButtons,button)
+&#9;&#9;end
+&#9;end
+
+
+&#9;for i = 1, #materialButtons do
+&#9;&#9;local newCon = materialButtons[i].MouseButton1Click:connect(function()
+&#9;&#9;&#9;Tool.Material.CurrentMaterial.Value = materialButtons[i].Name
+
+&#9;&#9;&#9;if currentMaterialButton then
+&#9;&#9;&#9;&#9;if currentMaterialButton:FindFirstChild(&quot;Selection&quot;) then
+&#9;&#9;&#9;&#9;&#9;currentMaterialButton.Selection.BackgroundTransparency = 1
+&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;end
+
+&#9;&#9;&#9;currentMaterialButton = materialButtons[i]
+&#9;&#9;&#9;materialButtons[i].Selection.BackgroundTransparency = 0
+&#9;&#9;end)
+&#9;&#9;local enterCon = materialButtons[i].MouseEnter:connect(function()
+&#9;&#9;&#9;materialButtons[i].Selection.BackgroundTransparency = 0
+&#9;&#9;end)
+&#9;&#9;local leaveCon = materialButtons[i].MouseLeave:connect(function()
+&#9;&#9;&#9;if materialButtons[i] ~= currentMaterialButton then materialButtons[i].Selection.BackgroundTransparency = 1 end
+&#9;&#9;end)
+&#9;&#9;table.insert(downCons, newCon)
+&#9;&#9;table.insert(downCons, enterCon)
+&#9;&#9;table.insert(downCons, leaveCon)
+&#9;end
+
+&#9;return materialGui
+end
+
+function onEquippedLocal(mouse)
+&#9;Tool.TextureId = &quot;rbxasset://icons/material_sel.png&quot;
+&#9;value = nil
+&#9;selectedButton = nil
+
+&#9;local character = script.Parent.Parent
+&#9;local player = game.Players:GetPlayerFromCharacter(character)
+
+&#9;selectedButton = nil
+
+&#9;button1DownCon = mouse.Button1Down:connect(function() on3dButton1Down(mouse) end)
+&#9;mouseMoveCon = mouse.Move:connect(function() on3dMouseMove(mouse) end)
+&#9;mouse.Icon =&quot;rbxasset://textures\\MaterialCursor.png&quot;
+
+&#9;selectionBox = Instance.new(&quot;SelectionBox&quot;)
+&#9;selectionBox.Color = BrickColor.Yellow()
+&#9;selectionBox.Adornee = nil
+&#9;selectionBox.Parent = player.PlayerGui
+
+&#9;selectionLasso = Instance.new(&quot;SelectionPartLasso&quot;)
+&#9;selectionLasso.Name = &quot;Model Material Lasso&quot;
+&#9;selectionLasso.Humanoid = character.Humanoid
+&#9;selectionLasso.Parent = game.workspace
+&#9;selectionLasso.Part = nil
+&#9;selectionLasso.Visible = true
+&#9;selectionLasso.archivable = false
+&#9;selectionLasso.Color = BrickColor.Green()
+
+&#9;menu = createMaterialMenu()
+&#9;menu.Parent = game.Players.LocalPlayer.PlayerGui
+end
+
+function onUnequippedLocal()
+&#9;if button1DownCon then button1DownCon:disconnect() end
+&#9;if mouseMoveCon then mouseMoveCon:disconnect() end
+
+&#9;for i = 1, #downCons do
+&#9;&#9;downCons[i]:disconnect()
+&#9;end
+&#9;downCons = {}
+
+&#9;menu:remove()
+&#9;Tool.TextureId = origTexture
+&#9;if selectionBox then selectionBox:Remove() end
+&#9;if selectionLasso then selectionLasso:Remove() end
+end
+
+script.Active.Changed:connect(function(prop)
+&#9;if script.Active.Value == true then
+&#9;&#9;onEquippedLocal(Tool.Mouse.Value)
+&#9;else
+&#9;&#9;onUnequippedLocal()
+&#9;end
+end)
+</ProtectedString>
+			</Properties>
+			<Item class="BoolValue" referent="RBX12">
+				<Properties>
+					<bool name="Archivable">true</bool>
+					<string name="Name">Active</string>
+					<bool name="Value">false</bool>
+				</Properties>
+			</Item>
+			<Item class="StringValue" referent="RBX13">
+				<Properties>
+					<bool name="Archivable">true</bool>
+					<string name="Name">CurrentMaterial</string>
+					<string name="Value">Plastic</string>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="LocalScript" referent="RBX14">
+			<Properties>
+				<bool name="Archivable">true</bool>
+				<bool name="Disabled">false</bool>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">Resize</string>
+				<ProtectedString name="Source">local Tool = script.Parent
+
+enabled = true
+local origTexture = &#9;Tool.TextureId
+game:GetService(&quot;ContentProvider&quot;):Preload(&quot;rbxasset://icons/resize_sel.png&quot;)
+
+local selectionBox
+local selectionLasso
+local handles
+
+local previousDistance
+
+function onHandlesDown(normal)
+&#9;previousDistance = 0
+end
+function onHandlesDrag(normal, distance)
+&#9;
+&#9;if handles.Adornee then
+&#9;&#9;local delta = distance - previousDistance 
+&#9;&#9;if math.abs(delta) &gt;= handles.Adornee.ResizeIncrement then
+&#9;&#9;&#9;local sizeDelta = math.floor(delta / handles.Adornee.ResizeIncrement + 0.5) * handles.Adornee.ResizeIncrement
+&#9;&#9;&#9;if handles.Adornee:Resize(normal, sizeDelta) then
+&#9;&#9;&#9;&#9;previousDistance = distance
+&#9;&#9;&#9;end
+&#9;&#9;end
+&#9;end
+end
+
+function onButton1Down(mouse)
+&#9;if mouse.Target == nil or mouse.Target.Locked then
+&#9;&#9;selectionBox.Adornee = nil
+&#9;&#9;selectionLasso.Part = nil
+&#9;&#9;handles.Adornee = nil
+&#9;else
+&#9;&#9;selectionBox.Adornee = mouse.Target
+&#9;&#9;selectionLasso.Part = mouse.Target
+&#9;&#9;handles.Adornee = mouse.Target
+&#9;&#9;handles.Faces = mouse.Target.ResizeableFaces
+&#9;end
+end
+
+
+
+function onEquippedLocal(mouse)
+&#9;Tool.TextureId = &quot;rbxasset://icons/resize_sel.png&quot;
+
+&#9;mouse.Icon =&quot;rbxasset://textures\\DragCursor.png&quot;
+&#9;mouse.Button1Down:connect(function() onButton1Down(mouse) end)
+
+&#9;local character = script.Parent.Parent
+&#9;local player = game.Players:GetPlayerFromCharacter(character)
+&#9;
+&#9;selectionBox = Instance.new(&quot;SelectionBox&quot;)
+&#9;selectionBox.Color = BrickColor.Blue()
+&#9;selectionBox.Adornee = nil
+&#9;selectionBox.Parent = player.PlayerGui
+
+&#9;selectionLasso = Instance.new(&quot;SelectionPartLasso&quot;)
+&#9;selectionLasso.Name = &quot;Model Delete Lasso&quot;
+&#9;selectionLasso.Humanoid = character.Humanoid
+&#9;selectionLasso.Parent = game.workspace
+&#9;selectionLasso.Part = nil
+&#9;selectionLasso.Visible = true
+&#9;selectionLasso.archivable = false
+&#9;selectionLasso.Color = BrickColor.Red()
+
+&#9;handles = Instance.new(&quot;Handles&quot;)
+&#9;handles.Color = BrickColor.Blue()
+&#9;handles.Adornee = nil
+&#9;handles.MouseDrag:connect(onHandlesDrag)
+&#9;handles.MouseButton1Down:connect(onHandlesDown)
+&#9;handles.Parent = player.PlayerGui
+end
+
+function onUnequippedLocal()
+&#9;Tool.TextureId = origTexture
+&#9;selectionBox:Remove()
+&#9;selectionLasso:Remove()
+&#9;handles:Remove()
+end
+
+script.Active.Changed:connect(function(prop)
+&#9;if script.Active.Value == true then
+&#9;&#9;onEquippedLocal(Tool.Mouse.Value)
+&#9;else
+&#9;&#9;onUnequippedLocal()
+&#9;end
+end)
+</ProtectedString>
+			</Properties>
+			<Item class="BoolValue" referent="RBX15">
+				<Properties>
+					<bool name="Archivable">true</bool>
+					<string name="Name">Active</string>
+					<bool name="Value">false</bool>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="LocalScript" referent="RBX16">
+			<Properties>
+				<bool name="Archivable">true</bool>
+				<bool name="Disabled">false</bool>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">Surface</string>
+				<ProtectedString name="Source">local Tool = script.Parent
+local menu
+
+enabled = true
+local origTexture = &#9;Tool.TextureId
+local localAssetBase = &quot;rbxasset://textures/ui/&quot;
+game:GetService(&quot;ContentProvider&quot;):Preload(&quot;rbxasset://icons/surface_sel.png&quot;)
+
+local selectionSurface
+local selectionLasso
+
+local currentSurfaceButton = nil
+
+local mouseMoveCon, button1DownCon
+local conArray = {}
+
+function setSelectionSurface(part, surface) 
+&#9;unsetSelectionSurface()
+&#9;selectionSurface.Adornee = part
+&#9;selectionSurface.TargetSurface = surface
+&#9;selectionLasso.Part = part
+end
+function unsetSelectionSurface() 
+&#9;selectionSurface.Adornee = nil
+&#9;selectionLasso.Part = nil
+end
+
+local SurfaceEnum = {}
+SurfaceEnum[&quot;Smooth&quot;] = Enum.SurfaceType.Smooth
+SurfaceEnum[&quot;Studs&quot;] = Enum.SurfaceType.Studs
+SurfaceEnum[&quot;Inlet&quot;] = Enum.SurfaceType.Inlet
+SurfaceEnum[&quot;Universal&quot;] = Enum.SurfaceType.Universal
+SurfaceEnum[&quot;Glue&quot;] = Enum.SurfaceType.Glue
+SurfaceEnum[&quot;Weld&quot;] = Enum.SurfaceType.Weld
+SurfaceEnum[&quot;Hinge&quot;] = Enum.SurfaceType.Hinge
+SurfaceEnum[&quot;Motor&quot;] = Enum.SurfaceType.Motor
+
+
+function canSelectObject(part, surface)
+&#9;return part and not (part.Locked) and part:IsA(&quot;BasePart&quot;) and (part.Position - Tool.Parent.Head.Position).Magnitude &lt; 60 and 
+&#9;&#9;(not(part:IsA(&quot;WedgePart&quot;)) or surface ~= Enum.NormalId.Front)
+end
+
+
+function on3dMouseMove(mouse)
+&#9;local part = mouse.Target
+&#9;local surface = mouse.TargetSurface
+&#9;if canSelectObject(part, surface) then
+&#9;&#9;setSelectionSurface(part, surface)
+&#9;else
+&#9;&#9;unsetSelectionSurface()
+&#9;end
+
+end
+function on3dButton1Down(mouse) 
+&#9;local part = selectionSurface.Adornee
+&#9;if part then
+&#9;&#9;local normalId = selectionSurface.TargetSurface
+&#9;&#9;local surface = Tool.Surface.CurrentSurface.Value
+&#9;&#9;if surface == nil then return end
+&#9;&#9;--Apply the selected surface to the current parts
+&#9;&#9;if normalId == Enum.NormalId.Top then
+&#9;&#9;&#9;part.TopSurface = surface
+&#9;&#9;elseif normalId == Enum.NormalId.Bottom then  
+&#9;&#9;elseif normalId == Enum.NormalId.Front then  
+&#9;&#9;&#9;part.BottomSurface = surface
+&#9;&#9;&#9;part.FrontSurface = surface
+&#9;&#9;elseif normalId == Enum.NormalId.Back then  
+&#9;&#9;&#9;part.BackSurface = surface
+&#9;&#9;elseif normalId == Enum.NormalId.Left then  
+&#9;&#9;&#9;part.LeftSurface = surface
+&#9;&#9;elseif normalId == Enum.NormalId.Right then  
+&#9;&#9;&#9;part.RightSurface = surface
+&#9;&#9;end
+&#9;end
+end
+
+function createSurfaceMenu()
+
+&#9;local surfaceGui = Instance.new(&quot;ScreenGui&quot;)
+&#9;surfaceGui.Name = &quot;SurfaceGui&quot;
+
+&#9;local surfaceMenu = Instance.new(&quot;ImageLabel&quot;)
+&#9;surfaceMenu.Name = &quot;SurfaceMenu&quot;
+&#9;surfaceMenu.Position = UDim2.new(0,0,1,-400)
+&#9;surfaceMenu.Size = UDim2.new(0,150,0,300)
+&#9;surfaceMenu.BackgroundTransparency = 1
+&#9;surfaceMenu.ZIndex = 2
+&#9;surfaceMenu.Image = localAssetBase .. &quot;SurfaceMenu.png&quot;
+&#9;surfaceMenu.Parent = surfaceGui
+
+&#9;textures = {&quot;Smooth&quot;, &quot;Studs&quot;, &quot;Inlets&quot;, &quot;Universal&quot;, &quot;Glue&quot;, &quot;Weld&quot;, &quot;Hinge&quot;, &quot;Motor&quot;}
+&#9;current = 1
+
+&#9;local surfaceButtons = {}
+
+&#9;local surfaceButton = Instance.new(&quot;ImageButton&quot;)
+&#9;surfaceButton.BackgroundTransparency = 1
+&#9;surfaceButton.Size = UDim2.new(0.400000003, 0,0.19, 0)
+&#9;surfaceButton.ZIndex = 4
+&#9;
+&#9;local selection = Instance.new(&quot;Frame&quot;)
+&#9;selection.Name = &quot;Selection&quot;
+&#9;selection.BorderSizePixel = 0
+&#9;selection.BackgroundColor3 = Color3.new(1,1,1)
+&#9;selection.BackgroundTransparency = 1
+&#9;selection.ZIndex = 3
+&#9;selection.Size = UDim2.new(1.1,0,1.1,0)
+&#9;selection.Position = UDim2.new(-0.05,0,-0.05,0)
+&#9;selection.Parent = surfaceButton
+
+&#9;local function getTextureAndName(button)
+&#9;&#9;if current &gt; #textures then
+&#9;&#9;&#9;button:remove()
+&#9;&#9;&#9;return false
+&#9;&#9;end
+&#9;&#9;button.Image = localAssetBase .. textures[current] .. &quot;.png&quot;
+
+&#9;&#9;if textures[current] == &quot;Inlets&quot; then --nice hack to adjust for inconsistent namings
+&#9;&#9;&#9;button.Name = &quot;Inlet&quot;
+&#9;&#9;else
+&#9;&#9;&#9;button.Name = textures[current]
+&#9;&#9;end
+
+&#9;&#9;current = current + 1
+&#9;&#9;return true
+&#9;end
+
+&#9;local ySpacing = 0.14
+&#9;local xSpacing  = 0.07
+&#9;for i = 1,4 do
+&#9;&#9;for j = 1,2 do
+&#9;&#9;&#9;local button = surfaceButton:clone()
+&#9;&#9;&#9;button.Position = UDim2.new((j -1)/2.2 + xSpacing,0,ySpacing + (i - 1)/4.6,0)
+&#9;&#9;&#9;getTextureAndName(button)
+&#9;&#9;&#9;button.Parent = surfaceMenu
+&#9;&#9;&#9;table.insert(surfaceButtons,button)
+&#9;&#9;end
+&#9;end
+
+&#9;for i = 1, #surfaceButtons do
+&#9;&#9;local newCon = surfaceButtons[i].MouseButton1Click:connect(function()
+&#9;&#9;&#9;Tool.Surface.CurrentSurface.Value = surfaceButtons[i].Name
+
+&#9;&#9;&#9;if currentSurfaceButton then 
+&#9;&#9;&#9;&#9;if currentSurfaceButton:FindFirstChild(&quot;Selection&quot;) then
+&#9;&#9;&#9;&#9;&#9;currentSurfaceButton.Selection.BackgroundTransparency = 1
+&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;end
+
+&#9;&#9;&#9;currentSurfaceButton = surfaceButtons[i]
+&#9;&#9;&#9;surfaceButtons[i].Selection.BackgroundTransparency = 0
+&#9;&#9;end)
+&#9;&#9;local enterCon = surfaceButtons[i].MouseEnter:connect(function()
+&#9;&#9;&#9;surfaceButtons[i].Selection.BackgroundTransparency = 0
+&#9;&#9;end)
+&#9;&#9;local leaveCon = surfaceButtons[i].MouseLeave:connect(function()
+&#9;&#9;&#9;if surfaceButtons[i] ~= currentSurfaceButton then surfaceButtons[i].Selection.BackgroundTransparency = 1 end
+&#9;&#9;end)
+&#9;&#9;table.insert(conArray,newCon)
+&#9;&#9;table.insert(conArray,enterCon)
+&#9;&#9;table.insert(conArray,leaveCon)
+&#9;end
+
+&#9;return surfaceGui
+end
+
+
+
+function onEquippedLocal(mouse)
+&#9;Tool.TextureId = &quot;rbxasset://icons/surface_sel.png&quot;
+&#9;local character = script.Parent.Parent
+&#9;local player = game.Players:GetPlayerFromCharacter(character)
+
+&#9;mouseMoveCon = mouse.Move:connect(function() on3dMouseMove(mouse) end)
+&#9;button1DownCon = mouse.Button1Down:connect(function() on3dButton1Down(mouse) end)
+
+&#9;selectionSurface = Instance.new(&quot;SurfaceSelection&quot;)
+&#9;selectionSurface.Color = BrickColor.Red()
+&#9;selectionSurface.Adornee = nil
+&#9;selectionSurface.Parent = player.PlayerGui
+
+&#9;selectionLasso = Instance.new(&quot;SelectionPartLasso&quot;)
+&#9;selectionLasso.Name = &quot;Model Surface Lasso&quot;
+&#9;selectionLasso.Humanoid = character.Humanoid
+&#9;selectionLasso.Parent = game.workspace
+&#9;selectionLasso.Part = nil
+&#9;selectionLasso.Visible = true
+&#9;selectionLasso.archivable = false
+&#9;selectionLasso.Color = BrickColor.Yellow()
+
+&#9;menu = createSurfaceMenu()
+&#9;menu.Parent = game.Players.LocalPlayer.PlayerGui
+end
+
+function onUnequippedLocal()
+&#9;if mouseMoveCon then mouseMoveCon:disconnect() end
+&#9;if button1DownCon then button1DownCon:disconnect() end
+
+&#9;for i = 1, #conArray do
+&#9;&#9;if conArray[i] then conArray[i]:disconnect() end
+&#9;end
+&#9;conArray = {}
+
+&#9;menu:remove()
+&#9;Tool.TextureId = origTexture
+&#9;if selectionBox then selectionBox:Remove() end
+&#9;if selectionLasso then selectionLasso:Remove() end
+&#9;if selectionSurface then selectionSurface:Remove() end
+end
+
+script.Active.Changed:connect(function(prop)
+&#9;if script.Active.Value == true then
+&#9;&#9;onEquippedLocal(Tool.Mouse.Value)
+&#9;else
+&#9;&#9;onUnequippedLocal()
+&#9;end
+end)
+</ProtectedString>
+			</Properties>
+			<Item class="BoolValue" referent="RBX17">
+				<Properties>
+					<bool name="Archivable">true</bool>
+					<string name="Name">Active</string>
+					<bool name="Value">false</bool>
+				</Properties>
+			</Item>
+			<Item class="StringValue" referent="RBX18">
+				<Properties>
+					<bool name="Archivable">true</bool>
+					<string name="Name">CurrentSurface</string>
+					<string name="Value">Smooth</string>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="ObjectValue" referent="RBX19">
+			<Properties>
+				<bool name="Archivable">true</bool>
+				<string name="Name">Mouse</string>
+				<Ref name="Value">null</Ref>
+			</Properties>
+		</Item>
+	</Item>
+</roblox>
