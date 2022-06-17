@@ -1,5 +1,0 @@
-version_1.lua [Tue, 15 Apr 2014 17:35:36 GMT] 
-version_2.lua [Thu, 24 Apr 2014 00:51:53 GMT] 
-version_3.lua [Tue, 20 May 2014 20:49:01 GMT] 
-version_4.lua [Wed, 11 Jun 2014 18:17:26 GMT] 
-version_5.lua [Thu, 14 Aug 2014 22:17:33 GMT] 
