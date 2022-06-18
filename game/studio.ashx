@@ -4,12 +4,12 @@
 pcall(function() game:GetService("InsertService"):SetFreeModelUrl("http://polygon.pizzaboxer.xyz/Game/Tools/InsertAsset.ashx?type=fm&q=%s&pg=%d&rs=%d") end)
 pcall(function() game:GetService("InsertService"):SetFreeDecalUrl("http://polygon.pizzaboxer.xyz/Game/Tools/InsertAsset.ashx?type=fd&q=%s&pg=%d&rs=%d") end)
 
-game:GetService("ScriptInformationProvider"):SetAssetUrl("http://polygon.pizzaboxer.xyz/Asset/")
+game:GetService("ScriptInformationProvider"):SetAssetUrl("http://polygon.pizzaboxer.xyz/asset/")
 game:GetService("InsertService"):SetBaseSetsUrl("http://polygon.pizzaboxer.xyz/Game/Tools/InsertAsset.ashx?nsets=10&type=base")
 game:GetService("InsertService"):SetUserSetsUrl("http://polygon.pizzaboxer.xyz/Game/Tools/InsertAsset.ashx?nsets=20&type=user&userid=%d&t=2")
 game:GetService("InsertService"):SetCollectionUrl("http://polygon.pizzaboxer.xyz/Game/Tools/InsertAsset.ashx?sid=%d")
-game:GetService("InsertService"):SetAssetUrl("http://polygon.pizzaboxer.xyz/Asset/?id=%d")
-game:GetService("InsertService"):SetAssetVersionUrl("http://polygon.pizzaboxer.xyz/Asset/?assetversionid=%d")
+game:GetService("InsertService"):SetAssetUrl("http://polygon.pizzaboxer.xyz/asset/%d")
+game:GetService("InsertService"):SetAssetVersionUrl("http://polygon.pizzaboxer.xyz/asset/%d")
 game:GetService("InsertService"):SetTrustLevel(0)
 
 pcall(function() game:GetService("SocialService"):SetFriendUrl("http://polygon.pizzaboxer.xyz/Game/LuaWebService/HandleSocialRequest.ashx?method=IsFriendsWith&playerid=%d&userid=%d") end)
