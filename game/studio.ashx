@@ -4,7 +4,7 @@
 pcall(function() game:GetService("InsertService"):SetFreeModelUrl("http://polygon.pizzaboxer.xyz/Game/Tools/InsertAsset.ashx?type=fm&q=%s&pg=%d&rs=%d") end)
 pcall(function() game:GetService("InsertService"):SetFreeDecalUrl("http://polygon.pizzaboxer.xyz/Game/Tools/InsertAsset.ashx?type=fd&q=%s&pg=%d&rs=%d") end)
 
-game:GetService("ScriptInformationProvider"):SetAssetUrl("http://polygon.pizzaboxer.xyz/asset/")
+game:GetService("ScriptInformationProvider"):SetAssetUrl("http://rclient.cf/asset/")
 game:GetService("InsertService"):SetBaseSetsUrl("http://polygon.pizzaboxer.xyz/Game/Tools/InsertAsset.ashx?nsets=10&type=base")
 game:GetService("InsertService"):SetUserSetsUrl("http://polygon.pizzaboxer.xyz/Game/Tools/InsertAsset.ashx?nsets=20&type=user&userid=%d&t=2")
 game:GetService("InsertService"):SetCollectionUrl("http://polygon.pizzaboxer.xyz/Game/Tools/InsertAsset.ashx?sid=%d")
