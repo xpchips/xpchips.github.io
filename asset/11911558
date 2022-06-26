@@ -6,20 +6,12 @@
 			<bool name="Disabled">false</bool>
 			<Content name="LinkedSource"><null></null></Content>
 			<string name="Name">Health</string>
-			<ProtectedString name="Source">--Responsible for regening a player&apos;s humanoid&apos;s health.
-function waitForChild(parent, childName)
-	local child = parent:findFirstChild(childName)
-	if child then return child end
-   while true do
-		child = parent.ChildAdded:wait()
-		if child.Name==childName then return child end
-   end
-end
+			<ProtectedString name="Source">--Responsible for regening a player&apos;s humanoid&apos;s health
 
 -- declarations
 local Figure = script.Parent
-local Head = waitForChild(Figure, &quot;Head&quot;)
-local Humanoid = waitForChild(Figure, &quot;Humanoid&quot;)
+local Head = Figure:WaitForChild(&quot;Head&quot;)
+local Humanoid = Figure:WaitForChild(&quot;Humanoid&quot;)
 local regening = false
 
 -- regeneration
