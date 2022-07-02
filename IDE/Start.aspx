@@ -7,11 +7,11 @@
 	  <div class="container">
 	  <h1>RClient Studio - Start</h1>
 	  <hr>
-	  <p>Hello, you are viewing this in RClient Studio! You can create maps in this or even prehapes load one.</p>
-	  <p>RClient Studio is the foundation of RClient and its the application that allows you to build, play solo as well as joining servers or even hosting you own one! Execute the .LUA scripts to host/join a server or play a map youve made or loaded in solo.</p>
-	  <p>Have Fun!</p>
+	  <p>Welcome to the Start Page!</p>
+	  <p>Studio is the foundation of what makes these older clients work and be playable. Its the application that allows you to build, play by your or even with others!</p>
+	  <p>We hope you have fun and feel free to report any bugs in the Discord.</p>
 	  </div>
-	  </main>
+	  </main> 
 	  <hr>
 	  
 <!-- All rights reserved section -->
