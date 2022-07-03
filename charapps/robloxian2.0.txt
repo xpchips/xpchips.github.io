@@ -1,1 +1,1 @@
-http://rclient.cf/asset/162;http://rclient.cf/asset/322;http://rclient.cf/asset/10615;http://rclient.cf/asset/10617;http://rclient.cf/asset/4403;http://rclient.cf/asset/6870
+http://polygon.pizzaboxer.xyz/asset/?id=6870
