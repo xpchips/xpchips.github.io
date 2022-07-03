@@ -17,9 +17,7 @@
 				<R21>0</R21>
 				<R22>1</R22>
 			</CoordinateFrame>
-			<int name="BackendAccoutrementState">2</int>
 			<string name="Name">GotMilkVisor</string>
-			<bool name="archivable">true</bool>
 		</Properties>
 		<Item class="Part" referent="RBX1">
 			<Properties>
@@ -48,13 +46,7 @@
 					<R22>0.990246177</R22>
 				</CoordinateFrame>
 				<bool name="CanCollide">true</bool>
-				<bool name="CastsShadows">true</bool>
-				<token name="Controller">0</token>
-				<bool name="ControllerFlagShown">true</bool>
-				<bool name="Cullable">true</bool>
-				<bool name="DraggingV1">false</bool>
 				<float name="Elasticity">0.5</float>
-				<token name="FormFactor">2</token>
 				<float name="Friction">0.300000012</float>
 				<float name="FrontParamA">-0.5</float>
 				<float name="FrontParamB">0.5</float>
@@ -65,6 +57,7 @@
 				<token name="LeftSurface">0</token>
 				<token name="LeftSurfaceInput">0</token>
 				<bool name="Locked">true</bool>
+				<token name="Material">256</token>
 				<string name="Name">Handle</string>
 				<float name="Reflectance">0</float>
 				<float name="RightParamA">-0.5</float>
@@ -86,7 +79,7 @@
 					<Y>0</Y>
 					<Z>0</Z>
 				</Vector3>
-				<bool name="archivable">true</bool>
+				<token name="formFactorRaw">2</token>
 				<token name="shape">1</token>
 				<Vector3 name="size">
 					<X>1</X>
@@ -96,21 +89,27 @@
 			</Properties>
 			<Item class="SpecialMesh" referent="RBX2">
 				<Properties>
-					<Content name="MeshId"><url>http://polygon.pizzaboxer.xyz/asset/?id=320</url></Content>
+					<token name="LODX">2</token>
+					<token name="LODY">2</token>
+					<Content name="MeshId"><url>http://rclient.cf/asset/320</url></Content>
 					<token name="MeshType">5</token>
 					<string name="Name">Mesh</string>
+					<Vector3 name="Offset">
+						<X>0</X>
+						<Y>0</Y>
+						<Z>0</Z>
+					</Vector3>
 					<Vector3 name="Scale">
 						<X>1.01999998</X>
 						<Y>1.01999998</Y>
 						<Z>1.01999998</Z>
 					</Vector3>
-					<Content name="TextureId"><url>http://polygon.pizzaboxer.xyz/asset/?id=321</url></Content>
+					<Content name="TextureId"><url>http://rclient.cf/asset/321</url></Content>
 					<Vector3 name="VertexColor">
 						<X>1</X>
 						<Y>1</Y>
 						<Z>1</Z>
 					</Vector3>
-					<bool name="archivable">true</bool>
 				</Properties>
 			</Item>
 		</Item>
