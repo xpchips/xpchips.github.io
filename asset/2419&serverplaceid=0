@@ -3,6 +3,7 @@
 	<External>nil</External>
 	<Item class="Tool" referent="RBX0">
 		<Properties>
+			<bool name="CanBeDropped">true</bool>
 			<bool name="Enabled">true</bool>
 			<CoordinateFrame name="Grip">
 				<X>0</X>
@@ -19,8 +20,8 @@
 				<R22>-1</R22>
 			</CoordinateFrame>
 			<string name="Name">ZombieStaff</string>
-			<Content name="TextureId"><url>http://polygon.pizzaboxer.xyz/asset/?id=2418</url></Content>
-			<bool name="archivable">true</bool>
+			<Content name="TextureId"><url>http://rclient.cf/asset/2418</url></Content>
+			<string name="ToolTip"></string>
 		</Properties>
 		<Item class="Part" referent="RBX1">
 			<Properties>
@@ -49,9 +50,7 @@
 					<R22>1</R22>
 				</CoordinateFrame>
 				<bool name="CanCollide">true</bool>
-				<bool name="DraggingV1">false</bool>
 				<float name="Elasticity">0.5</float>
-				<token name="FormFactor">1</token>
 				<float name="Friction">0.300000012</float>
 				<float name="FrontParamA">-0.5</float>
 				<float name="FrontParamB">0.5</float>
@@ -84,7 +83,7 @@
 					<Y>0</Y>
 					<Z>0</Z>
 				</Vector3>
-				<bool name="archivable">true</bool>
+				<token name="formFactorRaw">1</token>
 				<token name="shape">1</token>
 				<Vector3 name="size">
 					<X>1</X>
@@ -115,7 +114,6 @@
 						<Y>1</Y>
 						<Z>1</Z>
 					</Vector3>
-					<bool name="archivable">true</bool>
 				</Properties>
 			</Item>
 		</Item>
@@ -133,117 +131,116 @@ Tool.Enabled = true
 
 function fire(targetPos, humanoid)
 
-	insertZombies(targetPos, humanoid)
+&#9;insertZombies(targetPos, humanoid)
 
 end
 
 function insertZombies(pos, humanoid)
 
-	amountInFront = 15
-	torsoNormal = humanoid.Parent.Torso.CFrame.lookVector
-	denom = math.abs(torsoNormal.x) + math.abs(torsoNormal.z)
-	posX = amountInFront * (torsoNormal.x/denom)
-	posZ = amountInFront * (torsoNormal.z/denom)
-	pos = Vector3.new(pos.x + posX,pos.y, pos.z + posZ)
+&#9;amountInFront = 15
+&#9;torsoNormal = humanoid.Parent.Torso.CFrame.lookVector
+&#9;denom = math.abs(torsoNormal.x) + math.abs(torsoNormal.z)
+&#9;posX = amountInFront * (torsoNormal.x/denom)
+&#9;posZ = amountInFront * (torsoNormal.z/denom)
+&#9;pos = Vector3.new(pos.x + posX,pos.y, pos.z + posZ)
 
-	smoker = Instance.new(&quot;Smoke&quot;)
+&#9;smoker = Instance.new(&quot;Smoke&quot;)
 
-	smokeEmitter = Instance.new(&quot;Part&quot;)
-	smokeEmitter.Size = Vector3.new(1,1,1)
-	smokeEmitter.Transparency = 1
-	smokeEmitter.Position = pos
-	smokeEmitter.Anchored = true
-	smokeEmitter.CanCollide = false
-	
-	smoker.Parent = smokeEmitter
-	smokeEmitter.Parent = game.Workspace
+&#9;smokeEmitter = Instance.new(&quot;Part&quot;)
+&#9;smokeEmitter.Size = Vector3.new(1,1,1)
+&#9;smokeEmitter.Transparency = 1
+&#9;smokeEmitter.Position = pos
+&#9;smokeEmitter.Anchored = true
+&#9;smokeEmitter.CanCollide = false
+&#9;
+&#9;smoker.Parent = smokeEmitter
+&#9;smokeEmitter.Parent = game.Workspace
 
-	debris:AddItem(smokeEmitter, 10)
+&#9;debris:AddItem(smokeEmitter, 10)
 
-	wait(1)
+&#9;wait(1)
 
 
-	for i = 1, 5 do
+&#9;for i = 1, 5 do
 
-		--This call will cause a &quot;wait&quot; until the data comes back
-		local root = game:GetService(&quot;InsertService&quot;):LoadAsset(2415)
+&#9;&#9;--This call will cause a &quot;wait&quot; until the data comes back
+&#9;&#9;local root = game:GetService(&quot;InsertService&quot;):LoadAsset(2415)
 
-		local instances = root:GetChildren()
-		if #instances == 0 then
-			root:Remove()
-			return
-		end
+&#9;&#9;local instances = root:GetChildren()
+&#9;&#9;if #instances == 0 then
+&#9;&#9;&#9;root:Remove()
+&#9;&#9;&#9;return
+&#9;&#9;end
 
-		--Continue the insert process
+&#9;&#9;--Continue the insert process
 
-		local zombeh = root.SummonedZombie
-		zombeh.Owner.Value = humanoid
+&#9;&#9;local zombeh = root.SummonedZombie
+&#9;&#9;zombeh.Owner.Value = humanoid
 
-		local keepYoHead = Instance.new(&quot;Weld&quot;)
-		keepYoHead.Part0 = zombeh.Head
-		keepYoHead.Part1 = zombeh.Torso
-		keepYoHead.C0 = CFrame.new(0,-1.5,0)
-		keepYoHead.Parent = zombeh.Head
+&#9;&#9;local keepYoHead = Instance.new(&quot;Weld&quot;)
+&#9;&#9;keepYoHead.Part0 = zombeh.Head
+&#9;&#9;keepYoHead.Part1 = zombeh.Torso
+&#9;&#9;keepYoHead.C0 = CFrame.new(0,-1.5,0)
+&#9;&#9;keepYoHead.Parent = zombeh.Head
 
-		local Robotron = Tool.Robot:clone()
-		local Chaser = Tool.ChaseScript:clone()
-		local SoundMan = Tool.PlaySounds:clone()
-		local GarbageMan = Tool.Timer:clone()
-		Chaser.Parent = zombeh
-		Robotron.Parent = zombeh
-		SoundMan.Parent = zombeh.Head
-		GarbageMan.Parent = zombeh
-		local spacing = 4
-		--game:GetService(&quot;InsertService&quot;):Insert(zombeh)
-		zombeh.Parent = game.Workspace
-		if i == 1 then
-			zombeh:moveTo(Vector3.new(pos.x + spacing, pos.y,pos.z + spacing))
-		elseif i == 2 then
-			zombeh:moveTo(Vector3.new(pos.x - spacing, pos.y,pos.z + spacing))
-		elseif i == 3 then
-			zombeh:moveTo(Vector3.new(pos.x + spacing, pos.y,pos.z - spacing))
-		elseif i == 4 then
-			zombeh:moveTo(Vector3.new(pos.x - spacing, pos.y,pos.z - spacing))
-		elseif i == 5 then
-			zombeh:moveTo(pos)
-		end
+&#9;&#9;local Robotron = Tool.Robot:clone()
+&#9;&#9;local Chaser = Tool.ChaseScript:clone()
+&#9;&#9;local SoundMan = Tool.PlaySounds:clone()
+&#9;&#9;local GarbageMan = Tool.Timer:clone()
+&#9;&#9;Chaser.Parent = zombeh
+&#9;&#9;Robotron.Parent = zombeh
+&#9;&#9;SoundMan.Parent = zombeh.Head
+&#9;&#9;GarbageMan.Parent = zombeh
+&#9;&#9;local spacing = 4
+&#9;&#9;--game:GetService(&quot;InsertService&quot;):Insert(zombeh)
+&#9;&#9;zombeh.Parent = game.Workspace
+&#9;&#9;if i == 1 then
+&#9;&#9;&#9;zombeh:moveTo(Vector3.new(pos.x + spacing, pos.y,pos.z + spacing))
+&#9;&#9;elseif i == 2 then
+&#9;&#9;&#9;zombeh:moveTo(Vector3.new(pos.x - spacing, pos.y,pos.z + spacing))
+&#9;&#9;elseif i == 3 then
+&#9;&#9;&#9;zombeh:moveTo(Vector3.new(pos.x + spacing, pos.y,pos.z - spacing))
+&#9;&#9;elseif i == 4 then
+&#9;&#9;&#9;zombeh:moveTo(Vector3.new(pos.x - spacing, pos.y,pos.z - spacing))
+&#9;&#9;elseif i == 5 then
+&#9;&#9;&#9;zombeh:moveTo(pos)
+&#9;&#9;end
 
-	end
-	
+&#9;end
+&#9;
 end
 
 
 function onActivated()
 
-	if not Tool.Enabled then
-		return
-	end
+&#9;if not Tool.Enabled then
+&#9;&#9;return
+&#9;end
 
-	Tool.GripPos = Vector3.new(0,0.5,0)
-	
-	Tool.Enabled = false
+&#9;Tool.GripPos = Vector3.new(0,0.5,0)
+&#9;
+&#9;Tool.Enabled = false
 
-	local character = Tool.Parent;
-	local humanoid = character.Humanoid
-	if humanoid == nil then
-		print(&quot;Humanoid not found&quot;)
-		return 
-	end
+&#9;local character = Tool.Parent;
+&#9;local humanoid = character.Humanoid
+&#9;if humanoid == nil then
+&#9;&#9;print(&quot;Humanoid not found&quot;)
+&#9;&#9;return 
+&#9;end
 
-	local targetPos = humanoid.Parent.Torso.Position
+&#9;local targetPos = humanoid.Parent.Torso.Position
 
-	wait(0.5)
-	Tool.GripPos = Vector3.new(0,0,0)
+&#9;wait(0.5)
+&#9;Tool.GripPos = Vector3.new(0,0,0)
 
-	fire(targetPos, humanoid)
-	wait(reloadTime)
+&#9;fire(targetPos, humanoid)
+&#9;wait(reloadTime)
 
-	Tool.Enabled = true
+&#9;Tool.Enabled = true
 end
 
 Tool.Activated:connect(onActivated)
 </ProtectedString>
-				<bool name="archivable">true</bool>
 			</Properties>
 		</Item>
 		<Item class="Script" referent="RBX4">
@@ -256,10 +253,10 @@ zombieParent = false
 
 while zombieParent == false do
 
-	wait(1)
-	if script.Parent.Name == &quot;SummonedZombie&quot; then
-		zombieParent = true
-	end
+&#9;wait(1)
+&#9;if script.Parent.Name == &quot;SummonedZombie&quot; then
+&#9;&#9;zombieParent = true
+&#9;end
 
 end
 
@@ -268,59 +265,58 @@ local rarm = script.Parent:FindFirstChild(&quot;Right Arm&quot;)
 local waitTimer = 0
 
 function findNearestTorso(pos)
-	local list = game.Workspace:children()
-	local torso = nil
-	local dist = 100
-	local temp = nil
-	local human = nil
-	local temp2 = nil
-	for x = 1, #list do
-		temp2 = list[x]
-		if (temp2.className == &quot;Model&quot;) and (temp2 ~= script.Parent) and (temp2.Name ~= &quot;SummonedZombie&quot;) then
-			temp = temp2:findFirstChild(&quot;Torso&quot;)
-			human = temp2:findFirstChild(&quot;Humanoid&quot;)
-			if (temp ~= nil) and (human ~= nil) and (human.Health &gt; 0) and (human ~= script.Parent.Owner.Value) then
-				if (temp.Position - pos).magnitude &lt; dist then
-					torso = temp
-					dist = (temp.Position - pos).magnitude
-				end
-			end
-		end
-	end
-	return torso
+&#9;local list = game.Workspace:children()
+&#9;local torso = nil
+&#9;local dist = 100
+&#9;local temp = nil
+&#9;local human = nil
+&#9;local temp2 = nil
+&#9;for x = 1, #list do
+&#9;&#9;temp2 = list[x]
+&#9;&#9;if (temp2.className == &quot;Model&quot;) and (temp2 ~= script.Parent) and (temp2.Name ~= &quot;SummonedZombie&quot;) then
+&#9;&#9;&#9;temp = temp2:findFirstChild(&quot;Torso&quot;)
+&#9;&#9;&#9;human = temp2:findFirstChild(&quot;Humanoid&quot;)
+&#9;&#9;&#9;if (temp ~= nil) and (human ~= nil) and (human.Health &gt; 0) and (human ~= script.Parent.Owner.Value) then
+&#9;&#9;&#9;&#9;if (temp.Position - pos).magnitude &lt; dist then
+&#9;&#9;&#9;&#9;&#9;torso = temp
+&#9;&#9;&#9;&#9;&#9;dist = (temp.Position - pos).magnitude
+&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;end
+&#9;&#9;end
+&#9;end
+&#9;return torso
 end
 
 function Hit(hit)
-	local human = hit.Parent:FindFirstChild(&quot;Humanoid&quot;)
-	if human ~= nil and human ~=  script.Parent.Owner.Value and waitTimer == 0 and human.Parent.Name ~= &quot;SummonedZombie&quot; then
-		human:TakeDamage(20)
-		waitTimer = 3
-	end
+&#9;local human = hit.Parent:FindFirstChild(&quot;Humanoid&quot;)
+&#9;if human ~= nil and human ~=  script.Parent.Owner.Value and waitTimer == 0 and human.Parent.Name ~= &quot;SummonedZombie&quot; then
+&#9;&#9;human:TakeDamage(20)
+&#9;&#9;waitTimer = 3
+&#9;end
 end
 
 larm.Touched:connect(Hit)
 rarm.Touched:connect(Hit)
 
 while true do
-	wait(1)
-	local target = findNearestTorso(script.Parent.Torso.Position)
-	if target ~= nil then
-		script.Parent.Humanoid:MoveTo(target.Position, target)
-	end
-	if waitTimer &gt; 0  then
-		waitTimer = waitTimer - 1
-	end
-	if script.Parent.Humanoid.Health &lt; 1 then
-		wait(3)
-		script.Parent:remove()
-	end
-	jumper = math.random(1,2)
-	if jumper == 2 then
-		script.Parent.Humanoid.Jump = true
-	end
+&#9;wait(1)
+&#9;local target = findNearestTorso(script.Parent.Torso.Position)
+&#9;if target ~= nil then
+&#9;&#9;script.Parent.Humanoid:MoveTo(target.Position, target)
+&#9;end
+&#9;if waitTimer &gt; 0  then
+&#9;&#9;waitTimer = waitTimer - 1
+&#9;end
+&#9;if script.Parent.Humanoid.Health &lt; 1 then
+&#9;&#9;wait(3)
+&#9;&#9;script.Parent:remove()
+&#9;end
+&#9;jumper = math.random(1,2)
+&#9;if jumper == 2 then
+&#9;&#9;script.Parent.Humanoid.Jump = true
+&#9;end
 end
 </ProtectedString>
-				<bool name="archivable">true</bool>
 			</Properties>
 		</Item>
 		<Item class="Script" referent="RBX5">
@@ -332,10 +328,10 @@ end
 
 while zombieParent == false do
 
-	wait(0.5)
-	if script.Parent.Name == &quot;SummonedZombie&quot; then
-		zombieParent = true
-	end
+&#9;wait(0.5)
+&#9;if script.Parent.Name == &quot;SummonedZombie&quot; then
+&#9;&#9;zombieParent = true
+&#9;end
 
 end
 
@@ -378,13 +374,13 @@ miked:findFirstChild(&quot;Right Arm&quot;).Anchored = false
 
 
 function waitForChild(parent, childName)
-	while true do
-		local child = parent:findFirstChild(childName)
-		if child then
-			return child
-		end
-		parent.ChildAdded:wait()
-	end
+&#9;while true do
+&#9;&#9;local child = parent:findFirstChild(childName)
+&#9;&#9;if child then
+&#9;&#9;&#9;return child
+&#9;&#9;end
+&#9;&#9;parent.ChildAdded:wait()
+&#9;end
 end
 
 local Figure = script.Parent
@@ -404,17 +400,17 @@ local isSeated = false
 
 
 function onRunning(speed)
-	if isSeated then return end
+&#9;if isSeated then return end
 
-	if speed&gt;0 then
-		pose = &quot;Running&quot;
-	else
-		pose = &quot;Standing&quot;
-	end
+&#9;if speed&gt;0 then
+&#9;&#9;pose = &quot;Running&quot;
+&#9;else
+&#9;&#9;pose = &quot;Standing&quot;
+&#9;end
 end
 
 function onDied()
-	pose = &quot;Dead&quot;
+&#9;pose = &quot;Dead&quot;
         wait(regentime)
     wait(1)
     model:remove()
@@ -425,100 +421,100 @@ function onDied()
 end
 
 function onJumping()
-	isSeated = false
-	pose = &quot;Jumping&quot;
+&#9;isSeated = false
+&#9;pose = &quot;Jumping&quot;
 end
 
 function onClimbing()
-	pose = &quot;Climbing&quot;
+&#9;pose = &quot;Climbing&quot;
 end
 
 function onGettingUp()
-	pose = &quot;GettingUp&quot;
+&#9;pose = &quot;GettingUp&quot;
 end
 
 function onFreeFall()
-	pose = &quot;FreeFall&quot;
+&#9;pose = &quot;FreeFall&quot;
 end
 
 function onDancing()
-	pose = &quot;Dancing&quot;
+&#9;pose = &quot;Dancing&quot;
 end
 
 function onFallingDown()
-	pose = &quot;FallingDown&quot;
+&#9;pose = &quot;FallingDown&quot;
 end
 
 function onSeated()
-	isSeated = true
-	pose = &quot;Seated&quot;
+&#9;isSeated = true
+&#9;pose = &quot;Seated&quot;
 end
 
 
 
 function moveJump()
-	RightShoulder.MaxVelocity = 0.5
-	LeftShoulder.MaxVelocity = 0.5
-	RightShoulder.DesiredAngle = -3.14
-	LeftShoulder.DesiredAngle = -3.14
-	RightHip.DesiredAngle = 0
-	LeftHip.DesiredAngle = 0
+&#9;RightShoulder.MaxVelocity = 0.5
+&#9;LeftShoulder.MaxVelocity = 0.5
+&#9;RightShoulder.DesiredAngle = -3.14
+&#9;LeftShoulder.DesiredAngle = -3.14
+&#9;RightHip.DesiredAngle = 0
+&#9;LeftHip.DesiredAngle = 0
 end
 
 function moveFreeFall()
-	RightShoulder.MaxVelocity = 0.5
-	LeftShoulder.MaxVelocity = 0.5
-	RightShoulder.DesiredAngle = -1
-	LeftShoulder.DesiredAngle = -1
-	RightHip.DesiredAngle = 0
-	LeftHip.DesiredAngle = 0
+&#9;RightShoulder.MaxVelocity = 0.5
+&#9;LeftShoulder.MaxVelocity = 0.5
+&#9;RightShoulder.DesiredAngle = -1
+&#9;LeftShoulder.DesiredAngle = -1
+&#9;RightHip.DesiredAngle = 0
+&#9;LeftHip.DesiredAngle = 0
 end
 
 function moveFloat()
-	RightShoulder.MaxVelocity = 0.5
-	LeftShoulder.MaxVelocity = 0.5
-	RightShoulder.DesiredAngle = -1.57
-	LeftShoulder.DesiredAngle = 1.57
-	RightHip.DesiredAngle = 1.57
-	LeftHip.DesiredAngle = -1.57
+&#9;RightShoulder.MaxVelocity = 0.5
+&#9;LeftShoulder.MaxVelocity = 0.5
+&#9;RightShoulder.DesiredAngle = -1.57
+&#9;LeftShoulder.DesiredAngle = 1.57
+&#9;RightHip.DesiredAngle = 1.57
+&#9;LeftHip.DesiredAngle = -1.57
 end
 
 function moveBoogy()
 while pose==&quot;Boogy&quot; do
-	wait(.5)
-	RightShoulder.MaxVelocity = 1
-	LeftShoulder.MaxVelocity = 1
-	RightShoulder.DesiredAngle = -3.14
-	LeftShoulder.DesiredAngle = 0
-	RightHip.DesiredAngle = 1.57
-	LeftHip.DesiredAngle = 0
-	wait(.5)
-	RightShoulder.MaxVelocity = 1
-	LeftShoulder.MaxVelocity = 1
-	RightShoulder.DesiredAngle = 0
-	LeftShoulder.DesiredAngle = -3.14
-	RightHip.DesiredAngle = 0
-	LeftHip.DesiredAngle = 1.57
+&#9;wait(.5)
+&#9;RightShoulder.MaxVelocity = 1
+&#9;LeftShoulder.MaxVelocity = 1
+&#9;RightShoulder.DesiredAngle = -3.14
+&#9;LeftShoulder.DesiredAngle = 0
+&#9;RightHip.DesiredAngle = 1.57
+&#9;LeftHip.DesiredAngle = 0
+&#9;wait(.5)
+&#9;RightShoulder.MaxVelocity = 1
+&#9;LeftShoulder.MaxVelocity = 1
+&#9;RightShoulder.DesiredAngle = 0
+&#9;LeftShoulder.DesiredAngle = -3.14
+&#9;RightHip.DesiredAngle = 0
+&#9;LeftHip.DesiredAngle = 1.57
 end
 end
 
 function moveZombie()
-	RightShoulder.MaxVelocity = 0.5
-	LeftShoulder.MaxVelocity = 0.5
-	RightShoulder.DesiredAngle = -1.57
-	LeftShoulder.DesiredAngle = 1.57
-	RightHip.DesiredAngle = 0
-	LeftHip.DesiredAngle = 0
+&#9;RightShoulder.MaxVelocity = 0.5
+&#9;LeftShoulder.MaxVelocity = 0.5
+&#9;RightShoulder.DesiredAngle = -1.57
+&#9;LeftShoulder.DesiredAngle = 1.57
+&#9;RightHip.DesiredAngle = 0
+&#9;LeftHip.DesiredAngle = 0
 end
 
 function movePunch()
-	script.Parent.Torso.Anchored=true
-	RightShoulder.MaxVelocity = 60
-	LeftShoulder.MaxVelocity = 0.5
-	RightShoulder.DesiredAngle = -1.57
-	LeftShoulder.DesiredAngle = 0
-	RightHip.DesiredAngle = 0
-	LeftHip.DesiredAngle = 0
+&#9;script.Parent.Torso.Anchored=true
+&#9;RightShoulder.MaxVelocity = 60
+&#9;LeftShoulder.MaxVelocity = 0.5
+&#9;RightShoulder.DesiredAngle = -1.57
+&#9;LeftShoulder.DesiredAngle = 0
+&#9;RightHip.DesiredAngle = 0
+&#9;LeftHip.DesiredAngle = 0
 wait(1)
 script.Parent.Torso.Anchored=false
 pose=&quot;Standing&quot;
@@ -526,26 +522,26 @@ pose=&quot;Standing&quot;
 end
 
 function moveKick()
-	RightShoulder.MaxVelocity = 0.5
-	LeftShoulder.MaxVelocity = 0.5
-	RightShoulder.DesiredAngle = 0
-	LeftShoulder.DesiredAngle = 0
-	RightHip.MaxVelocity = 40
-	RightHip.DesiredAngle = 1.57
-	LeftHip.DesiredAngle = 0
+&#9;RightShoulder.MaxVelocity = 0.5
+&#9;LeftShoulder.MaxVelocity = 0.5
+&#9;RightShoulder.DesiredAngle = 0
+&#9;LeftShoulder.DesiredAngle = 0
+&#9;RightHip.MaxVelocity = 40
+&#9;RightHip.DesiredAngle = 1.57
+&#9;LeftHip.DesiredAngle = 0
 wait(1)
 pose=&quot;Standing&quot;
 
 end
 
 function moveFly()
-	RightShoulder.MaxVelocity = 0.5
-	LeftShoulder.MaxVelocity = 0.5
-	RightShoulder.DesiredAngle = 0
-	LeftShoulder.DesiredAngle = 0
-	RightHip.MaxVelocity = 40
-	RightHip.DesiredAngle = 1.57
-	LeftHip.DesiredAngle = 0
+&#9;RightShoulder.MaxVelocity = 0.5
+&#9;LeftShoulder.MaxVelocity = 0.5
+&#9;RightShoulder.DesiredAngle = 0
+&#9;LeftShoulder.DesiredAngle = 0
+&#9;RightHip.MaxVelocity = 40
+&#9;RightHip.DesiredAngle = 1.57
+&#9;LeftHip.DesiredAngle = 0
 wait(1)
 pose=&quot;Standing&quot;
 
@@ -553,181 +549,181 @@ end
 
 
 function moveClimb()
-	RightShoulder.MaxVelocity = 0.5
-	LeftShoulder.MaxVelocity = 0.5
-	RightShoulder.DesiredAngle = -3.14
-	LeftShoulder.DesiredAngle = 3.14
-	RightHip.DesiredAngle = 0
-	LeftHip.DesiredAngle = 0
+&#9;RightShoulder.MaxVelocity = 0.5
+&#9;LeftShoulder.MaxVelocity = 0.5
+&#9;RightShoulder.DesiredAngle = -3.14
+&#9;LeftShoulder.DesiredAngle = 3.14
+&#9;RightHip.DesiredAngle = 0
+&#9;LeftHip.DesiredAngle = 0
 end
 
 function moveSit()
-	RightShoulder.MaxVelocity = 0.15
-	LeftShoulder.MaxVelocity = 0.15
-	RightShoulder.DesiredAngle = -3.14 /2
-	LeftShoulder.DesiredAngle = -3.14 /2
-	RightHip.DesiredAngle = 3.14 /2
-	LeftHip.DesiredAngle = -3.14 /2
+&#9;RightShoulder.MaxVelocity = 0.15
+&#9;LeftShoulder.MaxVelocity = 0.15
+&#9;RightShoulder.DesiredAngle = -3.14 /2
+&#9;LeftShoulder.DesiredAngle = -3.14 /2
+&#9;RightHip.DesiredAngle = 3.14 /2
+&#9;LeftHip.DesiredAngle = -3.14 /2
 end
 
 function getTool()
-	
-	kidTable = Figure:children()
-	if (kidTable ~= nil) then
-		numKids = #kidTable
-		for i=1,numKids do
-			if (kidTable[i].className == &quot;Tool&quot;) then return kidTable[i] end
-		end
-	end
-	
-	return nil
+&#9;
+&#9;kidTable = Figure:children()
+&#9;if (kidTable ~= nil) then
+&#9;&#9;numKids = #kidTable
+&#9;&#9;for i=1,numKids do
+&#9;&#9;&#9;if (kidTable[i].className == &quot;Tool&quot;) then return kidTable[i] end
+&#9;&#9;end
+&#9;end
+&#9;
+&#9;return nil
 end
 
 function getToolAnim(tool)
 
-	c = tool:children()
-	for i=1,#c do
-		if (c[i].Name == &quot;toolanim&quot; and c[i].className == &quot;StringValue&quot;) then
-			return c[i]
-		end
-	end
-	return nil
+&#9;c = tool:children()
+&#9;for i=1,#c do
+&#9;&#9;if (c[i].Name == &quot;toolanim&quot; and c[i].className == &quot;StringValue&quot;) then
+&#9;&#9;&#9;return c[i]
+&#9;&#9;end
+&#9;end
+&#9;return nil
 end
 
 function animateTool()
-	
-	if (toolAnim == &quot;None&quot;) then
-		RightShoulder.DesiredAngle = -1.57
-		return
-	end
+&#9;
+&#9;if (toolAnim == &quot;None&quot;) then
+&#9;&#9;RightShoulder.DesiredAngle = -1.57
+&#9;&#9;return
+&#9;end
 
-	if (toolAnim == &quot;Slash&quot;) then
-		RightShoulder.MaxVelocity = 0.5
-		RightShoulder.DesiredAngle = 0
-		return
-	end
+&#9;if (toolAnim == &quot;Slash&quot;) then
+&#9;&#9;RightShoulder.MaxVelocity = 0.5
+&#9;&#9;RightShoulder.DesiredAngle = 0
+&#9;&#9;return
+&#9;end
 
-	if (toolAnim == &quot;Lunge&quot;) then
-		RightShoulder.MaxVelocity = 0.5
-		LeftShoulder.MaxVelocity = 0.5
-		RightHip.MaxVelocity = 0.5
-		LeftHip.MaxVelocity = 0.5
-		RightShoulder.DesiredAngle = -1.57
-		LeftShoulder.DesiredAngle = 1.0
-		RightHip.DesiredAngle = 1.57
-		LeftHip.DesiredAngle = 1.0
-		return
-	end
+&#9;if (toolAnim == &quot;Lunge&quot;) then
+&#9;&#9;RightShoulder.MaxVelocity = 0.5
+&#9;&#9;LeftShoulder.MaxVelocity = 0.5
+&#9;&#9;RightHip.MaxVelocity = 0.5
+&#9;&#9;LeftHip.MaxVelocity = 0.5
+&#9;&#9;RightShoulder.DesiredAngle = -1.57
+&#9;&#9;LeftShoulder.DesiredAngle = 1.0
+&#9;&#9;RightHip.DesiredAngle = 1.57
+&#9;&#9;LeftHip.DesiredAngle = 1.0
+&#9;&#9;return
+&#9;end
 end
 
 function move(time)
-	local amplitude
-	local frequency
+&#9;local amplitude
+&#9;local frequency
 
-	if (pose == &quot;Jumping&quot;) then
-		moveJump()
-		return
-	end
+&#9;if (pose == &quot;Jumping&quot;) then
+&#9;&#9;moveJump()
+&#9;&#9;return
+&#9;end
 
-	if (pose == &quot;Zombie&quot;) then
-		moveZombie()
-		return
-	end
+&#9;if (pose == &quot;Zombie&quot;) then
+&#9;&#9;moveZombie()
+&#9;&#9;return
+&#9;end
 
-	if (pose == &quot;Boogy&quot;) then
-		moveBoogy()
-		return
-	end
+&#9;if (pose == &quot;Boogy&quot;) then
+&#9;&#9;moveBoogy()
+&#9;&#9;return
+&#9;end
 
-	if (pose == &quot;Float&quot;) then
-		moveFloat()
-		return
-	end
+&#9;if (pose == &quot;Float&quot;) then
+&#9;&#9;moveFloat()
+&#9;&#9;return
+&#9;end
 
-	if (pose == &quot;Punch&quot;) then
-		movePunch()
-		return
-	end
+&#9;if (pose == &quot;Punch&quot;) then
+&#9;&#9;movePunch()
+&#9;&#9;return
+&#9;end
 
-	if (pose == &quot;Kick&quot;) then
-		moveKick()
-		return
-	end
+&#9;if (pose == &quot;Kick&quot;) then
+&#9;&#9;moveKick()
+&#9;&#9;return
+&#9;end
 
-	if (pose == &quot;Fly&quot;) then
-		moveFly()
-		return
-	end
+&#9;if (pose == &quot;Fly&quot;) then
+&#9;&#9;moveFly()
+&#9;&#9;return
+&#9;end
 
-	if (pose == &quot;FreeFall&quot;) then
-		moveFreeFall()
-		return
-	end
+&#9;if (pose == &quot;FreeFall&quot;) then
+&#9;&#9;moveFreeFall()
+&#9;&#9;return
+&#9;end
 
-	if (pose == &quot;Climbing&quot;) then
-		moveClimb()
-		return
-	end
+&#9;if (pose == &quot;Climbing&quot;) then
+&#9;&#9;moveClimb()
+&#9;&#9;return
+&#9;end
 
-	if (pose == &quot;Seated&quot;) then
-		moveSit()
-		return
-	end
+&#9;if (pose == &quot;Seated&quot;) then
+&#9;&#9;moveSit()
+&#9;&#9;return
+&#9;end
 
-		amplitude = 0.1
-		frequency = 1
+&#9;&#9;amplitude = 0.1
+&#9;&#9;frequency = 1
 
-	RightShoulder.MaxVelocity = 0.15
-	LeftShoulder.MaxVelocity = 0.15
-	if (pose == &quot;Running&quot;) then
-		amplitude = 1
-		frequency = 9
-	elseif (pose == &quot;Dancing&quot;) then
-		amplitude = 2
-		frequency = 16
-	end
-
-
-	desiredAngle = amplitude * math.sin(time*frequency)
-	if pose~=&quot;Dancing&quot; then
-		RightShoulder.DesiredAngle = -desiredAngle
-		LeftShoulder.DesiredAngle = desiredAngle
-		RightHip.DesiredAngle = -desiredAngle
-		LeftHip.DesiredAngle = -desiredAngle
-	else
-		RightShoulder.DesiredAngle = desiredAngle
-		LeftShoulder.DesiredAngle = desiredAngle
-		RightHip.DesiredAngle = -desiredAngle
-		LeftHip.DesiredAngle = -desiredAngle
-	end
-		
+&#9;RightShoulder.MaxVelocity = 0.15
+&#9;LeftShoulder.MaxVelocity = 0.15
+&#9;if (pose == &quot;Running&quot;) then
+&#9;&#9;amplitude = 1
+&#9;&#9;frequency = 9
+&#9;elseif (pose == &quot;Dancing&quot;) then
+&#9;&#9;amplitude = 2
+&#9;&#9;frequency = 16
+&#9;end
 
 
-	local tool = getTool()
+&#9;desiredAngle = amplitude * math.sin(time*frequency)
+&#9;if pose~=&quot;Dancing&quot; then
+&#9;&#9;RightShoulder.DesiredAngle = -desiredAngle
+&#9;&#9;LeftShoulder.DesiredAngle = desiredAngle
+&#9;&#9;RightHip.DesiredAngle = -desiredAngle
+&#9;&#9;LeftHip.DesiredAngle = -desiredAngle
+&#9;else
+&#9;&#9;RightShoulder.DesiredAngle = desiredAngle
+&#9;&#9;LeftShoulder.DesiredAngle = desiredAngle
+&#9;&#9;RightHip.DesiredAngle = -desiredAngle
+&#9;&#9;LeftHip.DesiredAngle = -desiredAngle
+&#9;end
+&#9;&#9;
 
-	if tool ~= nil then
-	
-		animStringValueObject = getToolAnim(tool)
 
-		if animStringValueObject ~= nil then
-			toolAnim = animStringValueObject.Value
-			-- message recieved, delete StringValue
-			animStringValueObject.Parent = nil
-			toolAnimTime = time + .3
-		end
+&#9;local tool = getTool()
 
-		if time &gt; toolAnimTime then
-			toolAnimTime = 0
-			toolAnim = &quot;None&quot;
-		end
+&#9;if tool ~= nil then
+&#9;
+&#9;&#9;animStringValueObject = getToolAnim(tool)
 
-		animateTool()
+&#9;&#9;if animStringValueObject ~= nil then
+&#9;&#9;&#9;toolAnim = animStringValueObject.Value
+&#9;&#9;&#9;-- message recieved, delete StringValue
+&#9;&#9;&#9;animStringValueObject.Parent = nil
+&#9;&#9;&#9;toolAnimTime = time + .3
+&#9;&#9;end
 
-		
-	else
-		toolAnim = &quot;None&quot;
-		toolAnimTime = 0
-	end
+&#9;&#9;if time &gt; toolAnimTime then
+&#9;&#9;&#9;toolAnimTime = 0
+&#9;&#9;&#9;toolAnim = &quot;None&quot;
+&#9;&#9;end
+
+&#9;&#9;animateTool()
+
+&#9;&#9;
+&#9;else
+&#9;&#9;toolAnim = &quot;None&quot;
+&#9;&#9;toolAnimTime = 0
+&#9;end
 end
 
 
@@ -735,119 +731,119 @@ end
 -----------------------------------------------------------------------------------------------------------------------
 
 function unequip()
-	local items=script.Parent:children()
-	for i=1, #items do
-		if items[i].className==&quot;Tool&quot; then items[i]:remove() end
-	end
+&#9;local items=script.Parent:children()
+&#9;for i=1, #items do
+&#9;&#9;if items[i].className==&quot;Tool&quot; then items[i]:remove() end
+&#9;end
 end
 
 function onChatted(msg, recipient) 
-	msg = string.lower(msg)
+&#9;msg = string.lower(msg)
 
-	if string.match(msg, string.lower(script.Parent.Name))~=nil or string.match(msg, &quot;everyone&quot;) then
-		if string.match(msg, &quot;equip&quot;) then 
-			if game.Workspace:findFirstChild(&quot;Hub&quot;) then
-				if string.match(msg, &quot;rocket&quot;) then unequip()
-					game.Workspace.Hub.Rocket:clone().Parent=script.Parent
-				elseif string.match(msg, &quot;slingshot&quot;) then unequip()
-					game.Workspace.Hub.Slingshot:clone().Parent=script.Parent
-				elseif string.match(msg, &quot;sword&quot;) then unequip()
-					game.Workspace.Hub.Sword:clone().Parent=script.Parent
-				elseif string.match(msg, &quot;pbg&quot;) then unequip()
-					game.Workspace.Hub.PBG:clone().Parent=script.Parent
-				elseif string.match(msg, &quot;superball&quot;) then unequip()
-					game.Workspace.Hub.Superball:clone().Parent=script.Parent
-				elseif string.match(msg, &quot;trowel&quot;) then unequip()
-					game.Workspace.Hub.Trowel:clone().Parent=script.Parent
-				elseif string.match(msg, &quot;bomb&quot;) then unequip()
-					game.Workspace.Hub.Bomb:clone().Parent=script.Parent
-				end
-			end
-		end
-		if string.match(msg, &quot;unequip&quot;) then unequip() end
-		if string.match(msg, &quot;run&quot;) then onRunning(1) end
-		if string.match(msg, &quot;climb&quot;) then onClimbing() end
-		if string.match(msg, &quot;jump&quot;) then onJumping() end
-		if string.match(msg, &quot;zombie&quot;) then pose=&quot;Zombie&quot; end
-		if string.match(msg, &quot;disco&quot;) then pose=&quot;Boogy&quot; end
-		if string.match(msg, &quot;float&quot;) then pose=&quot;Float&quot; end
-		if string.match(msg, &quot;punch&quot;) then pose=&quot;Punch&quot; end
-		if string.match(msg, &quot;kick&quot;) then pose=&quot;Kick&quot; end
-		if string.match(msg, &quot;fly&quot;) then pose=&quot;Fly&quot; end
-		if string.match(msg, &quot;heal&quot;) then script.Parent.Humanoid.Health=script.Parent.Humanoid.MaxHealth end
-		if string.match(msg, &quot;defend&quot;) then defence() end
-		if string.match(msg, &quot;stop&quot;) then pose=&quot;Standing&quot;; proxkill=false; following=false; stopmoving() end
-		if string.match(msg, &quot;go home&quot;) then following=false; gohome() end
-		if string.match(msg, &quot;follow&quot;) then
-			if string.match(msg, &quot;all&quot;) then
-				followany()
-			else
-				local egg=game.Players:children()
-				for i=1, #egg do
-					if string.match(msg, string.lower(egg[i].Name)) then
-						follow(egg[i].Name)
-						return
-					end
-				end
-			end
-		end
-		if string.match(msg, &quot;kill&quot;) then
-			if string.match(msg, &quot;all&quot;) then
-				attackany()
-			else
-				local egg=game.Players:children()
-				for i=1, #egg do
-					if string.match(msg, string.lower(egg[i].Name)) then
-						attack(egg[i].Name)
-						return
-					end
-				end
-			end
-		end
+&#9;if string.match(msg, string.lower(script.Parent.Name))~=nil or string.match(msg, &quot;everyone&quot;) then
+&#9;&#9;if string.match(msg, &quot;equip&quot;) then 
+&#9;&#9;&#9;if game.Workspace:findFirstChild(&quot;Hub&quot;) then
+&#9;&#9;&#9;&#9;if string.match(msg, &quot;rocket&quot;) then unequip()
+&#9;&#9;&#9;&#9;&#9;game.Workspace.Hub.Rocket:clone().Parent=script.Parent
+&#9;&#9;&#9;&#9;elseif string.match(msg, &quot;slingshot&quot;) then unequip()
+&#9;&#9;&#9;&#9;&#9;game.Workspace.Hub.Slingshot:clone().Parent=script.Parent
+&#9;&#9;&#9;&#9;elseif string.match(msg, &quot;sword&quot;) then unequip()
+&#9;&#9;&#9;&#9;&#9;game.Workspace.Hub.Sword:clone().Parent=script.Parent
+&#9;&#9;&#9;&#9;elseif string.match(msg, &quot;pbg&quot;) then unequip()
+&#9;&#9;&#9;&#9;&#9;game.Workspace.Hub.PBG:clone().Parent=script.Parent
+&#9;&#9;&#9;&#9;elseif string.match(msg, &quot;superball&quot;) then unequip()
+&#9;&#9;&#9;&#9;&#9;game.Workspace.Hub.Superball:clone().Parent=script.Parent
+&#9;&#9;&#9;&#9;elseif string.match(msg, &quot;trowel&quot;) then unequip()
+&#9;&#9;&#9;&#9;&#9;game.Workspace.Hub.Trowel:clone().Parent=script.Parent
+&#9;&#9;&#9;&#9;elseif string.match(msg, &quot;bomb&quot;) then unequip()
+&#9;&#9;&#9;&#9;&#9;game.Workspace.Hub.Bomb:clone().Parent=script.Parent
+&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;end
+&#9;&#9;end
+&#9;&#9;if string.match(msg, &quot;unequip&quot;) then unequip() end
+&#9;&#9;if string.match(msg, &quot;run&quot;) then onRunning(1) end
+&#9;&#9;if string.match(msg, &quot;climb&quot;) then onClimbing() end
+&#9;&#9;if string.match(msg, &quot;jump&quot;) then onJumping() end
+&#9;&#9;if string.match(msg, &quot;zombie&quot;) then pose=&quot;Zombie&quot; end
+&#9;&#9;if string.match(msg, &quot;disco&quot;) then pose=&quot;Boogy&quot; end
+&#9;&#9;if string.match(msg, &quot;float&quot;) then pose=&quot;Float&quot; end
+&#9;&#9;if string.match(msg, &quot;punch&quot;) then pose=&quot;Punch&quot; end
+&#9;&#9;if string.match(msg, &quot;kick&quot;) then pose=&quot;Kick&quot; end
+&#9;&#9;if string.match(msg, &quot;fly&quot;) then pose=&quot;Fly&quot; end
+&#9;&#9;if string.match(msg, &quot;heal&quot;) then script.Parent.Humanoid.Health=script.Parent.Humanoid.MaxHealth end
+&#9;&#9;if string.match(msg, &quot;defend&quot;) then defence() end
+&#9;&#9;if string.match(msg, &quot;stop&quot;) then pose=&quot;Standing&quot;; proxkill=false; following=false; stopmoving() end
+&#9;&#9;if string.match(msg, &quot;go home&quot;) then following=false; gohome() end
+&#9;&#9;if string.match(msg, &quot;follow&quot;) then
+&#9;&#9;&#9;if string.match(msg, &quot;all&quot;) then
+&#9;&#9;&#9;&#9;followany()
+&#9;&#9;&#9;else
+&#9;&#9;&#9;&#9;local egg=game.Players:children()
+&#9;&#9;&#9;&#9;for i=1, #egg do
+&#9;&#9;&#9;&#9;&#9;if string.match(msg, string.lower(egg[i].Name)) then
+&#9;&#9;&#9;&#9;&#9;&#9;follow(egg[i].Name)
+&#9;&#9;&#9;&#9;&#9;&#9;return
+&#9;&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;end
+&#9;&#9;end
+&#9;&#9;if string.match(msg, &quot;kill&quot;) then
+&#9;&#9;&#9;if string.match(msg, &quot;all&quot;) then
+&#9;&#9;&#9;&#9;attackany()
+&#9;&#9;&#9;else
+&#9;&#9;&#9;&#9;local egg=game.Players:children()
+&#9;&#9;&#9;&#9;for i=1, #egg do
+&#9;&#9;&#9;&#9;&#9;if string.match(msg, string.lower(egg[i].Name)) then
+&#9;&#9;&#9;&#9;&#9;&#9;attack(egg[i].Name)
+&#9;&#9;&#9;&#9;&#9;&#9;return
+&#9;&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;end
+&#9;&#9;end
 
-	end
+&#9;end
 end
 
 if game.Players.NumPlayers&gt;1 then
-	x=game.Players:children()
-	
-	for i=1, #x do
-		if script.Parent:findFirstChild(&quot;Commander&quot;)~=nil then
-			if script.Parent.Commander:children()~=nil or script.Parent.Commander:children()&gt;0 then
-				local ch=script.Parent.Commander:children()
-				for i=1, #ch do
-					if string.lower(ch[i].Name)==string.lower(x[i].Name) then
-						x[i].Chatted:connect(function(msg, recipient) onChatted(msg, recipient) end) 
-					end
-				end
-			elseif string.lower(script.Parent.Commander.Value)==string.lower(x[i].Name) then
-				x[i].Chatted:connect(function(msg, recipient) onChatted(msg, recipient) end) 
-			end
-		else
-			x[i].Chatted:connect(function(msg, recipient) onChatted(msg, recipient) end)
-		end
-	end
+&#9;x=game.Players:children()
+&#9;
+&#9;for i=1, #x do
+&#9;&#9;if script.Parent:findFirstChild(&quot;Commander&quot;)~=nil then
+&#9;&#9;&#9;if script.Parent.Commander:children()~=nil or script.Parent.Commander:children()&gt;0 then
+&#9;&#9;&#9;&#9;local ch=script.Parent.Commander:children()
+&#9;&#9;&#9;&#9;for i=1, #ch do
+&#9;&#9;&#9;&#9;&#9;if string.lower(ch[i].Name)==string.lower(x[i].Name) then
+&#9;&#9;&#9;&#9;&#9;&#9;x[i].Chatted:connect(function(msg, recipient) onChatted(msg, recipient) end) 
+&#9;&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;elseif string.lower(script.Parent.Commander.Value)==string.lower(x[i].Name) then
+&#9;&#9;&#9;&#9;x[i].Chatted:connect(function(msg, recipient) onChatted(msg, recipient) end) 
+&#9;&#9;&#9;end
+&#9;&#9;else
+&#9;&#9;&#9;x[i].Chatted:connect(function(msg, recipient) onChatted(msg, recipient) end)
+&#9;&#9;end
+&#9;end
 end
 
 
 function onPlayerEntered(Player) 
-	while Player.Name==nil do
-		wait(2)
-	end
-	if script.Parent:findFirstChild(&quot;Commander&quot;)~=nil then
-		if script.Parent.Commander:children()~=nil or script.Parent.Commander:children()&gt;0 then
-			local ch=script.Parent.Commander:children()
-			for i=1, #ch do
-				if string.lower(ch[i].Name)==string.lower(Player.Name) then
-					Player.Chatted:connect(function(msg, recipient) onChatted(msg, recipient) end) 
-				end
-			end
-		elseif string.lower(script.Parent.Commander.Value)==string.lower(Player.Name) then
-			Player.Chatted:connect(function(msg, recipient) onChatted(msg, recipient) end) 
-		end
-	else
-		Player.Chatted:connect(function(msg, recipient) onChatted(msg, recipient) end)
-	end
+&#9;while Player.Name==nil do
+&#9;&#9;wait(2)
+&#9;end
+&#9;if script.Parent:findFirstChild(&quot;Commander&quot;)~=nil then
+&#9;&#9;if script.Parent.Commander:children()~=nil or script.Parent.Commander:children()&gt;0 then
+&#9;&#9;&#9;local ch=script.Parent.Commander:children()
+&#9;&#9;&#9;for i=1, #ch do
+&#9;&#9;&#9;&#9;if string.lower(ch[i].Name)==string.lower(Player.Name) then
+&#9;&#9;&#9;&#9;&#9;Player.Chatted:connect(function(msg, recipient) onChatted(msg, recipient) end) 
+&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;end
+&#9;&#9;elseif string.lower(script.Parent.Commander.Value)==string.lower(Player.Name) then
+&#9;&#9;&#9;Player.Chatted:connect(function(msg, recipient) onChatted(msg, recipient) end) 
+&#9;&#9;end
+&#9;else
+&#9;&#9;Player.Chatted:connect(function(msg, recipient) onChatted(msg, recipient) end)
+&#9;end
 end
 
 game.Players.ChildAdded:connect(onPlayerEntered) 
@@ -870,225 +866,225 @@ dist=20
 
 function followany()
 following=true
-	while following==true do
+&#9;while following==true do
 
-		local ch=game.Players:children()
-		for i=1, #ch do
-			local l=game.Workspace:findFirstChild(ch[i].Name)
-			if l~=nil then
-				local s=l.Torso
-				local p=l.Torso.Position
-				local q=script.Parent.Torso.Position
-				local d=math.sqrt( ((p.x-q.x)^2)+((p.y-q.y)^2)+((p.z-q.z)^2) )
-				if smallest==nil then
-					smallest=d
-					target=s
-				elseif d&lt;smallest then
-					smallest=d
-					target=s
-				end
-			end
-		end
+&#9;&#9;local ch=game.Players:children()
+&#9;&#9;for i=1, #ch do
+&#9;&#9;&#9;local l=game.Workspace:findFirstChild(ch[i].Name)
+&#9;&#9;&#9;if l~=nil then
+&#9;&#9;&#9;&#9;local s=l.Torso
+&#9;&#9;&#9;&#9;local p=l.Torso.Position
+&#9;&#9;&#9;&#9;local q=script.Parent.Torso.Position
+&#9;&#9;&#9;&#9;local d=math.sqrt( ((p.x-q.x)^2)+((p.y-q.y)^2)+((p.z-q.z)^2) )
+&#9;&#9;&#9;&#9;if smallest==nil then
+&#9;&#9;&#9;&#9;&#9;smallest=d
+&#9;&#9;&#9;&#9;&#9;target=s
+&#9;&#9;&#9;&#9;elseif d&lt;smallest then
+&#9;&#9;&#9;&#9;&#9;smallest=d
+&#9;&#9;&#9;&#9;&#9;target=s
+&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;end
+&#9;&#9;end
 
-		if smallest==nil then stopmoving() return end
-		
-		if smallest&gt;6*dist then return end
-		
-		script.Parent.Humanoid:MoveTo(target.Position, target)
+&#9;&#9;if smallest==nil then stopmoving() return end
+&#9;&#9;
+&#9;&#9;if smallest&gt;6*dist then return end
+&#9;&#9;
+&#9;&#9;script.Parent.Humanoid:MoveTo(target.Position, target)
 
-		wait(0.5)
-		for i=1, 6 do
-			if target.Parent.Humanoid.Health&lt;1 then stopmoving() else	wait(0.5) end
-		end
-	end
+&#9;&#9;wait(0.5)
+&#9;&#9;for i=1, 6 do
+&#9;&#9;&#9;if target.Parent.Humanoid.Health&lt;1 then stopmoving() else&#9;wait(0.5) end
+&#9;&#9;end
+&#9;end
 end
 
 
 
 function gohome()
-	script.Parent.Humanoid:MoveTo(Vector3.new(0,0,0), game.Workspace.Bases.Base)
+&#9;script.Parent.Humanoid:MoveTo(Vector3.new(0,0,0), game.Workspace.Bases.Base)
 end
 function stopmoving()
-	script.Parent.Humanoid:MoveTo(script.Parent.Torso.Position, script.Parent.Torso)
+&#9;script.Parent.Humanoid:MoveTo(script.Parent.Torso.Position, script.Parent.Torso)
 end
 
 function follow(name)
-	following=true
+&#9;following=true
 
-	local p=game.Workspace:findFirstChild(name)
-	if p==nil then return end
-	while following==true do	
-		script.Parent.Humanoid:MoveTo(p.Torso.Position, p.Torso)
-		wait(0.5)
-		for i=1, 3 do
-			if p.Humanoid.Health&lt;1 then following=false; stopmoving() return end
-			wait(0.5)
-		end
-	end
+&#9;local p=game.Workspace:findFirstChild(name)
+&#9;if p==nil then return end
+&#9;while following==true do&#9;
+&#9;&#9;script.Parent.Humanoid:MoveTo(p.Torso.Position, p.Torso)
+&#9;&#9;wait(0.5)
+&#9;&#9;for i=1, 3 do
+&#9;&#9;&#9;if p.Humanoid.Health&lt;1 then following=false; stopmoving() return end
+&#9;&#9;&#9;wait(0.5)
+&#9;&#9;end
+&#9;end
 end
 
 function attack(name)
-	if script.Parent:findFirstChild(&quot;Sword&quot;)~=nil then	
-		following=true
-		local p=game.Workspace:findFirstChild(name)
-		if p==nil then return end
-		while following==true do
-			script.Parent.Humanoid:MoveTo(p.Torso.Position, p.Torso)
-			wait(0.5)
-			for i=1, 3 do
-				if p.Humanoid.Health&lt;1 then following=false; stopmoving() return end
-				local l=p.Torso.Position
-				local q=script.Parent.Torso.Position
-				local d=math.sqrt( ((l.x-q.x)^2)+((l.y-q.y)^2)+((l.z-q.z)^2) )
-				if d&lt;10 then
-					script.Parent.Humanoid:MoveTo(p.Torso.Position, p.Torso); slash()
-					if (q.y-l.y)&gt;3 and (q.y-l.y)&lt;7 then
-						script.Parent.Humanoid:MoveTo(p.Torso.Position+Vector3.new(math.random(-4,4),0,math.random(-4,4)), p.Torso);
-					end
-				end
-				wait(1)
-			end
-		end
-	end
+&#9;if script.Parent:findFirstChild(&quot;Sword&quot;)~=nil then&#9;
+&#9;&#9;following=true
+&#9;&#9;local p=game.Workspace:findFirstChild(name)
+&#9;&#9;if p==nil then return end
+&#9;&#9;while following==true do
+&#9;&#9;&#9;script.Parent.Humanoid:MoveTo(p.Torso.Position, p.Torso)
+&#9;&#9;&#9;wait(0.5)
+&#9;&#9;&#9;for i=1, 3 do
+&#9;&#9;&#9;&#9;if p.Humanoid.Health&lt;1 then following=false; stopmoving() return end
+&#9;&#9;&#9;&#9;local l=p.Torso.Position
+&#9;&#9;&#9;&#9;local q=script.Parent.Torso.Position
+&#9;&#9;&#9;&#9;local d=math.sqrt( ((l.x-q.x)^2)+((l.y-q.y)^2)+((l.z-q.z)^2) )
+&#9;&#9;&#9;&#9;if d&lt;10 then
+&#9;&#9;&#9;&#9;&#9;script.Parent.Humanoid:MoveTo(p.Torso.Position, p.Torso); slash()
+&#9;&#9;&#9;&#9;&#9;if (q.y-l.y)&gt;3 and (q.y-l.y)&lt;7 then
+&#9;&#9;&#9;&#9;&#9;&#9;script.Parent.Humanoid:MoveTo(p.Torso.Position+Vector3.new(math.random(-4,4),0,math.random(-4,4)), p.Torso);
+&#9;&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;&#9;wait(1)
+&#9;&#9;&#9;end
+&#9;&#9;end
+&#9;end
 end
 
 function attackany()
-if script.Parent:findFirstChild(&quot;Sword&quot;)~=nil then	
+if script.Parent:findFirstChild(&quot;Sword&quot;)~=nil then&#9;
 
-	following=true
-		while following==true do
+&#9;following=true
+&#9;&#9;while following==true do
 
-			local ch=game.Players:children()
-			for i=1, #ch do
-				local l=game.Workspace:findFirstChild(ch[i].Name)
-				if l~=nil then
-					local s=l.Torso
-					local p=l.Torso.Position
-					local q=script.Parent.Torso.Position
-					local d=math.sqrt( ((p.x-q.x)^2)+((p.y-q.y)^2)+((p.z-q.z)^2) )
-					if smallest==nil then
-						smallest=d
-						target=s
-					elseif d&lt;smallest then
-						smallest=d
-						target=s
-					end
-				end
-			end
+&#9;&#9;&#9;local ch=game.Players:children()
+&#9;&#9;&#9;for i=1, #ch do
+&#9;&#9;&#9;&#9;local l=game.Workspace:findFirstChild(ch[i].Name)
+&#9;&#9;&#9;&#9;if l~=nil then
+&#9;&#9;&#9;&#9;&#9;local s=l.Torso
+&#9;&#9;&#9;&#9;&#9;local p=l.Torso.Position
+&#9;&#9;&#9;&#9;&#9;local q=script.Parent.Torso.Position
+&#9;&#9;&#9;&#9;&#9;local d=math.sqrt( ((p.x-q.x)^2)+((p.y-q.y)^2)+((p.z-q.z)^2) )
+&#9;&#9;&#9;&#9;&#9;if smallest==nil then
+&#9;&#9;&#9;&#9;&#9;&#9;smallest=d
+&#9;&#9;&#9;&#9;&#9;&#9;target=s
+&#9;&#9;&#9;&#9;&#9;elseif d&lt;smallest then
+&#9;&#9;&#9;&#9;&#9;&#9;smallest=d
+&#9;&#9;&#9;&#9;&#9;&#9;target=s
+&#9;&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;end
 
-			if smallest==nil then stopmoving() return end
-			
-			if smallest&gt;6*dist then return end
-			
-			script.Parent.Humanoid:MoveTo(target.Position, target)
+&#9;&#9;&#9;if smallest==nil then stopmoving() return end
+&#9;&#9;&#9;
+&#9;&#9;&#9;if smallest&gt;6*dist then return end
+&#9;&#9;&#9;
+&#9;&#9;&#9;script.Parent.Humanoid:MoveTo(target.Position, target)
 
-			if smallest&lt;10 then
-				slash()
-			end
-			if target.Parent==nil then stopmoving() return end
-			wait(0.5)
-			for i=1, 3 do
-				if target.Parent.Humanoid.Health&lt;1 then 
-					stopmoving() 
-				else
-					local p=target.Position
-					local q=script.Parent.Torso.Position
-					local d=math.sqrt( ((p.x-q.x)^2)+((p.y-q.y)^2)+((p.z-q.z)^2) )
-					if d&lt;10 then
-						script.Parent.Humanoid:MoveTo(target.Position, target); slash()
-						if (q.y-p.y)&gt;3 and (q.y-p.y)&lt;7 then
-							script.Parent.Humanoid:MoveTo(p.Torso.Position+Vector3.new(math.random(-4,4),0,math.random(-4,4)), p.Torso);
-						end
-					end
-					wait(1)
-				end
-			end
-		end
-	end
+&#9;&#9;&#9;if smallest&lt;10 then
+&#9;&#9;&#9;&#9;slash()
+&#9;&#9;&#9;end
+&#9;&#9;&#9;if target.Parent==nil then stopmoving() return end
+&#9;&#9;&#9;wait(0.5)
+&#9;&#9;&#9;for i=1, 3 do
+&#9;&#9;&#9;&#9;if target.Parent.Humanoid.Health&lt;1 then 
+&#9;&#9;&#9;&#9;&#9;stopmoving() 
+&#9;&#9;&#9;&#9;else
+&#9;&#9;&#9;&#9;&#9;local p=target.Position
+&#9;&#9;&#9;&#9;&#9;local q=script.Parent.Torso.Position
+&#9;&#9;&#9;&#9;&#9;local d=math.sqrt( ((p.x-q.x)^2)+((p.y-q.y)^2)+((p.z-q.z)^2) )
+&#9;&#9;&#9;&#9;&#9;if d&lt;10 then
+&#9;&#9;&#9;&#9;&#9;&#9;script.Parent.Humanoid:MoveTo(target.Position, target); slash()
+&#9;&#9;&#9;&#9;&#9;&#9;if (q.y-p.y)&gt;3 and (q.y-p.y)&lt;7 then
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;script.Parent.Humanoid:MoveTo(p.Torso.Position+Vector3.new(math.random(-4,4),0,math.random(-4,4)), p.Torso);
+&#9;&#9;&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;&#9;&#9;wait(1)
+&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;end
+&#9;&#9;end
+&#9;end
 end
 
 
 function patrol()
-	if points==nil then
-		points=0
-		if game.Workspace:findFirstChild(&quot;pp1&quot;)~=nil then
-		pp1=game.Workspace:findFirstChild(&quot;pp1&quot;)
-		local points=points+1
-			if game.Workspace:findFirstChild(&quot;pp2&quot;)~=nil then
-			pp2=game.Workspace:findFirstChild(&quot;pp2&quot;)
-		local points=points+1
-				if game.Workspace:findFirstChild(&quot;pp3&quot;)~=nil then
-				pp3=game.Workspace:findFirstChild(&quot;pp3&quot;)
-		local points=points+1
-					if game.Workspace:findFirstChild(&quot;pp4&quot;)~=nil then
-					pp4=game.Workspace:findFirstChild(&quot;pp4&quot;)
-		local points=points+1
-						if game.Workspace:findFirstChild(&quot;pp5&quot;)~=nil then
-						pp5=game.Workspace:findFirstChild(&quot;pp5&quot;)
-		local points=points+1
-							if game.Workspace:findFirstChild(&quot;pp6&quot;)~=nil then
-							pp6=game.Workspace:findFirstChild(&quot;pp6&quot;)
-		local points=points+1
-								if game.Workspace:findFirstChild(&quot;pp7&quot;)~=nil then
-								pp7=game.Workspace:findFirstChild(&quot;pp7&quot;)
-		local points=points+1
-									if game.Workspace:findFirstChild(&quot;pp8&quot;)~=nil then
-									pp8=game.Workspace:findFirstChild(&quot;pp8&quot;)
-		local points=points+1
-										if game.Workspace:findFirstChild(&quot;pp9&quot;)~=nil then
-										pp9=game.Workspace:findFirstChild(&quot;pp9&quot;)
-		local points=points+1
-										end
-									end
-								end
-							end
-						end
-					end
-				end
-			end
-		end
-	end
+&#9;if points==nil then
+&#9;&#9;points=0
+&#9;&#9;if game.Workspace:findFirstChild(&quot;pp1&quot;)~=nil then
+&#9;&#9;pp1=game.Workspace:findFirstChild(&quot;pp1&quot;)
+&#9;&#9;local points=points+1
+&#9;&#9;&#9;if game.Workspace:findFirstChild(&quot;pp2&quot;)~=nil then
+&#9;&#9;&#9;pp2=game.Workspace:findFirstChild(&quot;pp2&quot;)
+&#9;&#9;local points=points+1
+&#9;&#9;&#9;&#9;if game.Workspace:findFirstChild(&quot;pp3&quot;)~=nil then
+&#9;&#9;&#9;&#9;pp3=game.Workspace:findFirstChild(&quot;pp3&quot;)
+&#9;&#9;local points=points+1
+&#9;&#9;&#9;&#9;&#9;if game.Workspace:findFirstChild(&quot;pp4&quot;)~=nil then
+&#9;&#9;&#9;&#9;&#9;pp4=game.Workspace:findFirstChild(&quot;pp4&quot;)
+&#9;&#9;local points=points+1
+&#9;&#9;&#9;&#9;&#9;&#9;if game.Workspace:findFirstChild(&quot;pp5&quot;)~=nil then
+&#9;&#9;&#9;&#9;&#9;&#9;pp5=game.Workspace:findFirstChild(&quot;pp5&quot;)
+&#9;&#9;local points=points+1
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;if game.Workspace:findFirstChild(&quot;pp6&quot;)~=nil then
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;pp6=game.Workspace:findFirstChild(&quot;pp6&quot;)
+&#9;&#9;local points=points+1
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;if game.Workspace:findFirstChild(&quot;pp7&quot;)~=nil then
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;pp7=game.Workspace:findFirstChild(&quot;pp7&quot;)
+&#9;&#9;local points=points+1
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;if game.Workspace:findFirstChild(&quot;pp8&quot;)~=nil then
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;pp8=game.Workspace:findFirstChild(&quot;pp8&quot;)
+&#9;&#9;local points=points+1
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;if game.Workspace:findFirstChild(&quot;pp9&quot;)~=nil then
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;pp9=game.Workspace:findFirstChild(&quot;pp9&quot;)
+&#9;&#9;local points=points+1
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;end
+&#9;&#9;end
+&#9;end
 
-	if points&lt;1 then return end
-	patrolling=true
-	local time=2
-	if points==1 then return end
-	if points&gt;1 then
-		while patrolling==true do
-			script.Parent.Humanoid:MoveTo(pp1.Position, pp1)
-			wait(time)
-			script.Parent.Humanoid:MoveTo(pp2.Position, pp2)
-			wait(time)
-			if points&gt;2 then
-				script.Parent.Humanoid:MoveTo(pp3.Position, pp3)
-				wait(time)
-				if points&gt;3 then
-					script.Parent.Humanoid:MoveTo(pp4.Position, pp4)
-					wait(time)
-					if points&gt;4 then
-						script.Parent.Humanoid:MoveTo(pp5.Position, pp5)
-						wait(time)
-						if points&gt;5 then
-							script.Parent.Humanoid:MoveTo(pp6.Position, pp6)
-							wait(time)
-							if points&gt;6 then
-								script.Parent.Humanoid:MoveTo(pp7.Position, pp7)
-								wait(time)
-								if points&gt;7 then
-									script.Parent.Humanoid:MoveTo(pp8.Position, pp8)
-									wait(time)
-									if points&gt;8 then
-										script.Parent.Humanoid:MoveTo(pp9.Position, pp9)
-										wait(time)
-									end
-								end
-							end
-						end
-					end
-				end
-			end
-		end
-	end
+&#9;if points&lt;1 then return end
+&#9;patrolling=true
+&#9;local time=2
+&#9;if points==1 then return end
+&#9;if points&gt;1 then
+&#9;&#9;while patrolling==true do
+&#9;&#9;&#9;script.Parent.Humanoid:MoveTo(pp1.Position, pp1)
+&#9;&#9;&#9;wait(time)
+&#9;&#9;&#9;script.Parent.Humanoid:MoveTo(pp2.Position, pp2)
+&#9;&#9;&#9;wait(time)
+&#9;&#9;&#9;if points&gt;2 then
+&#9;&#9;&#9;&#9;script.Parent.Humanoid:MoveTo(pp3.Position, pp3)
+&#9;&#9;&#9;&#9;wait(time)
+&#9;&#9;&#9;&#9;if points&gt;3 then
+&#9;&#9;&#9;&#9;&#9;script.Parent.Humanoid:MoveTo(pp4.Position, pp4)
+&#9;&#9;&#9;&#9;&#9;wait(time)
+&#9;&#9;&#9;&#9;&#9;if points&gt;4 then
+&#9;&#9;&#9;&#9;&#9;&#9;script.Parent.Humanoid:MoveTo(pp5.Position, pp5)
+&#9;&#9;&#9;&#9;&#9;&#9;wait(time)
+&#9;&#9;&#9;&#9;&#9;&#9;if points&gt;5 then
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;script.Parent.Humanoid:MoveTo(pp6.Position, pp6)
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;wait(time)
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;if points&gt;6 then
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;script.Parent.Humanoid:MoveTo(pp7.Position, pp7)
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;wait(time)
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;if points&gt;7 then
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;script.Parent.Humanoid:MoveTo(pp8.Position, pp8)
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;wait(time)
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;if points&gt;8 then
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;script.Parent.Humanoid:MoveTo(pp9.Position, pp9)
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;wait(time)
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;end
+&#9;&#9;end
+&#9;end
 end
 
 
@@ -1099,43 +1095,43 @@ end
 
 
 function slash()
-	for i=1, 3 do
-		wait(.3)
-		RightShoulder.MaxVelocity = 2
-		LeftShoulder.MaxVelocity = 1
-		RightShoulder.DesiredAngle = -2.14
-		LeftShoulder.DesiredAngle = 0
-		RightHip.DesiredAngle = 0
-		LeftHip.DesiredAngle = 0
-		wait(.2)
-		RightShoulder.MaxVelocity = 2
-		LeftShoulder.MaxVelocity = 1
-		RightShoulder.DesiredAngle = 0
-		LeftShoulder.DesiredAngle = 0
-		RightHip.DesiredAngle = 0
-		LeftHip.DesiredAngle = 0
-	end
+&#9;for i=1, 3 do
+&#9;&#9;wait(.3)
+&#9;&#9;RightShoulder.MaxVelocity = 2
+&#9;&#9;LeftShoulder.MaxVelocity = 1
+&#9;&#9;RightShoulder.DesiredAngle = -2.14
+&#9;&#9;LeftShoulder.DesiredAngle = 0
+&#9;&#9;RightHip.DesiredAngle = 0
+&#9;&#9;LeftHip.DesiredAngle = 0
+&#9;&#9;wait(.2)
+&#9;&#9;RightShoulder.MaxVelocity = 2
+&#9;&#9;LeftShoulder.MaxVelocity = 1
+&#9;&#9;RightShoulder.DesiredAngle = 0
+&#9;&#9;LeftShoulder.DesiredAngle = 0
+&#9;&#9;RightHip.DesiredAngle = 0
+&#9;&#9;LeftHip.DesiredAngle = 0
+&#9;end
 end
 
 function defence()
-	proxkill=true
-	while proxkill==true do
-		local ch=game.Players:children()
-		for i=1, #ch do
-			local p=game.Workspace:findFirstChild(ch[i].Name)
-			if p~=nil then
-				local p=p.Torso.Position
-				local q=script.Parent.Torso.Position
-				local d=math.sqrt( ((p.x-q.x)^2)+((p.y-q.y)^2)+((p.z-q.z)^2) )
-				if d&lt;dist and d&gt;8 then
-					local ex=Instance.new(&quot;Explosion&quot;)
-					ex.Position=p
-					ex.Parent=game.Workspace
-				end
-			end		
-		end
-		wait(1)
-	end
+&#9;proxkill=true
+&#9;while proxkill==true do
+&#9;&#9;local ch=game.Players:children()
+&#9;&#9;for i=1, #ch do
+&#9;&#9;&#9;local p=game.Workspace:findFirstChild(ch[i].Name)
+&#9;&#9;&#9;if p~=nil then
+&#9;&#9;&#9;&#9;local p=p.Torso.Position
+&#9;&#9;&#9;&#9;local q=script.Parent.Torso.Position
+&#9;&#9;&#9;&#9;local d=math.sqrt( ((p.x-q.x)^2)+((p.y-q.y)^2)+((p.z-q.z)^2) )
+&#9;&#9;&#9;&#9;if d&lt;dist and d&gt;8 then
+&#9;&#9;&#9;&#9;&#9;local ex=Instance.new(&quot;Explosion&quot;)
+&#9;&#9;&#9;&#9;&#9;ex.Position=p
+&#9;&#9;&#9;&#9;&#9;ex.Parent=game.Workspace
+&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;end&#9;&#9;
+&#9;&#9;end
+&#9;&#9;wait(1)
+&#9;end
 end
 
 
@@ -1168,10 +1164,10 @@ Humanoid.Seated:connect(onSeated)
 --[[
 
 function newSound(id)
-	local sound = Instance.new(&quot;Sound&quot;)
-	sound.SoundId = id
-	sound.Parent = script.Parent.Head
-	return sound
+&#9;local sound = Instance.new(&quot;Sound&quot;)
+&#9;sound.SoundId = id
+&#9;sound.Parent = script.Parent.Head
+&#9;return sound
 end
 
 
@@ -1189,23 +1185,23 @@ local Humanoid = waitForChild(Figure, &quot;Humanoid&quot;)
 
 
 function onDied()
-	sDied:play()
+&#9;sDied:play()
 end
 
 function onState(state, sound)
-	if state then
-		sound:play()
-	else
-		sound:pause()
-	end
+&#9;if state then
+&#9;&#9;sound:play()
+&#9;else
+&#9;&#9;sound:pause()
+&#9;end
 end
 
 function onRunning(speed)
-	if speed&gt;0 then
-		sRunning:play()
-	else
-		sRunning:pause()
-	end
+&#9;if speed&gt;0 then
+&#9;&#9;sRunning:play()
+&#9;else
+&#9;&#9;sRunning:pause()
+&#9;end
 end
 
 
@@ -1221,14 +1217,13 @@ local nextTime = 0
 local runService = game:service(&quot;RunService&quot;);
 
 while Figure.Parent~=nil do
-	time = runService.Stepped:wait()
-	if time &gt; nextTime then
-		move(time)
-		nextTime = time + 0.1
-	end
+&#9;time = runService.Stepped:wait()
+&#9;if time &gt; nextTime then
+&#9;&#9;move(time)
+&#9;&#9;nextTime = time + 0.1
+&#9;end
 end
 </ProtectedString>
-				<bool name="archivable">true</bool>
 			</Properties>
 		</Item>
 		<Item class="Script" referent="RBX6">
@@ -1241,29 +1236,28 @@ end
 local soundIds = {25954372, 25954392, 25954407}
 local sounds = {}
 for i=1,#soundIds do
-	local s = Instance.new(&quot;Sound&quot;)
-	s.SoundId = &quot;http://polygon.pizzaboxer.xyz/asset/?id=&quot; .. soundIds[i]
-	s.Volume = 1
-	s.Parent = script.Parent
-	sounds[#sounds + 1] = s
+&#9;local s = Instance.new(&quot;Sound&quot;)
+&#9;s.SoundId = &quot;http://polygon.pizzaboxer.xyz/asset/?id=&quot; .. soundIds[i]
+&#9;s.Volume = 1
+&#9;s.Parent = script.Parent
+&#9;sounds[#sounds + 1] = s
 end
 
 while zombieParent == false do
 
-	wait(1)
-	if script.Parent.Name == &quot;Head&quot; then
-		zombieParent = true
-	end
+&#9;wait(1)
+&#9;if script.Parent.Name == &quot;Head&quot; then
+&#9;&#9;zombieParent = true
+&#9;end
 
 end
 
 while true do
-	wait(math.random(5,10))
-	local i = math.random(1, #sounds)
-	sounds[i].Pitch = .8 + (math.random() * .2)
-	sounds[i]:Play()
+&#9;wait(math.random(5,10))
+&#9;local i = math.random(1, #sounds)
+&#9;sounds[i].Pitch = .8 + (math.random() * .2)
+&#9;sounds[i]:Play()
 end</ProtectedString>
-				<bool name="archivable">true</bool>
 			</Properties>
 		</Item>
 		<Item class="Script" referent="RBX7">
@@ -1275,16 +1269,15 @@ end</ProtectedString>
 
 while zombieParent == false do
 
-	wait(1)
-	if script.Parent.Name == &quot;SummonedZombie&quot; then
-		zombieParent = true
-	end
+&#9;wait(1)
+&#9;if script.Parent.Name == &quot;SummonedZombie&quot; then
+&#9;&#9;zombieParent = true
+&#9;end
 
 end
 
 wait(30)
 script.Parent:remove()</ProtectedString>
-				<bool name="archivable">true</bool>
 			</Properties>
 		</Item>
 		<Item class="Script" referent="RBX8">
@@ -1296,10 +1289,10 @@ script.Parent:remove()</ProtectedString>
 
 while zombieParent == false do
 
-	wait(1)
-	if script.Parent.Name == &quot;SummonedZombie&quot; then
-		zombieParent = true
-	end
+&#9;wait(1)
+&#9;if script.Parent.Name == &quot;SummonedZombie&quot; then
+&#9;&#9;zombieParent = true
+&#9;end
 
 end
 
@@ -1308,24 +1301,23 @@ local p=script.Parent:GetChildren()
 for i=1,#p do 
 if p[i].className==&quot;Part&quot; then 
 
-	local weld = Instance.new(&quot;Weld&quot;) 
+&#9;local weld = Instance.new(&quot;Weld&quot;) 
         weld.Name=&quot;Hold&quot;
-	weld.Part0 = p[i]
-	weld.Part1 = script.Parent.Parent.Torso
+&#9;weld.Part0 = p[i]
+&#9;weld.Part1 = script.Parent.Parent.Torso
 
-	local HitPos = p[i].Position + (p[i].CFrame.lookVector * .5) 
+&#9;local HitPos = p[i].Position + (p[i].CFrame.lookVector * .5) 
 
-	local CJ = CFrame.new(HitPos) 
-	local C0 = p[i].CFrame:inverse() *CJ 
-	local C1 = script.Parent.Parent.Torso.CFrame:inverse() * CJ 
+&#9;local CJ = CFrame.new(HitPos) 
+&#9;local C0 = p[i].CFrame:inverse() *CJ 
+&#9;local C1 = script.Parent.Parent.Torso.CFrame:inverse() * CJ 
 
-	weld.C0 = C0 
-	weld.C1 = C1 
+&#9;weld.C0 = C0 
+&#9;weld.C1 = C1 
 
-	weld.Parent = p[i]
+&#9;weld.Parent = p[i]
 end
 end </ProtectedString>
-				<bool name="archivable">true</bool>
 			</Properties>
 		</Item>
 	</Item>
