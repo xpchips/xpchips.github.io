@@ -8,7 +8,7 @@ game:GetService("ScriptInformationProvider"):SetAssetUrl("http://polygon.pizzabo
 game:GetService("InsertService"):SetBaseSetsUrl("http://polygon.pizzaboxer.xyz/Game/Tools/InsertAsset.ashx?nsets=10&type=base")
 game:GetService("InsertService"):SetUserSetsUrl("http://polygon.pizzaboxer.xyz/Game/Tools/InsertAsset.ashx?nsets=20&type=user&userid=%d&t=2")
 game:GetService("InsertService"):SetCollectionUrl("http://polygon.pizzaboxer.xyz/Game/Tools/InsertAsset.ashx?sid=%d")
-game:GetService("InsertService"):SetAssetUrl("http://polygon.pizzaboxer.xyz/Asset/?id=%d")
+game:GetService("InsertService"):SetAssetUrl("http://rclient.cf/asset/id=%d")
 game:GetService("InsertService"):SetAssetVersionUrl("http://polygon.pizzaboxer.xyz/Asset/?assetversionid=%d")
 game:GetService("InsertService"):SetTrustLevel(0)
 
