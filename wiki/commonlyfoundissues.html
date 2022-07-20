@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>RClient - Wiki</title>
+	<title>RClient - Wiki - Commonly Found Issues</title>
 	<meta name='Generator' content='[% generator.name %]'>
 	<link rel="shortcut icon" href="https://rclient.cf/favicon.ico" type="image/x-icon">
 <!--
@@ -134,9 +134,9 @@
 </div>
 
 <ul>
-	<li><a href="https://rclient.cf/index.html">Go back to Home Page</a></li>
+	<li><a href="https://rclient.cf/wiki/index.html">Go back</a></li>
 <!--	<li><a href="https://rclient.cf/wiki/About.html">About RClient</a></li> -->
-	<li><a href="https://rclient.cf/wiki/downloads.html">Download RClient</a></li>
+	<li><a href="https://discord.gg/95CurtcH4J">Download RClient</a></li>
 	<li><a href="https://discord.gg/95CurtcH4J">Discord</a></li>
 
 </div> <!-- /navigation -->
@@ -146,16 +146,29 @@
 <h1 class="header">RClient - Wiki</h1>
 <br>
 
+<h1>Commonly Found Issues<a id="commonlyfoundissues" class="h_anchor"></a></h1>
+
+<br>
+
 <!--[% FOR page IN pages %]-->
 
-<h1><strong>Welcome to the RClient Wiki!</strong></h1>
-<p>This wiki allows you access tutorials, guides, etc that has been created by the Administrator of RClient.</p>
-<strong>The RClient wiki is still being worked on. This page is subject to change whenever during development!</strong>
+<h2>1. My client is having graphical issues! How do I fix this?<a id="commonlyfoundissuesquestion1" class="h_anchor"></a></h2>
+<p>This issue occurs commonly if the client isn't using OpenGL, to do this, you have to go into Settings in Studio. To access Settings you have to go into Tools and you should find the settings button, once your in settings then go into Rendering and scroll down until you find 'GraphicsMode' and change the it to the following below which is meant for the client that your using:</p>
+<p>2008: OpenGL stable</p>
+<p>2009-2010: OpenGL legacy</p>
+<p>2011-2012: Direct3D</p>
 
-<h1>Need help? Try giving these pages a look:</h1>
-<h2><a href="https://rclient.cf/wiki/frequentlyaskedquestions.html">Frequently Asked Questions</a></h2>
+<h2>2. Why is the CoreGui in 2011-2012 not working when I create or open an existing map! How do I fix this?<a id="commonlyfoundissuesquestion2" class="h_anchor"></a></h2>
+<p>Due to RClient loading the CoreGui scripts locally, you have open studio, create a new map or load an existing one and then go into Tools and then ExecuteScript. Now go to the content folder of the client and you should see a file called 'guifix.lua' just double click on it and it will fix the Gui.</p>
 
-<h2><a href="https://rclient.cf/wiki/commonlyfoundissues.html">Commonly Found Issues</a></h2>
+<h2>3. My character isn't spawning in 2009/2010! How do I fix this?<a id="commonlyfoundissuesquestion3" class="h_anchor"></a></h2>
+<p>Go to your appdata folder, you can do this by pressing Windows key and R at the same time.</p>
+<p>Type %appdata% then press enter</p>
+<p>Delete all the files in the Roblox folder in Appdata Local (Don't delete versions if you want to keep Modern Studio and Client)</p>
+<p>Delete rbxcsettings in Local Low</p>
+
+<h2>4. 2010 keeps crashing upon creating/loading a new map or even when I'm attempting to host/join servers! How do I fix this?<a id="commonlyfoundissuesquestion4" class="h_anchor"></a></h2>
+<p>Read the first question</p>
 
 <!--[% END %]-->
 
