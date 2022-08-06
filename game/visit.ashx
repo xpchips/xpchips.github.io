@@ -1,5 +1,4 @@
---rbxsig2%C8JMhjYbj+eJ+uyk1euYdFuoOpvSDzM1aAqYlL/ZEoEMOZGBgGnwN6gtlKkaS35PCAoRE3V1ADs0vpjLIK4XmsChAhqnslZbC7+cMyTXUncn9YeOfMOWXh2/5Dk333ZH5TbEVOrCrdPS29dzXzqh0xOF/KnB7t41ZippckDXqQwfD+3V2a7am0yQM7j+BM7hr3LfWZCQU/ws1aRxyBJhe7ylqtdYWRp2nwx+LQT/PeACEvgkltLsByIjIFhWoVYPbBw2BFzkdbgBSPQQpwJy/uu+mbOsxaSVwUDPEwnWUOnTgPj67R6ERyacCxwgQhzasnTtpZI2UtB7gnC3pbZFfg==%
--- Prepended to Edit.lua and Visit.lua and Studio.lua --
+%hS0O/GaT9HE0wXG7ub6gvs5XRnFwqcPey6VEOdmFZjSLzfRIc0sQsdt9wvilAV9z7fmM6JCaFNi4h6gDCdy0OQyk1l1uZhsYX9yfGiEgUlDF/GQvSkVQARrExqfO6a4ugTEul78IzfZh5/8bUEi8L5mrn7KhKTwtYcPRH0TOeqI=%-- Prepended to Edit.lua and Visit.lua and Studio.lua and PlaySolo.lua--
 
 function ifSeleniumThenSetCookie(key, value)
 	if false then
@@ -9,8 +8,13 @@ end
 
 ifSeleniumThenSetCookie("SeleniumTest1", "Inside the visit lua script")
 
-pcall(function() game:SetPlaceID(0) end)
-pcall(function() game:SetUniverseId(0) end)
+if true then
+	pcall(function() game:SetPlaceID(0) end)
+else
+	if 0>0 then
+		pcall(function() game:SetPlaceID(0) end)
+	end
+end
 
 visit = game:GetService("Visit")
 
@@ -18,29 +22,24 @@ local message = Instance.new("Message")
 message.Parent = workspace
 message.archivable = false
 
+game:GetService("ScriptInformationProvider"):SetAssetUrl("http://www.roblox.com/Asset/")
 game:GetService("ContentProvider"):SetThreadPool(16)
-pcall(function() game:GetService("InsertService"):SetFreeModelUrl("http://assetgame.roblox.com/Game/Tools/InsertAsset.ashx?type=fm&q=%s&pg=%d&rs=%d") end) -- Used for free model search (insert tool)
-pcall(function() game:GetService("InsertService"):SetFreeDecalUrl("http://assetgame.roblox.com/Game/Tools/InsertAsset.ashx?type=fd&q=%s&pg=%d&rs=%d") end) -- Used for free decal search (insert tool)
+pcall(function() game:GetService("InsertService"):SetFreeModelUrl("http://www.roblox.com/Game/Tools/InsertAsset.ashx?type=fm&q=%s&pg=%d&rs=%d") end) -- Used for free model search (insert tool)
+pcall(function() game:GetService("InsertService"):SetFreeDecalUrl("http://www.roblox.com/Game/Tools/InsertAsset.ashx?type=fd&q=%s&pg=%d&rs=%d") end) -- Used for free decal search (insert tool)
 
 ifSeleniumThenSetCookie("SeleniumTest2", "Set URL service")
 
 settings().Diagnostics:LegacyScriptMode()
 
-game:GetService("InsertService"):SetBaseSetsUrl("http://assetgame.roblox.com/Game/Tools/InsertAsset.ashx?nsets=10&type=base")
-game:GetService("InsertService"):SetUserSetsUrl("http://assetgame.roblox.com/Game/Tools/InsertAsset.ashx?nsets=20&type=user&userid=%d")
-game:GetService("InsertService"):SetCollectionUrl("http://assetgame.roblox.com/Game/Tools/InsertAsset.ashx?sid=%d")
-game:GetService("InsertService"):SetAssetUrl("http://assetgame.roblox.com/Asset/?id=%d")
-game:GetService("InsertService"):SetAssetVersionUrl("http://assetgame.roblox.com/Asset/?assetversionid=%d")
+game:GetService("InsertService"):SetBaseSetsUrl("http://www.roblox.com/Game/Tools/InsertAsset.ashx?nsets=10&type=base")
+game:GetService("InsertService"):SetUserSetsUrl("http://www.roblox.com/Game/Tools/InsertAsset.ashx?nsets=20&type=user&userid=%d")
+game:GetService("InsertService"):SetCollectionUrl("http://www.roblox.com/Game/Tools/InsertAsset.ashx?sid=%d")
+game:GetService("InsertService"):SetAssetUrl("http://www.roblox.com/Asset/?id=%d")
+game:GetService("InsertService"):SetAssetVersionUrl("http://www.roblox.com/Asset/?assetversionid=%d")
 
-pcall(function() game:GetService("SocialService"):SetFriendUrl("http://assetgame.roblox.com/Game/LuaWebService/HandleSocialRequest.ashx?method=IsFriendsWith&playerid=%d&userid=%d") end)
-pcall(function() game:GetService("SocialService"):SetBestFriendUrl("http://assetgame.roblox.com/Game/LuaWebService/HandleSocialRequest.ashx?method=IsBestFriendsWith&playerid=%d&userid=%d") end)
-pcall(function() game:GetService("SocialService"):SetGroupUrl("http://assetgame.roblox.com/Game/LuaWebService/HandleSocialRequest.ashx?method=IsInGroup&playerid=%d&groupid=%d") end)
-pcall(function() game:GetService("SocialService"):SetGroupRankUrl("http://assetgame.roblox.com/Game/LuaWebService/HandleSocialRequest.ashx?method=GetGroupRank&playerid=%d&groupid=%d") end)
-pcall(function() game:GetService("SocialService"):SetGroupRoleUrl("http://assetgame.roblox.com/Game/LuaWebService/HandleSocialRequest.ashx?method=GetGroupRole&playerid=%d&groupid=%d") end)
-pcall(function() game:GetService("GamePassService"):SetPlayerHasPassUrl("http://assetgame.roblox.com/Game/GamePass/GamePassHandler.ashx?Action=HasPass&UserID=%d&PassID=%d") end)
-pcall(function() game:GetService("MarketplaceService"):SetProductInfoUrl("https://api.roblox.com/marketplace/productinfo?assetId=%d") end)
-pcall(function() game:GetService("MarketplaceService"):SetDevProductInfoUrl("https://api.roblox.com/marketplace/productDetails?productId=%d") end)
-pcall(function() game:GetService("MarketplaceService"):SetPlayerOwnsAssetUrl("https://api.roblox.com/ownership/hasasset?userId=%d&assetId=%d") end)
+pcall(function() game:GetService("SocialService"):SetFriendUrl("http://www.roblox.com/Game/LuaWebService/HandleSocialRequest.ashx?method=IsFriendsWith&playerid=%d&userid=%d") end)
+pcall(function() game:GetService("SocialService"):SetBestFriendUrl("http://www.roblox.com/Game/LuaWebService/HandleSocialRequest.ashx?method=IsBestFriendsWith&playerid=%d&userid=%d") end)
+pcall(function() game:GetService("SocialService"):SetGroupUrl("http://www.roblox.com/Game/LuaWebService/HandleSocialRequest.ashx?method=IsInGroup&playerid=%d&groupid=%d") end)
 pcall(function() game:SetCreatorID(0, Enum.CreatorType.User) end)
 
 ifSeleniumThenSetCookie("SeleniumTest3", "Set creator ID")
@@ -72,56 +71,43 @@ workspace:SetPhysicsThrottleEnabled(true)
 local addedBuildTools = false
 local screenGui = game:GetService("CoreGui"):FindFirstChild("RobloxGui")
 
-local inStudio = false or false
-
 function doVisit()
 	message.Text = "Loading Game"
 	if false then
-		if false then
-			success, err = pcall(function() game:Load("") end)
-			if not success then
-				message.Text = "Could not teleport"
-				return
-			end
-		end
+		game:Load("")
+		pcall(function() visit:SetUploadUrl("") end)
 	else
-		if false then
-			game:Load("")
-			pcall(function() visit:SetUploadUrl("") end)
-		else
-			pcall(function() visit:SetUploadUrl("") end)
-		end
+	    pcall(function() visit:SetUploadUrl("") end)
 	end
+	
 
 	message.Text = "Running"
 	game:GetService("RunService"):Run()
 
 	message.Text = "Creating Player"
-	if false or false then
+	if false then
 		player = game:GetService("Players"):CreateLocalPlayer(0)
-		if not inStudio then
-			player.Name = [====[Guest 1195]====]
-		end
+		player.Name = [====[Guest 5628]====]
 	else
 		player = game:GetService("Players"):CreateLocalPlayer(0)
 	end
-	player.CharacterAppearance = "https://assetgame.roblox.com/Asset/CharacterFetch.ashx?userId=1&placeId=0"
+	player.CharacterAppearance = "http://www.roblox.com/Asset/CharacterFetch.ashx?userId=1&placeId=0"
 	local propExists, canAutoLoadChar = false
 	propExists = pcall(function()  canAutoLoadChar = game.Players.CharacterAutoLoads end)
 
 	if (propExists and canAutoLoadChar) or (not propExists) then
 		player:LoadCharacter()
 	end
-	
+
+
 	message.Text = "Setting GUI"
 	player:SetSuperSafeChat(true)
-	pcall(function() player:SetUnder13(True) end)
-	pcall(function() player:SetMembershipType(None) end)
+	pcall(function() player:SetMembershipType(Enum.MembershipType.None) end)
 	pcall(function() player:SetAccountAge(0) end)
 	
-	if not inStudio and false then
+	if false then
 		message.Text = "Setting Ping"
-		visit:SetPing("https://assetgame.roblox.com/Game/ClientPresence.ashx?version=old&PlaceID=0", 120)
+		visit:SetPing("", 300)
 
 		message.Text = "Sending Stats"
 		game:HttpGet("")
@@ -131,7 +117,7 @@ end
 
 success, err = pcall(doVisit)
 
-if not inStudio and not addedBuildTools then
+if not addedBuildTools then
 	local playerName = Instance.new("StringValue")
 	playerName.Name = "PlayerName"
 	playerName.Value = player.Name
@@ -146,16 +132,12 @@ if success then
 	message.Parent = nil
 else
 	print(err)
-	if not inStudio then
-		if false then
-			pcall(function() visit:SetUploadUrl("") end)
-		end
+	if false then
+		pcall(function() visit:SetUploadUrl("") end)
 	end
 	wait(5)
 	message.Text = "Error on visit: " .. err
-	if not inStudio then
-		if false then
-			game:HttpPost("https://data.roblox.com/Error/Lua.ashx", "Visit.lua: " .. err)
-		end
+	if false then
+		game:HttpPost("http://www.roblox.com/Error/Lua.ashx?", "Visit.lua: " .. err)
 	end
 end
