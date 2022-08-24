@@ -1,1 +1,1 @@
-http://rclient.cf/asset/5279;http://rclient.cf/asset/963;http://rclient.cf/asset/guestshirt
+http://rclient.cf/asset/5279;http://rclient.cf/asset/963;http://rclient.cf/asset/guestshirt;http://rclient.cf/asset/967;http://rclient.cf/asset/1006;http://rclient.cf/asset/982
