@@ -2,7 +2,7 @@
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<link rel="shortcut icon" href="http://rclient.cf/favicon.ico" type="image/x-icon">
 		<title>RClient - Upload Screenshot</title>
-		<link rel="stylesheet" href="http://rclient.cf/UploadMedia/uploadmedia_files/bootstrap.min.css"
+		<link rel="stylesheet" href="http://rclient.cf/UploadMedia/uploadmedia_files/bootstrap.min.css">
 		<script type="text/javascript" src="./uploadmedia_files/jquery-3.0.0.min.js.download"></script>
 		</head>
 		<meta name="description" content="RClient: A FREE Virtual World-Building Game with Avatar Chat, 3D Environments, and Physics">
