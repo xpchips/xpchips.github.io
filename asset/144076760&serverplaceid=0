@@ -4,7 +4,7 @@
   <Item class="Pants" referent="RBX0">
     <Properties>
       <Content name="PantsTemplate">
-        <url>http://www.rclient.cf/asset/=144076759</url>
+        <url>http://www.rclient.cf/asset/144076759</url>
       </Content>
       <string name="Name">Pants</string>
       <bool name="archivable">true</bool>
