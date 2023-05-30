@@ -1,0 +1,49 @@
+<roblox xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.roblox.com/roblox.xsd" version="4">
+	<External>null</External>
+	<External>nil</External>
+	<Item class="CharacterMesh" referent="RBX0">
+		<Properties>
+			<int name="BaseTextureId">28268380</int>
+			<token name="BodyPart">2</token>
+			<int name="MeshId">28268164</int>
+			<string name="Name">Spaceman Left Arm</string>
+			<int name="OverlayTextureId">28268380</int>
+		</Properties>
+	</Item>
+	<Item class="CharacterMesh" referent="RBX1">
+		<Properties>
+			<int name="BaseTextureId">0</int>
+			<token name="BodyPart">4</token>
+			<int name="MeshId">28268301</int>
+			<string name="Name">Spaceman Left Leg</string>
+			<int name="OverlayTextureId">28268380</int>
+		</Properties>
+	</Item>
+	<Item class="CharacterMesh" referent="RBX2">
+		<Properties>
+			<int name="BaseTextureId">0</int>
+			<token name="BodyPart">3</token>
+			<int name="MeshId">28268200</int>
+			<string name="Name">Spaceman Right Arm</string>
+			<int name="OverlayTextureId">28268380</int>
+		</Properties>
+	</Item>
+	<Item class="CharacterMesh" referent="RBX3">
+		<Properties>
+			<int name="BaseTextureId">0</int>
+			<token name="BodyPart">5</token>
+			<int name="MeshId">28268263</int>
+			<string name="Name">Spaceman Right Leg</string>
+			<int name="OverlayTextureId">28268380</int>
+		</Properties>
+	</Item>
+	<Item class="CharacterMesh" referent="RBX4">
+		<Properties>
+			<int name="BaseTextureId">0</int>
+			<token name="BodyPart">1</token>
+			<int name="MeshId">28268222</int>
+			<string name="Name">Spaceman torso</string>
+			<int name="OverlayTextureId">28268380</int>
+		</Properties>
+	</Item>
+</roblox>
