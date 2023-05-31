@@ -1,0 +1,49 @@
+<roblox xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.roblox.com/roblox.xsd" version="4">
+	<External>null</External>
+	<External>nil</External>
+	<Item class="CharacterMesh" referent="RBX0">
+		<Properties>
+			<int name="BaseTextureId">0</int>
+			<token name="BodyPart">2</token>
+			<int name="MeshId">32331863</int>
+			<string name="Name">Slinger Left Arm</string>
+			<int name="OverlayTextureId">0</int>
+		</Properties>
+	</Item>
+	<Item class="CharacterMesh" referent="RBX1">
+		<Properties>
+			<int name="BaseTextureId">0</int>
+			<token name="BodyPart">4</token>
+			<int name="MeshId">32331927</int>
+			<string name="Name">Slinger Left Leg</string>
+			<int name="OverlayTextureId">0</int>
+		</Properties>
+	</Item>
+	<Item class="CharacterMesh" referent="RBX2">
+		<Properties>
+			<int name="BaseTextureId">0</int>
+			<token name="BodyPart">3</token>
+			<int name="MeshId">32331968</int>
+			<string name="Name">Slinger Right Arm</string>
+			<int name="OverlayTextureId">0</int>
+		</Properties>
+	</Item>
+	<Item class="CharacterMesh" referent="RBX3">
+		<Properties>
+			<int name="BaseTextureId">0</int>
+			<token name="BodyPart">5</token>
+			<int name="MeshId">32332020</int>
+			<string name="Name">Slinger Right Leg</string>
+			<int name="OverlayTextureId">0</int>
+		</Properties>
+	</Item>
+	<Item class="CharacterMesh" referent="RBX4">
+		<Properties>
+			<int name="BaseTextureId">0</int>
+			<token name="BodyPart">1</token>
+			<int name="MeshId">32332055</int>
+			<string name="Name">Slinger Torso</string>
+			<int name="OverlayTextureId">0</int>
+		</Properties>
+	</Item>
+</roblox>
