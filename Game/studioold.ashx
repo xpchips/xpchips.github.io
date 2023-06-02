@@ -1,4 +1,4 @@
---rbxsig%GEv8RTis+QnC6j+0N4gAalMpq43yG0BFHDq4CHV7+98uKRfamKzT/+ZDxaVaMasYrBdGTMv06GFTZAsQo4C69lPeZYoI6SqxMspshyWuimx3ZY1CEvbpBinzDDtkADi2lMgKScnMzc3b5wTVjXSG7u3SfNou0ImEqJsvtrHSQEs=%
+%p1+XyRalmFxIdB38QzlaEIWe67z5TqOfyH0nrhP4k4Qhp8Ul7bM3IdutjeZc2sViXYk5PGNajcf572eytYmzxTv1cfEPMUVXVkKKHCQGbib8WH1YauR6QzdJG2Pc7gGZrdrTgy+YwY58oZZ+C3RersGDF21a9r0hJG1DCimwPaw=%
 -- Setup studio cmd bar & load core scripts
 
 pcall(function() game:GetService("InsertService"):SetFreeModelUrl("http://polygon.pizzaboxer.xyz/Game/Tools/InsertAsset.ashx?type=fm&q=%s&pg=%d&rs=%d") end)
