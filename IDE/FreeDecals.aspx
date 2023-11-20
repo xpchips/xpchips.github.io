@@ -79,7 +79,7 @@
                         <option value="Roads">Roads</option> <!-- 4 -->
                         <option value="Billboards">Billboards</option> <!-- 5 -->
                         <option value="GameObjects">Game Objects</option> <!-- 6 -->
-                        <!-- <option value="MyDecals">My Decals</option>  -->                      <option value="FreeDecals selected="selected">Free Decals</option>
+                        <!-- <option value="MyDecals">My Decals</option>  -->                      <option value="FreeDecals" selected="selected">Free Decals</option>
                         <!-- <option value="MyModels">My Models</option>  -->                      <option value="FreeModels">Free Models</option>
                     </select>
 					<script>

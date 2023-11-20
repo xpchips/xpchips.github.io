@@ -80,10 +80,10 @@
             <div id="ToolboxControls">
                 <div id="ToolboxSelector">
                     <select name="ddlToolboxes" id="ddlToolboxes" class="Toolboxes" onchange="ddlToolboxesHandler(this.value)">
-                        <option value="ClientToolbox.aspx" selected="selected">Bricks</option> <!-- 0 -->
+                        <option value="ClientToolbox.aspx">Bricks</option> <!-- 0 -->
                         <option value="Robots">Robots</option> <!-- 1 -->
                         <option value="Chassis">Chassis</option> <!-- 2 -->
-                        <option value="Furniture">Furniture</option> <!-- 3 -->
+                        <option value="Furniture" selected="selected">Furniture</option> <!-- 3 -->
                         <option value="Roads">Roads</option> <!-- 4 -->
                         <option value="Billboards">Billboards</option> <!-- 5 -->
                         <option value="GameObjects">Game Objects</option> <!-- 6 -->

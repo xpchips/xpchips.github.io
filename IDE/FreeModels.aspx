@@ -81,7 +81,7 @@
                         <option value="Billboards">Billboards</option> <!-- 5 -->
                         <option value="GameObjects">Game Objects</option> <!-- 6 -->
                         <!-- <option value="MyDecals">My Decals</option>  -->                      <option value="FreeDecals">Free Decals</option>
-                        <!-- <option value="MyModels">My Models</option>  -->                      <option value="FreeModels selected="selected">Free Models</option>
+                        <!-- <option value="MyModels">My Models</option>  -->                      <option value="FreeModels" selected="selected">Free Models</option>
                     </select>
 					<script>
 					function ddlToolboxesHandler(value) {
