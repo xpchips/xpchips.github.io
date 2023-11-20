@@ -83,8 +83,8 @@
                         <option value="MyModels">My Models</option>                        <option value="FreeModels" selected="selected">Free Models</option>
                     </select>
 					<script>
-					function ddlToolboxesHandler(value) {
-						window.location.href = value + ".html";
+					    function ddlToolboxesHandler(value) {
+						window.location.href=(`${value}.html`);
 						}
 					</script>
                 </div>
