@@ -113,52 +113,52 @@
       </div>
     </div>
         <div id="ToolboxItems">
-            <a class="ToolboxItem" title="Reddish brown 2x4" href="javascript:insertContent(11137)" ondragstart="dragRBX(11137)" onmouseover="this.style.borderStyle=&#39;outset&#39;" onmouseout="this.style.borderStyle=&#39;solid&#39;" style="border-style: solid;display:inline-block;height:60px;width:60px;cursor:pointer;">
+            <a class="ToolboxItem" title="Reddish brown 2x4" href="javascript:insertContent(1)" ondragstart="dragRBX(1)" onmouseover="this.style.borderStyle=&#39;outset&#39;" onmouseout="this.style.borderStyle=&#39;solid&#39;" style="border-style: solid;display:inline-block;height:60px;width:60px;cursor:pointer;">
       <img width="60" src="./bricks/ReddishbrownBrick.png" border="0" id="img" alt="Reddish brown 2x4">
       </a>
-            <a class="ToolboxItem" title="Bright orange 2x4" href="javascript:insertContent(11010)" ondragstart="dragRBX(11010)" onmouseover="this.style.borderStyle=&#39;outset&#39;" onmouseout="this.style.borderStyle=&#39;solid&#39;" style="border-style: solid;display:inline-block;height:60px;width:60px;cursor:pointer;">
+            <a class="ToolboxItem" title="Bright orange 2x4" href="javascript:insertContent(2)" ondragstart="dragRBX(2)" onmouseover="this.style.borderStyle=&#39;outset&#39;" onmouseout="this.style.borderStyle=&#39;solid&#39;" style="border-style: solid;display:inline-block;height:60px;width:60px;cursor:pointer;">
       <img width="60" src="./bricks/BrightorangeBrick.png" border="0" id="img" alt="Bright orange 2x4">
       </a>
-            <a class="ToolboxItem" title="Sand green 2x4" href="javascript:insertContent(10564)" ondragstart="dragRBX(10564)" onmouseover="this.style.borderStyle=&#39;outset&#39;" onmouseout="this.style.borderStyle=&#39;solid&#39;" style="border-style: solid;display:inline-block;height:60px;width:60px;cursor:pointer;">
+            <a class="ToolboxItem" title="Sand green 2x4" href="javascript:insertContent(3)" ondragstart="dragRBX(3)" onmouseover="this.style.borderStyle=&#39;outset&#39;" onmouseout="this.style.borderStyle=&#39;solid&#39;" style="border-style: solid;display:inline-block;height:60px;width:60px;cursor:pointer;">
       <img width="60" src="./bricks/SandgreenBrick.png" border="0" id="img" alt="Sand green 2x4">
       </a>
-            <a class="ToolboxItem" title="Reddish brown 2x4" href="javascript:insertContent(10877)" ondragstart="dragRBX(10877)" onmouseover="this.style.borderStyle=&#39;outset&#39;" onmouseout="this.style.borderStyle=&#39;solid&#39;" style="border-style: solid;display:inline-block;height:60px;width:60px;cursor:pointer;">
+            <a class="ToolboxItem" title="Reddish brown 2x4" href="javascript:insertContent(1)" ondragstart="dragRBX(1)" onmouseover="this.style.borderStyle=&#39;outset&#39;" onmouseout="this.style.borderStyle=&#39;solid&#39;" style="border-style: solid;display:inline-block;height:60px;width:60px;cursor:pointer;">
       <img width="60" src="./bricks/ReddishbrownBrick.png" border="0" id="img" alt="Reddish brown 2x4">
       </a>
-            <a class="ToolboxItem" title="Darkstone grey 2x4" href="javascript:insertContent(10876)" ondragstart="dragRBX(10876)" onmouseover="this.style.borderStyle=&#39;outset&#39;" onmouseout="this.style.borderStyle=&#39;solid&#39;" style="border-style: solid;display:inline-block;height:60px;width:60px;cursor:pointer;">
+            <a class="ToolboxItem" title="Darkstone grey 2x4" href="javascript:insertContent(4)" ondragstart="dragRBX(4)" onmouseover="this.style.borderStyle=&#39;outset&#39;" onmouseout="this.style.borderStyle=&#39;solid&#39;" style="border-style: solid;display:inline-block;height:60px;width:60px;cursor:pointer;">
       <img width="60" src="./bricks/DarkstonegreyBrick.png" border="0" id="img" alt="Darkstone grey 2x4">
       </a>
-            <a class="ToolboxItem" title="Medium stone grey 2x4" href="javascript:insertContent(10812)" ondragstart="dragRBX(10812)" onmouseover="this.style.borderStyle=&#39;outset&#39;" onmouseout="this.style.borderStyle=&#39;solid&#39;" style="border-style: solid;display:inline-block;height:60px;width:60px;cursor:pointer;">
+            <a class="ToolboxItem" title="Medium stone grey 2x4" href="javascript:insertContent(5)" ondragstart="dragRBX(5)" onmouseover="this.style.borderStyle=&#39;outset&#39;" onmouseout="this.style.borderStyle=&#39;solid&#39;" style="border-style: solid;display:inline-block;height:60px;width:60px;cursor:pointer;">
       <img width="60" src="./bricks/MediumstonegreyBrick.png" border="0" id="img" alt="Medium stone grey 2x4">
       </a>
-            <a class="ToolboxItem" title="Brick yellow 2x4" href="javascript:insertContent(10781)" ondragstart="dragRBX(10781)" onmouseover="this.style.borderStyle=&#39;outset&#39;" onmouseout="this.style.borderStyle=&#39;solid&#39;" style="border-style: solid;display:inline-block;height:60px;width:60px;cursor:pointer;">
+            <a class="ToolboxItem" title="Brick yellow 2x4" href="javascript:insertContent(6)" ondragstart="dragRBX(6)" onmouseover="this.style.borderStyle=&#39;outset&#39;" onmouseout="this.style.borderStyle=&#39;solid&#39;" style="border-style: solid;display:inline-block;height:60px;width:60px;cursor:pointer;">
       <img width="60" src="./bricks/BrickyellowBrick.png" border="0" id="img" alt="Brick yellow 2x4">
       </a>
-            <a class="ToolboxItem" title="Cool yellow 2x4" href="javascript:insertContent(10573)" ondragstart="dragRBX(10573)" onmouseover="this.style.borderStyle=&#39;outset&#39;" onmouseout="this.style.borderStyle=&#39;solid&#39;" style="border-style: solid;display:inline-block;height:60px;width:60px;cursor:pointer;">
+            <a class="ToolboxItem" title="Cool yellow 2x4" href="javascript:insertContent(7)" ondragstart="dragRBX(7)" onmouseover="this.style.borderStyle=&#39;outset&#39;" onmouseout="this.style.borderStyle=&#39;solid&#39;" style="border-style: solid;display:inline-block;height:60px;width:60px;cursor:pointer;">
       <img width="60" src="./bricks/CoolyellowBrick.png" border="0" id="img" alt="Cool yellow 2x4">
       </a>
-            <a class="ToolboxItem" title="Bright blue 2x4" href="javascript:insertContent(10534)" ondragstart="dragRBX(10534)" onmouseover="this.style.borderStyle=&#39;outset&#39;" onmouseout="this.style.borderStyle=&#39;solid&#39;" style="border-style: solid;display:inline-block;height:60px;width:60px;cursor:pointer;">
+            <a class="ToolboxItem" title="Bright blue 2x4" href="javascript:insertContent(8)" ondragstart="dragRBX(8)" onmouseover="this.style.borderStyle=&#39;outset&#39;" onmouseout="this.style.borderStyle=&#39;solid&#39;" style="border-style: solid;display:inline-block;height:60px;width:60px;cursor:pointer;">
       <img width="60" src="./bricks/BrightblueBrick.png" border="0" id="img" alt="Bright blue 2x4">
       </a>
-            <a class="ToolboxItem" title="Dark green 2x4" href="javascript:insertContent(10533)" ondragstart="dragRBX(10533)" onmouseover="this.style.borderStyle=&#39;outset&#39;" onmouseout="this.style.borderStyle=&#39;solid&#39;" style="border-style: solid;display:inline-block;height:60px;width:60px;cursor:pointer;">
+            <a class="ToolboxItem" title="Dark green 2x4" href="javascript:insertContent(9)" ondragstart="dragRBX(9)" onmouseover="this.style.borderStyle=&#39;outset&#39;" onmouseout="this.style.borderStyle=&#39;solid&#39;" style="border-style: solid;display:inline-block;height:60px;width:60px;cursor:pointer;">
       <img width="60" src="./bricks/DarkgreenBrick.png" border="0" id="img" alt="Dark green 2x4">
       </a>
-            <a class="ToolboxItem" title="Bright yellow 2x4" href="javascript:insertContent(10531)" ondragstart="dragRBX(10531)" onmouseover="this.style.borderStyle=&#39;outset&#39;" onmouseout="this.style.borderStyle=&#39;solid&#39;" style="border-style: solid;display:inline-block;height:60px;width:60px;cursor:pointer;">
+            <a class="ToolboxItem" title="Bright yellow 2x4" href="javascript:insertContent(6)" ondragstart="dragRBX(6)" onmouseover="this.style.borderStyle=&#39;outset&#39;" onmouseout="this.style.borderStyle=&#39;solid&#39;" style="border-style: solid;display:inline-block;height:60px;width:60px;cursor:pointer;">
       <img width="60" src="./bricks/BrightyellowBrick.png" border="0" id="img" alt="Bright yellow 2x4">
       </a>
-            <a class="ToolboxItem" title="Bright red 2x4" href="javascript:insertContent(10501)" ondragstart="dragRBX(10501)" onmouseover="this.style.borderStyle=&#39;outset&#39;" onmouseout="this.style.borderStyle=&#39;solid&#39;" style="border-style: solid;display:inline-block;height:60px;width:60px;cursor:pointer;">
+            <a class="ToolboxItem" title="Bright red 2x4" href="javascript:insertContent(10)" ondragstart="dragRBX(10)" onmouseover="this.style.borderStyle=&#39;outset&#39;" onmouseout="this.style.borderStyle=&#39;solid&#39;" style="border-style: solid;display:inline-block;height:60px;width:60px;cursor:pointer;">
       <img width="60" src="./bricks/BrightredBrick.png" border="0" id="img" alt="Bright red 2x4">
       </a>
-            <a class="ToolboxItem" title="Black 2x4" href="javascript:insertContent(10482)" ondragstart="dragRBX(10482)" onmouseover="this.style.borderStyle=&#39;outset&#39;" onmouseout="this.style.borderStyle=&#39;solid&#39;" style="border-style: solid;display:inline-block;height:60px;width:60px;cursor:pointer;">
+            <a class="ToolboxItem" title="Black 2x4" href="javascript:insertContent(11)" ondragstart="dragRBX(11)" onmouseover="this.style.borderStyle=&#39;outset&#39;" onmouseout="this.style.borderStyle=&#39;solid&#39;" style="border-style: solid;display:inline-block;height:60px;width:60px;cursor:pointer;">
       <img width="60" src="./bricks/BlackBrick.png" border="0" id="img" alt="Black 2x4">
       </a>
-            <a class="ToolboxItem" title="Dark stone grey 2x4" href="javascript:insertContent(10480)" ondragstart="dragRBX(10480)" onmouseover="this.style.borderStyle=&#39;outset&#39;" onmouseout="this.style.borderStyle=&#39;solid&#39;" style="border-style: solid;display:inline-block;height:60px;width:60px;cursor:pointer;">
+            <a class="ToolboxItem" title="Dark stone grey 2x4" href="javascript:insertContent(4)" ondragstart="dragRBX(4)" onmouseover="this.style.borderStyle=&#39;outset&#39;" onmouseout="this.style.borderStyle=&#39;solid&#39;" style="border-style: solid;display:inline-block;height:60px;width:60px;cursor:pointer;">
       <img width="60" src="./bricks/DarkstonegreyBrick.png" border="0" id="img" alt="Dark stone grey 2x4">
       </a>
-            <a class="ToolboxItem" title="Medium stone grey 2x4" href="javascript:insertContent(10486)" ondragstart="dragRBX(10486)" onmouseover="this.style.borderStyle=&#39;outset&#39;" onmouseout="this.style.borderStyle=&#39;solid&#39;" style="border-style: solid;display:inline-block;height:60px;width:60px;cursor:pointer;">
+            <a class="ToolboxItem" title="Medium stone grey 2x4" href="javascript:insertContent(5)" ondragstart="dragRBX(5)" onmouseover="this.style.borderStyle=&#39;outset&#39;" onmouseout="this.style.borderStyle=&#39;solid&#39;" style="border-style: solid;display:inline-block;height:60px;width:60px;cursor:pointer;">
       <img width="60" src="./bricks/MediumstonegreyBrick.png" border="0" id="img" alt="Medium stone grey 2x4">
       </a>
-            <a class="ToolboxItem" title="White 2x4" href="javascript:insertContent(10484)" ondragstart="dragRBX(10484)" onmouseover="this.style.borderStyle=&#39;outset&#39;" onmouseout="this.style.borderStyle=&#39;solid&#39;" style="border-style: solid;display:inline-block;height:60px;width:60px;cursor:pointer;">
+            <a class="ToolboxItem" title="White 2x4" href="javascript:insertContent(12)" ondragstart="dragRBX(12)" onmouseover="this.style.borderStyle=&#39;outset&#39;" onmouseout="this.style.borderStyle=&#39;solid&#39;" style="border-style: solid;display:inline-block;height:60px;width:60px;cursor:pointer;">
       <img width="60" src="./bricks/WhiteBrick.png" border="0" id="img" alt="White 2x4">
       </a>
           </div>
