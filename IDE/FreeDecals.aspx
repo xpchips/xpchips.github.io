@@ -9,7 +9,7 @@
     			{
     				try
                 	{
-                    	window.external.Insert("http://polygon.pizzaboxer.xyz/Asset/?id=" + id);
+                    	window.external.Insert("http://rclient.cf/asset/toolbox/decals/" + id);
                     }
 	                catch(x)
 	                {
@@ -20,7 +20,7 @@
     			{
     				try
     				{
-    					event.dataTransfer.setData("Text", "http://polygon.pizzaboxer.xyz/Asset/?id=" + id);
+    					event.dataTransfer.setData("Text", "http://rclient.cf/asset/toolbox/decals/" + id);
     				}
 	                catch(x)
 	                {
@@ -72,19 +72,19 @@
             <div id="ToolboxControls">
                 <div id="ToolboxSelector">
                     <select name="ddlToolboxes" id="ddlToolboxes" class="Toolboxes" onchange="ddlToolboxesHandler(this.value)">
-                        <!--option value="0" selected="selected">Bricks</option>
-                        <option value="1">Robots</option>
-                        <option value="2">Chassis</option>
-                        <option value="3">Furniture</option>
-                        <option value="4">Roads</option>
-                        <option value="5">Billboards</option>
-                        <option value="6">Game Objects</option-->
-                        <option value="MyDecals">My Decals</option>                        <option value="ClientToolbox.aspx" selected="selected">Free Decals</option>
-                        <option value="MyModels">My Models</option>                        <option value="./ClientToolbox.aspx">Free Models</option>
+                        <option value="ClientToolbox.aspx">Bricks</option> <!-- 0 -->
+                        <option value="Robots">Robots</option> <!-- 1 -->
+                        <option value="Chassis">Chassis</option> <!-- 2 -->
+                        <option value="Furniture">Furniture</option> <!-- 3 -->
+                        <option value="Roads">Roads</option> <!-- 4 -->
+                        <option value="Billboards">Billboards</option> <!-- 5 -->
+                        <option value="GameObjects">Game Objects</option> <!-- 6 -->
+                        <!-- <option value="MyDecals">My Decals</option>  -->                      <option value="FreeDecals selected="selected">Free Decals</option>
+                        <!-- <option value="MyModels">My Models</option>  -->                      <option value="FreeModels">Free Models</option>
                     </select>
 					<script>
-					    function ddlToolboxesHandler(value) {
-						window.location.assign(`${value}.aspx`);
+					function ddlToolboxesHandler(value) {
+						window.location.href = value + ".aspx";
 						}
 					</script>
                 </div>
@@ -101,11 +101,11 @@
         <div id="pNavigation" style="display:table">
       <div class="Navigation">
         <div id="Previous">
-          <a href="https://http://rclient.cf/IDE/Toolbox_decals/ClientToolbox.aspx" onclick="getToolbox(&#39;FreeDecals&#39;, &#39;&#39;, 0)" id="PreviousPage" style="visibility:hidden"><span class="NavigationIndicators">&lt;&lt;</span>
+          <a href="https://http://rclient.cf/IDE/FreeDecals.aspx" onclick="getToolbox(&#39;FreeDecals&#39;, &#39;&#39;, 0)" id="PreviousPage" style="visibility:hidden"><span class="NavigationIndicators">&lt;&lt;</span>
           Prev</a>
         </div>
         <div id="Next">
-          <a href="https://http://rclient.cf/IDE/Toolbox_decals/ClientToolbox.aspx" onclick="getToolbox(&#39;FreeDecals&#39;, &#39;&#39;, 2)" id="NextPage">Next <span class="NavigationIndicators">&gt;&gt;</span></a>
+          <a href="https://http://rclient.cf/IDE/FreeDecals.aspx" onclick="getToolbox(&#39;FreeDecals&#39;, &#39;&#39;, 2)" id="NextPage">Next <span class="NavigationIndicators">&gt;&gt;</span></a>
         </div>
         <div id="Location">
           <span id="PagerLocation">1-20 of 20</span>
@@ -177,11 +177,11 @@
         <div id="pNavigation" style="display:table">
       <div class="Navigation">
         <div id="Previous">
-          <a href="https://http://rclient.cf/IDE/Toolbox_decals/ClientToolbox.aspx" onclick="getToolbox(&#39;FreeDecals&#39;, &#39;&#39;, 0)" id="PreviousPage" style="visibility:hidden"><span class="NavigationIndicators">&lt;&lt;</span>
+          <a href="https://http://rclient.cf/IDE/FreeDecals.aspx" onclick="getToolbox(&#39;FreeDecals&#39;, &#39;&#39;, 0)" id="PreviousPage" style="visibility:hidden"><span class="NavigationIndicators">&lt;&lt;</span>
           Prev</a>
         </div>
         <div id="Next">
-          <a href="https://http://rclient.cf/IDE/Toolbox_decals/ClientToolbox.aspx" onclick="getToolbox(&#39;FreeDecals&#39;, &#39;&#39;, 2)" id="NextPage">Next <span class="NavigationIndicators">&gt;&gt;</span></a>
+          <a href="https://http://rclient.cf/IDE/FreeDecals.aspx" onclick="getToolbox(&#39;FreeDecals&#39;, &#39;&#39;, 2)" id="NextPage">Next <span class="NavigationIndicators">&gt;&gt;</span></a>
         </div>
         <div id="Location">
           <span id="PagerLocation">1-20 of 20</span>
