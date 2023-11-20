@@ -73,7 +73,7 @@
             <div id="ToolboxControls">
                 <div id="ToolboxSelector">
                     <select name="ddlToolboxes" id="ddlToolboxes" class="Toolboxes" onchange="ddlToolboxesHandler(this.value)">
-                        <option value="ClientToolbox.aspx">Bricks</option> <!-- 0 -->
+                        <option value="ClientToolbox">Bricks</option> <!-- 0 -->
                         <option value="Robots">Robots</option> <!-- 1 -->
                         <option value="Chassis">Chassis</option> <!-- 2 -->
                         <option value="Furniture">Furniture</option> <!-- 3 -->
