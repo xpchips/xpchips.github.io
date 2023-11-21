@@ -19,7 +19,7 @@
 			}
 
 		</style>
-		<script type="text/javascript" src="./upload_files/jquery-1.7.2.min.js.download"></script>
+		<script type="text/javascript" src="./upload_files/jquery-1.7.2.min.js"></script>
 	</head>
 	<body scroll="no">
 		<script type="text/javascript">				
