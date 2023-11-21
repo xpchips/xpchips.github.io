@@ -1,8 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    	<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
         <title>RClient - Toolbox</title>
-        <script src="./Toolbox_files/jquery.js"></script> <!-- <script src="./Toolbox_files/jquery.js.download"></script> -->
+        <script src="./Toolbox_files/jquery-1.4.4.min.js"></script> <!-- <script src="./Toolbox_files/jquery.js.download"></script> !!!!! ("http://rclient.cf/asset/?id=" + id); -->
         <link href="./Toolbox_files/Toolbox.css" type="text/css" rel="stylesheet">
         <script id="Functions" type="text/jscript">
     			function insertContent(id)
