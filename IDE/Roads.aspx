@@ -2,8 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
         <title>RClient - Toolbox</title>
-        <script src="./Toolbox_files/jquery.js.download"></script>
-        <link href="./Toolbox_files/Tooolbox.css" type="text/css" rel="stylesheet">
+        <script src="./Toolbox_files/jquery.js"></script>
+        <link href="./Toolbox_files/Toolbox.css" type="text/css" rel="stylesheet">
         <script id="Functions" type="text/jscript">
     			function insertContent(id)
     			{
@@ -113,10 +113,10 @@
       </div>
     </div>
         <div id="ToolboxItems">
-            <a class="ToolboxItem" title="Reddish brown 2x4" href="javascript:insertContent(1)" ondragstart="dragRBX(1)" onmouseover="this.style.borderStyle=&#39;outset&#39;" onmouseout="this.style.borderStyle=&#39;solid&#39;" style="border-style: solid;display:inline-block;height:60px;width:60px;cursor:pointer;">
+            <a class="ToolboxItem" title="Reddish brown 2x4" href="insertContent(1)" ondragstart="dragRBX(1)" onmouseover="this.style.borderStyle=&#39;outset&#39;" onmouseout="this.style.borderStyle=&#39;solid&#39;" style="border-style: solid;display:inline-block;height:60px;width:60px;cursor:pointer;">
       <img width="60" src="./bricks/ReddishbrownBrick.png" border="0" id="img" alt="Reddish brown 2x4">
       </a>
-            <a class="ToolboxItem" title="Bright orange 2x4" href="javascript:insertContent(2)" ondragstart="dragRBX(2)" onmouseover="this.style.borderStyle=&#39;outset&#39;" onmouseout="this.style.borderStyle=&#39;solid&#39;" style="border-style: solid;display:inline-block;height:60px;width:60px;cursor:pointer;">
+            <a class="ToolboxItem" title="Bright orange 2x4" href="insertContent(2)" ondragstart="dragRBX(2)" onmouseover="this.style.borderStyle=&#39;outset&#39;" onmouseout="this.style.borderStyle=&#39;solid&#39;" style="border-style: solid;display:inline-block;height:60px;width:60px;cursor:pointer;">
       <img width="60" src="./bricks/BrightorangeBrick.png" border="0" id="img" alt="Bright orange 2x4">
       </a>
             <a class="ToolboxItem" title="Sand green 2x4" href="javascript:insertContent(3)" ondragstart="dragRBX(3)" onmouseover="this.style.borderStyle=&#39;outset&#39;" onmouseout="this.style.borderStyle=&#39;solid&#39;" style="border-style: solid;display:inline-block;height:60px;width:60px;cursor:pointer;">
