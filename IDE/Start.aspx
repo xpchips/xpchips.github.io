@@ -8,7 +8,8 @@
 	  <h1>RClient Studio - Start</h1>
 	  <hr>
 	  <p>Welcome to the Start Page!</p>
-	  <p>Studio is the foundation of what makes these older clients work and be playable. Its the application that allows you to build, play by your or even with others!</p>
+	  <p>Studio is the foundation of what makes these older clients work and be playable.</p>
+	  <p>It's the application that allows you to build, play by yourself or with others!</p>
 	  <p>We hope you have fun and feel free to report any bugs in the Discord.</p>
 	  </div>
 	  </main> 
